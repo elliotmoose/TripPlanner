@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,24 +21,41 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5C-j2-F7m">
-                        <rect key="frame" x="16" y="8" width="320" height="40"/>
+                        <rect key="frame" x="16" y="4" width="320" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="c0i-7j-xKV"/>
+                            <constraint firstAttribute="height" constant="20" id="c0i-7j-xKV"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKL-lv-g91">
+                        <rect key="frame" x="294" y="103.5" width="60" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="9XJ-ka-WEd"/>
+                            <constraint firstAttribute="width" constant="60" id="gqh-Fr-oGa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                        <state key="normal" title="&lt;">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="expandCollapseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9tV-VA-DC5"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="c5C-j2-F7m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3Pp-qY-Z1p"/>
+                    <constraint firstItem="c5C-j2-F7m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="3Pp-qY-Z1p"/>
+                    <constraint firstAttribute="bottom" secondItem="FKL-lv-g91" secondAttribute="bottom" constant="2" id="DWG-xE-1vQ"/>
                     <constraint firstAttribute="trailing" secondItem="c5C-j2-F7m" secondAttribute="trailing" constant="16" id="FH9-HT-tuR"/>
                     <constraint firstItem="c5C-j2-F7m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gVH-DU-W42"/>
+                    <constraint firstItem="FKL-lv-g91" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="18" id="yXL-oK-Sd8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="c5C-j2-F7m" id="8oQ-mK-mrJ"/>
+                <outlet property="toggleExpandButton" destination="FKL-lv-g91" id="XUQ-5D-lX5"/>
             </connections>
             <point key="canvasLocation" x="84" y="100"/>
         </tableViewCell>

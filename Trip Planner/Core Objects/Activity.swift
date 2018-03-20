@@ -12,6 +12,10 @@ public class Activity
 {
     public var name = ""
     public var type = ActivityType.meal
+    public var budget = 0
+    public var timeSpent = 0
+    public var timeToTravel = 0
+    
     
     init(name : String, type : ActivityType) {
         self.name = name

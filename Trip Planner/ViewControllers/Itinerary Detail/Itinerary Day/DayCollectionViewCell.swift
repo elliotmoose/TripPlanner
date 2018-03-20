@@ -8,12 +8,14 @@
 
 import UIKit
 
-class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource{
+class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource,ActivityCellDelegate{
 
     @IBOutlet weak var dayTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var dateLabel: UIButton!
     
     public var dayNumber = -1
+    private var selectedRows = [Int]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,12 +35,30 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
         tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ActivityTableViewCell")
     }
     
+    public func Initialize()
+    {
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
+    
     
 
     public func SetDay(dayNumber : Int)
     {
-        dayTitleLabel.text = "DAY \(dayNumber)"
-        self.dayNumber = dayNumber
+        if let itinerary = ItineraryManager.GetCurrent()
+        {
+            if let day = itinerary.GetDay(index: dayNumber)
+            {
+                dayTitleLabel.text = "DAY \(dayNumber)"
+                dateLabel.setTitle(day.GetDateString(), for: UIControlState.normal)
+                self.dayNumber = dayNumber
+            }
+
+        }
+        else
+        {
+            
+        }
+
     }
     
     //==============================================================================================================================================================================
@@ -70,22 +90,18 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let itinerary = ItineraryManager.GetCurrent()
-        {
-            if let day = itinerary.GetDay(index: dayNumber)
-            {
-                //activity selected
-            }
-            else
-            {
-                NSLog("Day \(dayNumber) does not exist")
-            }
-        }
+    
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if selectedRows.contains(indexPath.row)
+        {
+            return 100
+        }
+        else
+        {
+            return 60
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,13 +117,13 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
             if let activity = itinerary.GetDay(index: dayNumber)?.GetActivity(index: indexPath.row)
             {
                 cell?.SetName(activity.name)
+                cell?.delegate = self
             }
             else
             {
                 NSLog("Could not retrieve activity with index \(indexPath.row) from day \(dayNumber)")
             }
         }
-        
         
         return cell!
     }
@@ -116,6 +132,27 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
     public func ReloadData()
     {
         tableView.reloadData()
+    }
+    
+    
+    public func DidToggleExpand(_ sender : ActivityTableViewCell) {
+        
+        let indexPath = tableView.indexPath(for: sender)!
+        //activity selection
+        if selectedRows.contains(indexPath.row)
+        {
+            selectedRows.remove(at: selectedRows.index(of: indexPath.row)!)
+            sender.Collapse()
+        }
+        else
+        {
+            selectedRows.append(indexPath.row)
+            sender.Expand()
+        }
+        
+        //tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 //    if let day = itinerary.GetDay(index: dayNumber)
 //    {

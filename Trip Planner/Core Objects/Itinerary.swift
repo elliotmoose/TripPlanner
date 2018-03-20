@@ -42,18 +42,26 @@ public class Itinerary
         return days.count
     }
     
+    public func SetStartDate(date : Date)
+    {
+        self.startDate = date
+        RefactorDates()
+    }
+    
     public func AddDay()
     {
-        //TO BE CHANGED TO PUT PROPER DATE!!!!!
-        //
-        //
-        //
-        let day = Day(date: Date())
+        let date = startDate.addingTimeInterval(TimeInterval(60*60*24*days.count))
+        let day = Day(date: date)
         days.append(day)
-        //
-        //
-        //
-        //
+    }
+    
+    public func RemoveDay(index : Int)
+    {
+        if index >= 0 && index < days.count
+        {
+            days.remove(at: index)
+            RefactorDates()
+        }
     }
     
     public func GetDay(index : Int) -> Day?
@@ -66,6 +74,15 @@ public class Itinerary
         {
             NSLog("Itinerary does not have day \(index)")
             return nil
+        }
+    }
+    
+    public func RefactorDates()
+    {
+        for index in 0...days.count-1
+        {
+            let day = days[index]
+            day.date = startDate.addingTimeInterval(TimeInterval(60*60*24*index))
         }
     }
     

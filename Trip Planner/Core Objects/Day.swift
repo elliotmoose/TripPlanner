@@ -50,6 +50,14 @@ public class Day
         }
     }
     
+    public func GetDateString() -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/YY"
+        return df.string(from: date)
+        
+    }
+    
     public func GetActivitiesCount() -> Int
     {
         return activities.count
