@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5C-j2-F7m">
-                        <rect key="frame" x="8" y="8" width="336" height="40"/>
+                        <rect key="frame" x="16" y="8" width="320" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="c0i-7j-xKV"/>
                         </constraints>
@@ -31,8 +31,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="c5C-j2-F7m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3Pp-qY-Z1p"/>
-                    <constraint firstAttribute="trailing" secondItem="c5C-j2-F7m" secondAttribute="trailing" constant="8" id="FH9-HT-tuR"/>
-                    <constraint firstItem="c5C-j2-F7m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gVH-DU-W42"/>
+                    <constraint firstAttribute="trailing" secondItem="c5C-j2-F7m" secondAttribute="trailing" constant="16" id="FH9-HT-tuR"/>
+                    <constraint firstItem="c5C-j2-F7m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gVH-DU-W42"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

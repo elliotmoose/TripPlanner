@@ -22,11 +22,11 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         //collection view
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: "ItineraryDayCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "itineraryDayCell")
+        collectionView.register(UINib(nibName: "DayCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "itineraryDayCell")
+        collectionView.register(UINib(nibName: "NewDayCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "newDayCell")
         
         //export button
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ShareButtonPressed))
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,13 +67,6 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
                 //add day
                 itinerary.AddDay()
                 
-                //ui
-                let cell = collectionView.cellForItem(at: indexPath) as! ItineraryDayCollectionViewCell
-                cell.SetDayAnimated()
-                    {
-                        
-                }
-                
                 //put this in the above closure to enable animations
                 ReloadData()
             }
@@ -90,29 +83,26 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itineraryDayCell", for: indexPath) as! ItineraryDayCollectionViewCell
-        cell.SetDay(dayNumber: indexPath.row)
-
         if let itinerary = ItineraryManager.GetCurrent()
         {
-            if indexPath.row == itinerary.GetTripLength() //if is last cell
+            if indexPath.row == itinerary.GetTripLength()
             {
-                cell.SetAddDayButton(isButton: true)
+                return collectionView.dequeueReusableCell(withReuseIdentifier: "newDayCell", for: indexPath) as! NewDayCollectionViewCell
             }
             else
             {
-                cell.SetAddDayButton(isButton: false)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itineraryDayCell", for: indexPath) as! DayCollectionViewCell
+                cell.SetDay(dayNumber: indexPath.row)
                 cell.ReloadData()
+                
+                return cell
             }
         }
         else
         {
             NSLog("No current Itinerary")
+            return UICollectionViewCell()
         }
-        
-        
-
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

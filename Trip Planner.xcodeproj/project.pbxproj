@@ -20,8 +20,8 @@
 		A49B7C0C205FC48D00C9BF35 /* ItineraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C0B205FC48D00C9BF35 /* ItineraryManager.swift */; };
 		A49B7C0E205FD04D00C9BF35 /* ItineraryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7C0D205FD04D00C9BF35 /* ItineraryDetailViewController.xib */; };
 		A49B7C10205FD63600C9BF35 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C0F205FD63600C9BF35 /* MainNavigationController.swift */; };
-		A49B7C14206018C300C9BF35 /* ItineraryDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C12206018C300C9BF35 /* ItineraryDayCollectionViewCell.swift */; };
-		A49B7C15206018C300C9BF35 /* ItineraryDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7C13206018C300C9BF35 /* ItineraryDayCollectionViewCell.xib */; };
+		A49B7C14206018C300C9BF35 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C12206018C300C9BF35 /* DayCollectionViewCell.swift */; };
+		A49B7C15206018C300C9BF35 /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7C13206018C300C9BF35 /* DayCollectionViewCell.xib */; };
 		A49B7C1820601B6A00C9BF35 /* Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C1720601B6900C9BF35 /* Sizing.swift */; };
 		A49B7C1C2060CE8200C9BF35 /* CreateItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C1A2060CE8200C9BF35 /* CreateItineraryViewController.swift */; };
 		A49B7C1D2060CE8200C9BF35 /* CreateItineraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7C1B2060CE8200C9BF35 /* CreateItineraryViewController.xib */; };
@@ -29,6 +29,8 @@
 		A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7C212060CEA700C9BF35 /* CreateActivityViewController.xib */; };
 		A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844322060EA240061D369 /* ActivityTableViewCell.swift */; };
 		A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F844332060EA240061D369 /* ActivityTableViewCell.xib */; };
+		A4F844382060F8DA0061D369 /* NewDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */; };
+		A4F844392060F8DA0061D369 /* NewDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F844372060F8DA0061D369 /* NewDayCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +49,8 @@
 		A49B7C0B205FC48D00C9BF35 /* ItineraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryManager.swift; sourceTree = "<group>"; };
 		A49B7C0D205FD04D00C9BF35 /* ItineraryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryDetailViewController.xib; sourceTree = "<group>"; };
 		A49B7C0F205FD63600C9BF35 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
-		A49B7C12206018C300C9BF35 /* ItineraryDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryDayCollectionViewCell.swift; sourceTree = "<group>"; };
-		A49B7C13206018C300C9BF35 /* ItineraryDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItineraryDayCollectionViewCell.xib; sourceTree = "<group>"; };
+		A49B7C12206018C300C9BF35 /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
+		A49B7C13206018C300C9BF35 /* DayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayCollectionViewCell.xib; sourceTree = "<group>"; };
 		A49B7C1720601B6900C9BF35 /* Sizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizing.swift; sourceTree = "<group>"; };
 		A49B7C1A2060CE8200C9BF35 /* CreateItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryViewController.swift; sourceTree = "<group>"; };
 		A49B7C1B2060CE8200C9BF35 /* CreateItineraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateItineraryViewController.xib; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		A49B7C212060CEA700C9BF35 /* CreateActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
 		A4F844322060EA240061D369 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A4F844332060EA240061D369 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4F844372060F8DA0061D369 /* NewDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDayCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,10 +183,12 @@
 		A4F844312060E5EF0061D369 /* Itinerary Day */ = {
 			isa = PBXGroup;
 			children = (
-				A49B7C12206018C300C9BF35 /* ItineraryDayCollectionViewCell.swift */,
-				A49B7C13206018C300C9BF35 /* ItineraryDayCollectionViewCell.xib */,
+				A49B7C12206018C300C9BF35 /* DayCollectionViewCell.swift */,
+				A49B7C13206018C300C9BF35 /* DayCollectionViewCell.xib */,
 				A4F844322060EA240061D369 /* ActivityTableViewCell.swift */,
 				A4F844332060EA240061D369 /* ActivityTableViewCell.xib */,
+				A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */,
+				A4F844372060F8DA0061D369 /* NewDayCollectionViewCell.xib */,
 			);
 			path = "Itinerary Day";
 			sourceTree = "<group>";
@@ -250,9 +256,10 @@
 				A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */,
 				A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */,
 				A49B7C0E205FD04D00C9BF35 /* ItineraryDetailViewController.xib in Resources */,
+				A4F844392060F8DA0061D369 /* NewDayCollectionViewCell.xib in Resources */,
 				A49B7C1D2060CE8200C9BF35 /* CreateItineraryViewController.xib in Resources */,
 				A49B7BF3205FBFF300C9BF35 /* Assets.xcassets in Resources */,
-				A49B7C15206018C300C9BF35 /* ItineraryDayCollectionViewCell.xib in Resources */,
+				A49B7C15206018C300C9BF35 /* DayCollectionViewCell.xib in Resources */,
 				A49B7BF1205FBFF300C9BF35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +276,8 @@
 				A49B7C222060CEA700C9BF35 /* CreateActivityViewController.swift in Sources */,
 				A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */,
 				A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */,
-				A49B7C14206018C300C9BF35 /* ItineraryDayCollectionViewCell.swift in Sources */,
+				A4F844382060F8DA0061D369 /* NewDayCollectionViewCell.swift in Sources */,
+				A49B7C14206018C300C9BF35 /* DayCollectionViewCell.swift in Sources */,
 				A49B7C1C2060CE8200C9BF35 /* CreateItineraryViewController.swift in Sources */,
 				A49B7C07205FC43B00C9BF35 /* ItineraryDetailViewController.swift in Sources */,
 				A49B7C0C205FC48D00C9BF35 /* ItineraryManager.swift in Sources */,
