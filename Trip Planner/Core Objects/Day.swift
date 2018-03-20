@@ -11,7 +11,7 @@ import Foundation
 public class Day
 {
     public var date = Date()
-    public var activities = [Activity]()
+    private var activities = [Activity]()
     
     init(date : Date) {
         self.date = date;

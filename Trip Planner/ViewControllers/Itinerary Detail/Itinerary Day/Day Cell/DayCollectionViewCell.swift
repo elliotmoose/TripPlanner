@@ -33,6 +33,7 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ActivityTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ActivityTableViewCell")
+        tableView.register(UINib(nibName: "NewActivityTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "NewActivityTableViewCell")
     }
     
     public func Initialize()
@@ -73,24 +74,36 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
         {
             if let day = itinerary.GetDay(index: dayNumber)
             {
-                return day.GetActivitiesCount()
+                return day.GetActivitiesCount() + 1
             }
             else
             {
                 NSLog("Day \(dayNumber) does not exist")
-                return 0
+                return 1
             }
         }
         else
         {
             NSLog("No current itinerary")
-            return 0
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    
+        
+        if let itinerary = ItineraryManager.GetCurrent()
+        {
+            if let count = itinerary.GetDay(index: dayNumber)?.GetActivitiesCount()
+            {
+                if indexPath.row == count
+                {
+                    //ADD ACTIVITY
+                    
+                }
+            }
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -105,27 +118,57 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell") as? ActivityTableViewCell
-        
-        if cell == nil
-        {
-            cell = ActivityTableViewCell()
-        }
+
         
         if let itinerary = ItineraryManager.GetCurrent()
         {
-            if let activity = itinerary.GetDay(index: dayNumber)?.GetActivity(index: indexPath.row)
+            if let day = itinerary.GetDay(index: dayNumber)
             {
-                cell?.SetName(activity.name)
-                cell?.delegate = self
+                if indexPath.row == day.GetActivitiesCount() //IF IS LAST CELL
+                {
+                    var cell = tableView.dequeueReusableCell(withIdentifier: "NewActivityTableViewCell") as? NewActivityTableViewCell
+                    if cell == nil
+                    {
+                        cell = NewActivityTableViewCell()
+                    }
+                    
+                    return cell!
+                }
+                else //IF IS NOT LAST CELL
+                {
+                    var cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTableViewCell") as? ActivityTableViewCell
+                    
+                    if cell == nil
+                    {
+                        cell = ActivityTableViewCell()
+                    }
+                    
+                    
+                    if let activity = day.GetActivity(index: indexPath.row)
+                    {
+                        cell?.SetName(activity.name)
+                        cell?.delegate = self
+                    }
+                    else
+                    {
+                        NSLog("Could not retrieve activity with index \(indexPath.row) from day \(dayNumber)")
+                    }
+                    
+                            return cell!
+                }
             }
             else
             {
-                NSLog("Could not retrieve activity with index \(indexPath.row) from day \(dayNumber)")
+                NSLog("day \(dayNumber) does not exist")
             }
         }
+        else
+        {
+            NSLog("No current itinerary")
+        }
         
-        return cell!
+        return UITableViewCell()
+
     }
     
     

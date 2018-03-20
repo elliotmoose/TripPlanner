@@ -10,7 +10,10 @@ import UIKit
 
 public class ActivityTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var activityIconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var locationImageView: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
     
     public weak var delegate : ActivityCellDelegate?
     
@@ -27,6 +30,13 @@ public class ActivityTableViewCell: UITableViewCell {
         // Initialization code
         
         self.toggleExpandButton.transform = CGAffineTransform(rotationAngle: -(.pi)/2)
+        
+        //ui init
+        locationImageView.image = locationImageView.image?.withRenderingMode(.alwaysTemplate)
+        locationImageView.tintColor = UIColor.darkGray
+        activityIconImageView.image = activityIconImageView.image?.withRenderingMode(.alwaysTemplate)
+        activityIconImageView.tintColor = UIColor.darkGray
+        
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

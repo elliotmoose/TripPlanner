@@ -36,7 +36,7 @@
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ydr-BQ-AHl">
-                        <rect key="frame" x="18" y="75" width="313" height="438"/>
+                        <rect key="frame" x="18" y="65" width="313" height="448"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0z-kU-N8W">
@@ -54,7 +54,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5cb-nE-WTk" secondAttribute="trailing" constant="20" id="3U1-hj-jF8"/>
-                <constraint firstItem="ydr-BQ-AHl" firstAttribute="top" secondItem="5cb-nE-WTk" secondAttribute="bottom" constant="12" id="4Ee-kL-Sc5"/>
+                <constraint firstItem="ydr-BQ-AHl" firstAttribute="top" secondItem="5cb-nE-WTk" secondAttribute="bottom" constant="2" id="4Ee-kL-Sc5"/>
                 <constraint firstAttribute="bottom" secondItem="ydr-BQ-AHl" secondAttribute="bottom" constant="18" id="Bmp-W4-ErZ"/>
                 <constraint firstItem="o0z-kU-N8W" firstAttribute="bottom" secondItem="SBE-pN-4cf" secondAttribute="bottom" constant="8" id="HgF-HF-dGL"/>
                 <constraint firstAttribute="trailing" secondItem="ydr-BQ-AHl" secondAttribute="trailing" constant="18" id="JnN-cH-I23"/>
