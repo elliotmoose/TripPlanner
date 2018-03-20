@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ItineraryDayCollectionViewCell" customModule="Trip_Planner" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="531"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="531"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBE-pN-4cf">
+                        <rect key="frame" x="16" y="16" width="317" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="9rf-O6-yHD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cb-nE-WTk">
+                        <rect key="frame" x="16" y="54" width="317" height="3"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="3" id="lc3-Iv-2ce"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpw-jq-7Si">
+                        <rect key="frame" x="0.0" y="0.0" width="349" height="531"/>
+                        <color key="backgroundColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="120"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5cb-nE-WTk" secondAttribute="trailing" constant="16" id="3U1-hj-jF8"/>
+                <constraint firstAttribute="trailing" secondItem="zpw-jq-7Si" secondAttribute="trailing" id="C0O-FG-VfK"/>
+                <constraint firstItem="zpw-jq-7Si" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="M31-yd-h0Q"/>
+                <constraint firstItem="5cb-nE-WTk" firstAttribute="top" secondItem="SBE-pN-4cf" secondAttribute="bottom" constant="8" id="PyD-Fq-W0f"/>
+                <constraint firstItem="5cb-nE-WTk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="QaM-bk-yyu"/>
+                <constraint firstItem="SBE-pN-4cf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="Yv9-lB-Qsz"/>
+                <constraint firstItem="zpw-jq-7Si" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zzf-ow-Jm0"/>
+                <constraint firstItem="zpw-jq-7Si" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="f4x-rz-4VS"/>
+                <constraint firstItem="zpw-jq-7Si" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="lIW-ta-IfL"/>
+                <constraint firstItem="SBE-pN-4cf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="nXl-QB-uaw"/>
+                <constraint firstAttribute="trailing" secondItem="SBE-pN-4cf" secondAttribute="trailing" constant="16" id="vm9-O3-XxO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="349" height="531"/>
+            <connections>
+                <outlet property="addDayLabel" destination="zpw-jq-7Si" id="cWZ-ww-sTZ"/>
+                <outlet property="addDayLabelTopLayoutConstraint" destination="Zzf-ow-Jm0" id="A3w-0P-QB7"/>
+                <outlet property="dayTitleLabel" destination="SBE-pN-4cf" id="zfa-ED-rJV"/>
+            </connections>
+            <point key="canvasLocation" x="-11.5" y="-93.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
