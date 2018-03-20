@@ -17,31 +17,15 @@ public class ItineraryManager
     
     init() {
         let test = AddItinerary(name: "test", startDate: Date(), endDate: Date(timeIntervalSinceNow: TimeInterval(60*60*24*1)))
-        test.AddActivity(name: "Flight in",type: .travel)
+        test.GetDay(index: 0)?.AddActivity(name: "flight", type: .travel)
+        
         
     }
     
     func AddItinerary(name : String, startDate : Date, endDate : Date) -> Itinerary
     {
-        let itinerary = Itinerary(name: name)
-        
-        let calender = Calendar.current
-        let start = calender.date(bySettingHour: 12, minute: 0, second: 0, of: startDate)!
-        let end = calender.date(bySettingHour: 12, minute: 0, second: 0, of: endDate)!
-        
-        if let tripLength = calender.dateComponents([.day], from: start, to: end).day
-        {
-            itinerary.tripLength = tripLength
-        }
-        else
-        {
-            NSLog("Could not find trip length")
-        }
-        
-        itinerary.startDate = startDate
-        
+        let itinerary = Itinerary(name: name,startDate : startDate, endDate : endDate)
         ItineraryManager.itineraries.append(itinerary)
-        
         return itinerary
     }
     

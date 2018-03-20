@@ -35,8 +35,12 @@
                             <constraint firstAttribute="height" constant="3" id="lc3-Iv-2ce"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpw-jq-7Si">
-                        <rect key="frame" x="0.0" y="0.0" width="349" height="531"/>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ydr-BQ-AHl">
+                        <rect key="frame" x="18" y="69" width="313" height="444"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tableView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpw-jq-7Si">
+                        <rect key="frame" x="0.0" y="481" width="349" height="531"/>
                         <color key="backgroundColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="120"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,7 +51,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5cb-nE-WTk" secondAttribute="trailing" constant="16" id="3U1-hj-jF8"/>
+                <constraint firstItem="ydr-BQ-AHl" firstAttribute="top" secondItem="5cb-nE-WTk" secondAttribute="bottom" constant="12" id="4Ee-kL-Sc5"/>
+                <constraint firstAttribute="bottom" secondItem="ydr-BQ-AHl" secondAttribute="bottom" constant="18" id="Bmp-W4-ErZ"/>
                 <constraint firstAttribute="trailing" secondItem="zpw-jq-7Si" secondAttribute="trailing" id="C0O-FG-VfK"/>
+                <constraint firstAttribute="trailing" secondItem="ydr-BQ-AHl" secondAttribute="trailing" constant="18" id="JnN-cH-I23"/>
                 <constraint firstItem="zpw-jq-7Si" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="M31-yd-h0Q"/>
                 <constraint firstItem="5cb-nE-WTk" firstAttribute="top" secondItem="SBE-pN-4cf" secondAttribute="bottom" constant="8" id="PyD-Fq-W0f"/>
                 <constraint firstItem="5cb-nE-WTk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="QaM-bk-yyu"/>
@@ -56,6 +63,7 @@
                 <constraint firstItem="zpw-jq-7Si" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="f4x-rz-4VS"/>
                 <constraint firstItem="zpw-jq-7Si" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="lIW-ta-IfL"/>
                 <constraint firstItem="SBE-pN-4cf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="nXl-QB-uaw"/>
+                <constraint firstItem="ydr-BQ-AHl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="pef-Gy-2eT"/>
                 <constraint firstAttribute="trailing" secondItem="SBE-pN-4cf" secondAttribute="trailing" constant="16" id="vm9-O3-XxO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -64,6 +72,7 @@
                 <outlet property="addDayLabel" destination="zpw-jq-7Si" id="cWZ-ww-sTZ"/>
                 <outlet property="addDayLabelTopLayoutConstraint" destination="Zzf-ow-Jm0" id="A3w-0P-QB7"/>
                 <outlet property="dayTitleLabel" destination="SBE-pN-4cf" id="zfa-ED-rJV"/>
+                <outlet property="tableView" destination="ydr-BQ-AHl" id="beS-r2-Cel"/>
             </connections>
             <point key="canvasLocation" x="-11.5" y="-93.5"/>
         </collectionViewCell>

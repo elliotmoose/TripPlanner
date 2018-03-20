@@ -12,34 +12,61 @@ public class Itinerary
 {
     public var name = ""
     public var startDate = Date();
-    public var tripLength = 0;
-    public var activities = [Activity]()
+    private var days = [Day]()
     
-    init(name : String) {
+    init(name : String,startDate : Date, endDate: Date) {
         self.name = name
+        
+        let calender = Calendar.current
+        let start = calender.date(bySettingHour: 12, minute: 0, second: 0, of: startDate)!
+        let end = calender.date(bySettingHour: 12, minute: 0, second: 0, of: endDate)!
+        
+        if let tripLength = calender.dateComponents([.day], from: start, to: end).day
+        {
+            for _ in 0...tripLength-1
+            {
+                AddDay()
+            }
+        }
+        else
+        {
+            NSLog("Could not find trip length")
+        }
+        
+        self.startDate = startDate
     }
     
-    public func AddActivity(name : String,type : ActivityType)
+
+    public func GetTripLength() -> Int
     {
-        let activity = Activity(name: name, type: type)
-        
-        activities.append(activity)
+        return days.count
     }
     
     public func AddDay()
     {
-        tripLength = tripLength + 1
+        //TO BE CHANGED TO PUT PROPER DATE!!!!!
+        //
+        //
+        //
+        let day = Day(date: Date())
+        days.append(day)
+        //
+        //
+        //
+        //
     }
     
-    public func RemoveActivity(index : Int)
+    public func GetDay(index : Int) -> Day?
     {
-        if index < 0 || index >= activities.count
+        if index >= 0 && index < days.count
         {
-            NSLog("remove activity error; index out of range")
+            return days[index]
         }
         else
         {
-            activities.remove(at: index)
+            NSLog("Itinerary does not have day \(index)")
+            return nil
         }
     }
+    
 }

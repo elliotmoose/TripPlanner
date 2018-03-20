@@ -10,10 +10,10 @@ import UIKit
 
 class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
+
     public static let singleton = ItineraryDetailViewController(nibName: "ItineraryDetailViewController", bundle: Bundle.main)
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ItineraryDetailViewController", bundle: Bundle.main)
@@ -26,6 +26,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         
         //export button
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ShareButtonPressed))
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +36,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     override func viewWillAppear(_ animated: Bool) {
         self.title = ItineraryManager.GetCurrent()?.name
         
-        collectionView.reloadData()
+        ReloadData()
     }
     
     
@@ -43,7 +44,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     {
         if let itinerary = ItineraryManager.GetCurrent()
         {
-            return itinerary.tripLength + 1
+            return itinerary.GetTripLength() + 1
         }
         else
         {
@@ -61,7 +62,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         
         if let itinerary = ItineraryManager.GetCurrent()
         {
-            if indexPath.row == itinerary.tripLength //if its the last cell (which is a button)
+            if indexPath.row == itinerary.GetTripLength() //if its the last cell (which is a button)
             {
                 //add day
                 itinerary.AddDay()
@@ -74,7 +75,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
                 }
                 
                 //put this in the above closure to enable animations
-                collectionView.reloadData()
+                ReloadData()
             }
         }
         else
@@ -90,11 +91,19 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itineraryDayCell", for: indexPath) as! ItineraryDayCollectionViewCell
-        cell.SetTitle(dayNumber: indexPath.row)
+        cell.SetDay(dayNumber: indexPath.row)
 
         if let itinerary = ItineraryManager.GetCurrent()
         {
-            cell.SetAddDayButton(isButton: indexPath.row == itinerary.tripLength)
+            if indexPath.row == itinerary.GetTripLength() //if is last cell
+            {
+                cell.SetAddDayButton(isButton: true)
+            }
+            else
+            {
+                cell.SetAddDayButton(isButton: false)
+                cell.ReloadData()
+            }
         }
         else
         {
@@ -113,15 +122,11 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         return CGSize(width: width, height: height)
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout
-        collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 64
     }
     
@@ -133,6 +138,10 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     {
         
     }
-    
 
+
+    func ReloadData()
+    {
+        collectionView.reloadData()
+    }
 }
