@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout ,DayCollectionViewCellDelegate{
 
 
     public static let singleton = ItineraryDetailViewController(nibName: "ItineraryDetailViewController", bundle: Bundle.main)
@@ -94,6 +94,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itineraryDayCell", for: indexPath) as! DayCollectionViewCell
                 cell.SetDay(dayNumber: indexPath.row)
                 cell.Initialize()
+                cell.delegate = self
                 cell.ReloadData()
                 
                 return cell
@@ -134,5 +135,13 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     func ReloadData()
     {
         collectionView.reloadData()
+    }
+    
+    func AddActivity(_ sender: DayCollectionViewCell) {
+        
+        let index = collectionView.indexPath(for: sender)
+        
+        CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
+        self.present(CreateActivityViewController.singleton, animated: true, completion: {})
     }
 }

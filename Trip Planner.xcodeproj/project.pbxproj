@@ -33,6 +33,7 @@
 		A4F844392060F8DA0061D369 /* NewDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F844372060F8DA0061D369 /* NewDayCollectionViewCell.xib */; };
 		A4F8443E206187750061D369 /* NewActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F8443C206187750061D369 /* NewActivityTableViewCell.swift */; };
 		A4F8443F206187750061D369 /* NewActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F8443D206187750061D369 /* NewActivityTableViewCell.xib */; };
+		A4F84441206254750061D369 /* ExtensionsAndStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F84440206254750061D369 /* ExtensionsAndStructs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		A4F844372060F8DA0061D369 /* NewDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDayCollectionViewCell.xib; sourceTree = "<group>"; };
 		A4F8443C206187750061D369 /* NewActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A4F8443D206187750061D369 /* NewActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewActivityTableViewCell.xib; sourceTree = "<group>"; };
+		A4F84440206254750061D369 /* ExtensionsAndStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndStructs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				A49B7C08205FC45100C9BF35 /* ItineraryListViewController.swift */,
 				A49B7C1E2060CE8C00C9BF35 /* Create Itinerary */,
 				A49B7C16206018C800C9BF35 /* Itinerary Detail */,
+				A49B7C1F2060CE9400C9BF35 /* Create Activity */,
 				A49B7C11205FD63E00C9BF35 /* Main */,
 			);
 			path = ViewControllers;
@@ -153,7 +156,6 @@
 				A49B7C06205FC43B00C9BF35 /* ItineraryDetailViewController.swift */,
 				A49B7C0D205FD04D00C9BF35 /* ItineraryDetailViewController.xib */,
 				A4F844312060E5EF0061D369 /* Itinerary Day */,
-				A49B7C1F2060CE9400C9BF35 /* Create Activity */,
 			);
 			path = "Itinerary Detail";
 			sourceTree = "<group>";
@@ -161,6 +163,7 @@
 		A49B7C1920601B7200C9BF35 /* Imported */ = {
 			isa = PBXGroup;
 			children = (
+				A4F84440206254750061D369 /* ExtensionsAndStructs.swift */,
 				A49B7C1720601B6900C9BF35 /* Sizing.swift */,
 			);
 			path = Imported;
@@ -297,6 +300,7 @@
 				A49B7C10205FD63600C9BF35 /* MainNavigationController.swift in Sources */,
 				A49B7C09205FC45100C9BF35 /* ItineraryListViewController.swift in Sources */,
 				A49B7C222060CEA700C9BF35 /* CreateActivityViewController.swift in Sources */,
+				A4F84441206254750061D369 /* ExtensionsAndStructs.swift in Sources */,
 				A4F8443E206187750061D369 /* NewActivityTableViewCell.swift in Sources */,
 				A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */,
 				A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */,

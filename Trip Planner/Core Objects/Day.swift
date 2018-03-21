@@ -10,7 +10,7 @@ import Foundation
 
 public class Day
 {
-    public var date = Date()
+    private var date = Date()
     private var activities = [Activity]()
     
     init(date : Date) {
@@ -50,12 +50,14 @@ public class Day
         }
     }
     
-    public func GetDateString() -> String
+    public func GetDate() -> Date
     {
-        let df = DateFormatter()
-        df.dateFormat = "dd/MM/YY"
-        return df.string(from: date)
-        
+        return date
+    }
+    
+    public func SetDate(date : Date)
+    {
+        self.date = date
     }
     
     public func GetActivitiesCount() -> Int

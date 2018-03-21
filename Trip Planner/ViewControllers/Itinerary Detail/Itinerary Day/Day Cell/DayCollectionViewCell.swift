@@ -8,16 +8,18 @@
 
 import UIKit
 
-class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource,ActivityCellDelegate{
+public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableViewDataSource,ActivityCellDelegate{
 
     @IBOutlet weak var dayTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UIButton!
     
+    public weak var delegate : DayCollectionViewCellDelegate?
+    
     public var dayNumber = -1
     private var selectedRows = [Int]()
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         //corner radius
@@ -50,7 +52,7 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
             if let day = itinerary.GetDay(index: dayNumber)
             {
                 dayTitleLabel.text = "DAY \(dayNumber)"
-                dateLabel.setTitle(day.GetDateString(), for: UIControlState.normal)
+                dateLabel.setTitle(day.GetDate().GetDDMMYYString(), for: UIControlState.normal)
                 self.dayNumber = dayNumber
             }
 
@@ -65,11 +67,11 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
     //==============================================================================================================================================================================
     //                                                                          TABLE DELEGATE FUNCTIONS
     //==============================================================================================================================================================================
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let itinerary = ItineraryManager.GetCurrent()
         {
             if let day = itinerary.GetDay(index: dayNumber)
@@ -89,7 +91,7 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let itinerary = ItineraryManager.GetCurrent()
@@ -99,14 +101,17 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
                 if indexPath.row == count
                 {
                     //ADD ACTIVITY
-                    
+                    if let delegate = self.delegate
+                    {
+                        delegate.AddActivity(self)
+                    }
                 }
             }
         }
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedRows.contains(indexPath.row)
         {
             return 100
@@ -117,7 +122,7 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         
         if let itinerary = ItineraryManager.GetCurrent()
@@ -205,4 +210,9 @@ class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UITableVie
 //    {
 //    NSLog("Day \(dayNumber) does not exist")
 //    }
+}
+
+public protocol DayCollectionViewCellDelegate : class
+{
+    func AddActivity(_ sender : DayCollectionViewCell)
 }

@@ -82,7 +82,7 @@ public class Itinerary
         for index in 0...days.count-1
         {
             let day = days[index]
-            day.date = startDate.addingTimeInterval(TimeInterval(60*60*24*index))
+            day.SetDate(date: startDate.addingTimeInterval(TimeInterval(60*60*24*index)))
         }
     }
     
