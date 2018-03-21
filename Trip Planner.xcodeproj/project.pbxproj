@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4075ED820629B90008A7E6D /* ChooseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4075ED620629B90008A7E6D /* ChooseLocationViewController.swift */; };
+		A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */; };
+		A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4075EDC2062A8F1008A7E6D /* MainManager.swift */; };
 		A49B7BEC205FBFF300C9BF35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */; };
 		A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BED205FBFF300C9BF35 /* ViewController.swift */; };
 		A49B7BF1205FBFF300C9BF35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49B7BEF205FBFF300C9BF35 /* Main.storyboard */; };
@@ -34,9 +37,14 @@
 		A4F8443E206187750061D369 /* NewActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F8443C206187750061D369 /* NewActivityTableViewCell.swift */; };
 		A4F8443F206187750061D369 /* NewActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F8443D206187750061D369 /* NewActivityTableViewCell.xib */; };
 		A4F84441206254750061D369 /* ExtensionsAndStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F84440206254750061D369 /* ExtensionsAndStructs.swift */; };
+		E185D1BBC9B5B9F457A5E8A6 /* Pods_Trip_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35127FF07E5588771D4F35EA /* Pods_Trip_Planner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35127FF07E5588771D4F35EA /* Pods_Trip_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trip_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4075ED620629B90008A7E6D /* ChooseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLocationViewController.swift; sourceTree = "<group>"; };
+		A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseLocationViewController.xib; sourceTree = "<group>"; };
+		A4075EDC2062A8F1008A7E6D /* MainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
 		A49B7BE8205FBFF300C9BF35 /* Trip Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49B7BED205FBFF300C9BF35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +74,8 @@
 		A4F8443C206187750061D369 /* NewActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A4F8443D206187750061D369 /* NewActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewActivityTableViewCell.xib; sourceTree = "<group>"; };
 		A4F84440206254750061D369 /* ExtensionsAndStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndStructs.swift; sourceTree = "<group>"; };
+		A6CF4470B7A39A3A807C5422 /* Pods-Trip Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trip Planner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trip Planner/Pods-Trip Planner.debug.xcconfig"; sourceTree = "<group>"; };
+		BF3716928FF31DF3B7C568F3 /* Pods-Trip Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trip Planner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trip Planner/Pods-Trip Planner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,17 +83,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E185D1BBC9B5B9F457A5E8A6 /* Pods_Trip_Planner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7345395BC46816C685D764E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6CF4470B7A39A3A807C5422 /* Pods-Trip Planner.debug.xcconfig */,
+				BF3716928FF31DF3B7C568F3 /* Pods-Trip Planner.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A4075ED520629B78008A7E6D /* Choose Location */ = {
+			isa = PBXGroup;
+			children = (
+				A4075ED620629B90008A7E6D /* ChooseLocationViewController.swift */,
+				A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */,
+			);
+			path = "Choose Location";
+			sourceTree = "<group>";
+		};
 		A49B7BDF205FBFF300C9BF35 = {
 			isa = PBXGroup;
 			children = (
 				A49B7BEA205FBFF300C9BF35 /* Trip Planner */,
 				A49B7BE9205FBFF300C9BF35 /* Products */,
+				7345395BC46816C685D764E5 /* Pods */,
+				F4B2AFD9DC25A2D2482AF4F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,11 +156,11 @@
 		A49B7C05205FC41B00C9BF35 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A49B7C11205FD63E00C9BF35 /* Main */,
 				A49B7C08205FC45100C9BF35 /* ItineraryListViewController.swift */,
 				A49B7C1E2060CE8C00C9BF35 /* Create Itinerary */,
 				A49B7C16206018C800C9BF35 /* Itinerary Detail */,
 				A49B7C1F2060CE9400C9BF35 /* Create Activity */,
-				A49B7C11205FD63E00C9BF35 /* Main */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -138,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				A49B7C0B205FC48D00C9BF35 /* ItineraryManager.swift */,
+				A4075EDC2062A8F1008A7E6D /* MainManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -183,6 +215,7 @@
 			children = (
 				A49B7C202060CEA700C9BF35 /* CreateActivityViewController.swift */,
 				A49B7C212060CEA700C9BF35 /* CreateActivityViewController.xib */,
+				A4075ED520629B78008A7E6D /* Choose Location */,
 			);
 			path = "Create Activity";
 			sourceTree = "<group>";
@@ -218,6 +251,14 @@
 			path = "Day Cell";
 			sourceTree = "<group>";
 		};
+		F4B2AFD9DC25A2D2482AF4F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35127FF07E5588771D4F35EA /* Pods_Trip_Planner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,9 +266,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A49B7BFA205FBFF300C9BF35 /* Build configuration list for PBXNativeTarget "Trip Planner" */;
 			buildPhases = (
+				265E82042C7EF29C549DB0A9 /* [CP] Check Pods Manifest.lock */,
 				A49B7BE4205FBFF300C9BF35 /* Sources */,
 				A49B7BE5205FBFF300C9BF35 /* Frameworks */,
 				A49B7BE6205FBFF300C9BF35 /* Resources */,
+				97C8E6BEBCF513BFC039313F /* [CP] Embed Pods Frameworks */,
+				6142A0F080CBD0A94921254B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */,
 				A49B7BF6205FBFF300C9BF35 /* LaunchScreen.storyboard in Resources */,
 				A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */,
 				A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */,
@@ -291,6 +336,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		265E82042C7EF29C549DB0A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6142A0F080CBD0A94921254B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trip Planner/Pods-Trip Planner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97C8E6BEBCF513BFC039313F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trip Planner/Pods-Trip Planner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A49B7BE4205FBFF300C9BF35 /* Sources */ = {
@@ -311,6 +404,8 @@
 				A49B7C0C205FC48D00C9BF35 /* ItineraryManager.swift in Sources */,
 				A49B7BFF205FC19600C9BF35 /* Itinerary.swift in Sources */,
 				A49B7C02205FC1A400C9BF35 /* Activity.swift in Sources */,
+				A4075ED820629B90008A7E6D /* ChooseLocationViewController.swift in Sources */,
+				A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */,
 				A49B7C04205FC3D500C9BF35 /* Day.swift in Sources */,
 				A49B7BEC205FBFF300C9BF35 /* AppDelegate.swift in Sources */,
 				A49B7C1820601B6A00C9BF35 /* Sizing.swift in Sources */,
@@ -448,14 +543,15 @@
 		};
 		A49B7BFB205FBFF300C9BF35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6CF4470B7A39A3A807C5422 /* Pods-Trip Planner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6W5DP48V9;
 				INFOPLIST_FILE = "Trip Planner/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "kohbroco.Trip-Planner";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kohbroco.Trip-Planner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,14 +560,15 @@
 		};
 		A49B7BFC205FBFF300C9BF35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF3716928FF31DF3B7C568F3 /* Pods-Trip Planner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D6W5DP48V9;
 				INFOPLIST_FILE = "Trip Planner/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "kohbroco.Trip-Planner";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kohbroco.Trip-Planner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

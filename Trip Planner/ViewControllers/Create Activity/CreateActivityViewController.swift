@@ -36,7 +36,7 @@ class CreateActivityViewController: UIViewController {
     }
     
     @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
-        
+        self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -77,8 +77,9 @@ class CreateActivityViewController: UIViewController {
         chooseLocationButton.layer.cornerRadius = 5
         chooseLocationButton.layer.borderWidth = 1
         chooseLocationButton.layer.borderColor = UIColor.gray.cgColor
-
         
+        ChooseLocationViewController.singleton.modalPresentationStyle = .overCurrentContext
+        ChooseLocationViewController.singleton.modalTransitionStyle = .crossDissolve
     }
 
     required init?(coder aDecoder: NSCoder) {

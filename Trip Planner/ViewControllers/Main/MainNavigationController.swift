@@ -12,6 +12,8 @@ class MainNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        MainManager.singleton
     }
 
     override func didReceiveMemoryWarning() {
