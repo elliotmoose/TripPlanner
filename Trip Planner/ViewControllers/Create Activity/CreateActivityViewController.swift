@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
+class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITextFieldDelegate {
 
     
     public static let singleton = CreateActivityViewController(nibName: "CreateActivityViewController", bundle: Bundle.main)
@@ -25,8 +25,12 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
     @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var dollarImageView: UIImageView!
     @IBOutlet weak var locationImageView: UIImageView!
-    
     @IBOutlet weak var chooseLocationButton: UIButton!
+
+    @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var scrollView: UIScrollView!
+    var activeField : AnyObject?
     
     public weak var delegate : CreateActivityViewControllerDelegate?
     
@@ -75,6 +79,9 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
         
         ChooseLocationViewController.singleton.modalPresentationStyle = .overCurrentContext
         ChooseLocationViewController.singleton.modalTransitionStyle = .crossDissolve
+        
+        SetTextViewDelegates()
+        AddKeyboardToolBar()
     }
 
 
@@ -84,9 +91,10 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        registerForKeyboardNotifications()
     }
     override func viewDidDisappear(_ animated: Bool) {
+        deregisterFromKeyboardNotifications()
         ResetScene()
     }
     
@@ -113,6 +121,14 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
         selectedStartDate = nil
         selectedLocation = nil
         selectedEndDate = nil
+        
+        nameTextField.text = ""
+        budgetTextField.text = ""
+        contactTextField.text = ""
+        websiteTextField.text = ""
+        startDateTextField.text = ""
+        endDateTextField.text = ""
+        
     }
     
     @IBAction func BackButtonPressed(_ sender: Any) {
@@ -143,6 +159,179 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
         ChooseLocationViewController.singleton.delegate = self
         self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
+    
+    //==============================================================================================================
+    //                                     PUSH UP SCROLL VIEW WHEN EDITING TEXT
+    //==============================================================================================================
+    //push up scroll
+    func SetTextViewDelegates()
+    {
+        nameTextField.delegate = self
+        websiteTextField.delegate = self
+        contactTextField.delegate = self
+        budgetTextField.delegate = self
+        startDateTextField.delegate = self
+        endDateTextField.delegate = self
+    }
+    
+    //textfield delegate functions
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    }
+    
+    
+    //notifications for pushing up keyboard
+    func registerForKeyboardNotifications(){
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
+    @objc func keyboardWasShown(notification: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+        let keyboardHeight = keyboardSize?.height
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight!-32-40 , 0.0)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        self.scrollView.isScrollEnabled = true
+
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+
+        
+
+    }
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
+        //var info = notification.userInfo!
+        //let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        containerViewBottomConstraint.constant = 32
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func AddKeyboardToolBar()
+    {
+        let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: 30))
+        numberToolbar.barStyle = UIBarStyle.default
+        numberToolbar.items = [
+            UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelNumberPad)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneWithNumberPad))]
+        numberToolbar.sizeToFit()
+        nameTextField.inputAccessoryView = numberToolbar
+        websiteTextField.inputAccessoryView = numberToolbar
+        contactTextField.inputAccessoryView = numberToolbar
+        budgetTextField.inputAccessoryView = numberToolbar
+        startDateTextField.inputAccessoryView = numberToolbar
+        endDateTextField.inputAccessoryView = numberToolbar
+        
+    }
+    
+    @objc func cancelNumberPad()
+    {
+        let txtfield = FirstResponder()
+        let _ = txtfield.endEditing(true)
+        
+    }
+    
+    @objc func doneWithNumberPad()
+    {
+        let txtfield = FirstResponder()
+        
+        if txtfield as! NSObject == nameTextField
+        {
+            websiteTextField.becomeFirstResponder()
+        }
+        else if txtfield as! NSObject == websiteTextField
+        {
+            contactTextField.becomeFirstResponder()
+        }
+        else if txtfield as! NSObject == contactTextField
+        {
+            budgetTextField.becomeFirstResponder()
+        }
+        else if txtfield as! NSObject == budgetTextField
+        {
+            startDateTextField.becomeFirstResponder()
+        }
+        else if txtfield as! NSObject == startDateTextField
+        {
+            endDateTextField.becomeFirstResponder()
+        }
+        else
+        {
+            txtfield.resignFirstResponder()
+        }
+        
+        let _ = txtfield.endEditing(true)
+    }
+    
+    
+    func FirstResponder() -> AnyObject
+    {
+        if nameTextField.isFirstResponder
+        {
+            return nameTextField
+        }
+        else if websiteTextField.isFirstResponder
+        {
+            return websiteTextField
+        }
+        else if contactTextField.isFirstResponder
+        {
+            return contactTextField
+        }
+        else if budgetTextField.isFirstResponder
+        {
+            return budgetTextField
+        }
+        else if startDateTextField.isFirstResponder
+        {
+            return startDateTextField
+        }
+        else
+        {
+            return  endDateTextField
+        }
+    }
+    
+    func EnableTapToDismissKeyboard()
+    {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard)))
+    }
+    
+    @objc func DismissKeyboard()
+    {
+        resignFirstResponder()
+    }
+    
     
 }
 
