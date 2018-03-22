@@ -21,14 +21,15 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     @IBOutlet weak var budgetTextField: UITextField!
     @IBOutlet weak var contactTextField: UITextField!
     
+    @IBOutlet weak var clockImageView: UIImageView!
     @IBOutlet weak var linkImageView: UIImageView!
     @IBOutlet weak var contactImageView: UIImageView!
     @IBOutlet weak var dollarImageView: UIImageView!
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var chooseLocationButton: UIButton!
 
-    @IBOutlet weak var containerViewBottomConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var emojiTextField: UITextField!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     var activeField : AnyObject?
     
@@ -55,14 +56,17 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         startDateTextField.inputView = startDatePicker
         endDateTextField.inputView = endDatePicker
         
+        let tintColor = UIColor.darkGray
+        clockImageView.image = clockImageView.image?.withRenderingMode(.alwaysTemplate)
+        clockImageView.tintColor = tintColor
         linkImageView.image = linkImageView.image?.withRenderingMode(.alwaysTemplate)
-        linkImageView.tintColor = UIColor.darkGray
+        linkImageView.tintColor = tintColor
         contactImageView.image = contactImageView.image?.withRenderingMode(.alwaysTemplate)
-        contactImageView.tintColor = UIColor.darkGray
+        contactImageView.tintColor = tintColor
         dollarImageView.image = dollarImageView.image?.withRenderingMode(.alwaysTemplate)
-        dollarImageView.tintColor = UIColor.darkGray
+        dollarImageView.tintColor = tintColor
         locationImageView.image = locationImageView.image?.withRenderingMode(.alwaysTemplate)
-        locationImageView.tintColor = UIColor.darkGray
+        locationImageView.tintColor = tintColor
         
         nameTextField.layer.cornerRadius = 5
         nameTextField.layer.borderWidth = 1
@@ -76,6 +80,12 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         budgetTextField.layer.cornerRadius = 5
         budgetTextField.layer.borderWidth = 1
         budgetTextField.layer.borderColor = UIColor.gray.cgColor
+        startDateTextField.layer.cornerRadius = 5
+        startDateTextField.layer.borderWidth = 1
+        startDateTextField.layer.borderColor = UIColor.gray.cgColor
+        endDateTextField.layer.cornerRadius = 5
+        endDateTextField.layer.borderWidth = 1
+        endDateTextField.layer.borderColor = UIColor.gray.cgColor
         chooseLocationButton.layer.cornerRadius = 5
         chooseLocationButton.layer.borderWidth = 1
         chooseLocationButton.layer.borderColor = UIColor.gray.cgColor
@@ -85,6 +95,8 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         
         SetTextViewDelegates()
         AddKeyboardToolBar()
+        
+        UpdateEmoji()
     }
 
 
@@ -155,6 +167,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         startDateTextField.text = ""
         endDateTextField.text = ""
         
+        emojiIndex = 0
     }
     
     @IBAction func BackButtonPressed(_ sender: Any) {
@@ -169,7 +182,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
             activity.name = nameTextField.text!
             activity.budget = budgetTextField.text!
             activity.location = selectedLocation
-            
+            activity.icon = emojiTextField.text!
             ItineraryManager.GetCurrent()?.AddActivity(activity)
             
             self.delegate?.DidCreateActivity()
@@ -186,6 +199,33 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
     
+    
+    let emojis = ["🍽","☕️","🍻","✈️","🚗","🚌","🚢","😴","🏖","🌊","⛰","🎭"]
+    var emojiIndex = 0
+    @IBAction func PrevEmoji(_ sender: Any) {
+        emojiIndex = emojiIndex - 1
+        if emojiIndex < 0
+        {
+            emojiIndex = emojis.count-1
+        }
+        
+        UpdateEmoji()
+    }
+    @IBAction func NextEmoji(_ sender: Any) {
+        emojiIndex = emojiIndex + 1
+        if emojiIndex >= emojis.count
+        {
+            emojiIndex = 0
+        }
+        
+        UpdateEmoji()
+    }
+    
+    func UpdateEmoji()
+    {
+        emojiTextField.text = emojis[emojiIndex]
+    }
+    
     //==============================================================================================================
     //                                     PUSH UP SCROLL VIEW WHEN EDITING TEXT
     //==============================================================================================================
@@ -198,16 +238,36 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         budgetTextField.delegate = self
         startDateTextField.delegate = self
         endDateTextField.delegate = self
+        emojiTextField.delegate = self
     }
     
     //textfield delegate functions
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeField = textField
+        
+        if textField == emojiTextField
+        {
+            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField != emojiTextField
+        {
+            return true
+        }
+        else
+        {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            return newLength <= 1
+        }
+    }
+    
     
     
     //notifications for pushing up keyboard
@@ -255,8 +315,6 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         
         self.scrollView.scrollIndicatorInsets = contentInsets
         
-        containerViewBottomConstraint.constant = 32
-        
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         })
@@ -277,7 +335,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         budgetTextField.inputAccessoryView = numberToolbar
         startDateTextField.inputAccessoryView = numberToolbar
         endDateTextField.inputAccessoryView = numberToolbar
-        
+        emojiTextField.inputAccessoryView = numberToolbar
     }
     
     @objc func cancelNumberPad()
@@ -293,6 +351,14 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         
         if txtfield as! NSObject == nameTextField
         {
+            startDateTextField.becomeFirstResponder()
+        }
+        else if txtfield as! NSObject == startDateTextField
+        {
+            endDateTextField.becomeFirstResponder()
+        }
+        else if txtfield as! NSObject == endDateTextField
+        {
             websiteTextField.becomeFirstResponder()
         }
         else if txtfield as! NSObject == websiteTextField
@@ -305,11 +371,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         }
         else if txtfield as! NSObject == budgetTextField
         {
-            startDateTextField.becomeFirstResponder()
-        }
-        else if txtfield as! NSObject == startDateTextField
-        {
-            endDateTextField.becomeFirstResponder()
+            emojiTextField.becomeFirstResponder()
         }
         else
         {
@@ -342,9 +404,13 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         {
             return startDateTextField
         }
+        else if endDateTextField.isFirstResponder
+        {
+            return endDateTextField
+        }
         else
         {
-            return  endDateTextField
+            return emojiTextField
         }
     }
     

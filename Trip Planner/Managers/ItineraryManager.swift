@@ -23,6 +23,7 @@ public class ItineraryManager
         activity.location = Location(name: "Kuta Beach")
         activity.link = "www.google.com"
         activity.budget = "99.00"
+        activity.icon = "🏄🏻"
         test.AddActivity(activity)
     }
     

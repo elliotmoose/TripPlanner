@@ -11,6 +11,7 @@ import Foundation
 public class Activity
 {
     public var name = ""
+    public var icon = ""
     public var type = ActivityType.others
     public var budget = ""
     public var link = ""

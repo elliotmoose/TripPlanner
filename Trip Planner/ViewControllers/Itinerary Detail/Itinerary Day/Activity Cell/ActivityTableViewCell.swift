@@ -10,7 +10,6 @@ import UIKit
 
 public class ActivityTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var activityIconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationImageView: UIImageView!
@@ -22,6 +21,7 @@ public class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var linkImageView: UIImageView!
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var budgetImageView: UIImageView!
+    @IBOutlet weak var emojiLabel: UILabel!
     
     
     public weak var delegate : ActivityCellDelegate?
@@ -50,8 +50,6 @@ public class ActivityTableViewCell: UITableViewCell {
         let tintColor = UIColor.darkGray
         locationImageView.image = locationImageView.image?.withRenderingMode(.alwaysTemplate)
         locationImageView.tintColor = tintColor
-        activityIconImageView.image = activityIconImageView.image?.withRenderingMode(.alwaysTemplate)
-        activityIconImageView.tintColor = tintColor
         timeImageView.image = timeImageView.image?.withRenderingMode(.alwaysTemplate)
         timeImageView.tintColor = tintColor
         linkImageView.image = linkImageView.image?.withRenderingMode(.alwaysTemplate)
@@ -112,6 +110,16 @@ public class ActivityTableViewCell: UITableViewCell {
         {
             contactButton.setTitle(activity.contact, for: .normal)
         }
+        
+        if activity.icon == ""
+        {
+            emojiLabel.text = "😊"
+        }
+        else
+        {
+            emojiLabel.text = activity.icon.substring(to: 1)
+        }
+        
         
         
     }

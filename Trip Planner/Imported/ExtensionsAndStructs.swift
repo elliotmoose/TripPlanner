@@ -103,7 +103,7 @@ extension Date
     func Get24hString() -> String
     {
         let df = DateFormatter()
-        df.dateFormat = "HHmm"
+        df.dateFormat = "HH:mm"
         return df.string(from: self)
     }
 }
