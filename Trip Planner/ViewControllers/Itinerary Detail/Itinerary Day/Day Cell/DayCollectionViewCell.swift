@@ -98,12 +98,12 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
         {
             if let count = itinerary.GetDay(index: dayNumber)?.GetActivitiesCount()
             {
-                if indexPath.row == count
+                if indexPath.row == count //IF IS ADD ROW CELL
                 {
-                    //ADD ACTIVITY
+                    //REQUEST ADD ACTIVITY
                     if let delegate = self.delegate
                     {
-                        delegate.AddActivityRequest(self)
+                        delegate.AddActivityRequest(self,dayIndex: dayNumber)
                     }
                 }
             }
@@ -214,5 +214,5 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
 
 public protocol DayCollectionViewCellDelegate : class
 {
-    func AddActivityRequest(_ sender : DayCollectionViewCell)
+    func AddActivityRequest(_ sender : DayCollectionViewCell, dayIndex : Int)
 }

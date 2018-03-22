@@ -138,10 +138,9 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     //delegate functions
-    func AddActivityRequest(_ sender: DayCollectionViewCell) {
+    func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {
         
-        let index = collectionView.indexPath(for: sender)
-        
+        CreateActivityViewController.singleton.SetDay(index: dayIndex)
         CreateActivityViewController.singleton.delegate = self
         CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
         self.present(CreateActivityViewController.singleton, animated: true, completion: {})

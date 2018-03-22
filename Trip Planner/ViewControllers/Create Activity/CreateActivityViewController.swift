@@ -46,11 +46,14 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         containingView.layer.cornerRadius = 12
         
         
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = UIDatePickerMode.time
-        datePicker.addTarget(self, action: #selector(SetDate(_:)), for: .valueChanged)
-        startDateTextField.inputView = datePicker
-        endDateTextField.inputView = datePicker
+        let startDatePicker = UIDatePicker()
+        startDatePicker.datePickerMode = UIDatePickerMode.time
+        startDatePicker.addTarget(self, action: #selector(SetDate(_:)), for: .valueChanged)
+        let endDatePicker = UIDatePicker()
+        endDatePicker.datePickerMode = UIDatePickerMode.time
+        endDatePicker.addTarget(self, action: #selector(SetDate(_:)), for: .valueChanged)
+        startDateTextField.inputView = startDatePicker
+        endDateTextField.inputView = endDatePicker
         
         linkImageView.image = linkImageView.image?.withRenderingMode(.alwaysTemplate)
         linkImageView.tintColor = UIColor.darkGray
@@ -98,11 +101,34 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         ResetScene()
     }
     
+    public func SetDay(index : Int)
+    {
+        //Get date for this day
+        if let day = ItineraryManager.GetCurrent()?.GetDay(index: index)
+        {
+            let startDatePicker = startDateTextField.inputView as! UIDatePicker
+            let endDatePicker = endDateTextField.inputView as! UIDatePicker
+            let calender = Calendar.current
+            let minDate = calender.date(bySettingHour: 0, minute: 0, second: 0, of: day.GetDate())!
+            let maxDate = calender.date(bySettingHour: 23, minute: 59, second: 59, of: day.GetDate())!
+            startDatePicker.minimumDate = minDate
+            startDatePicker.maximumDate = maxDate
+            endDatePicker.minimumDate = minDate
+            endDatePicker.maximumDate = maxDate
+            
+        }
+    }
+    
     @objc private func SetDate(_ sender : UIDatePicker)
     {
         if startDateTextField.isFirstResponder
         {
             startDateTextField.text = sender.date.Get24hString()
+            
+            //end date cannot be earlier than start
+            let startDatePicker = startDateTextField.inputView as! UIDatePicker
+            let endDatePicker = endDateTextField.inputView as! UIDatePicker
+            endDatePicker.minimumDate = startDatePicker.date
         }
         if endDateTextField.isFirstResponder
         {

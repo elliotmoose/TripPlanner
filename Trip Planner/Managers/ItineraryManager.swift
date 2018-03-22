@@ -18,6 +18,12 @@ public class ItineraryManager
     init() {
         let test = AddItinerary(name: "test", startDate: Date(), endDate: Date(timeIntervalSinceNow: TimeInterval(60*60*24*1)))
         
+        let activity = Activity(name: "Surfing!!", type: .meal)
+        activity.contact = "+65 98887666"
+        activity.location = Location(name: "Kuta Beach")
+        activity.link = "www.google.com"
+        activity.budget = "99.00"
+        test.AddActivity(activity)
     }
     
     func AddItinerary(name : String, startDate : Date, endDate : Date) -> Itinerary

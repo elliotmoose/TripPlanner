@@ -13,9 +13,12 @@ public class Activity
     public var name = ""
     public var type = ActivityType.others
     public var budget = ""
+    public var link = ""
+    public var contact = ""
+    public var location : Location?
+    
     public var startDate = Date()
     public var endDate = Date()
-    public var location : Location?
     
     init(name : String, type : ActivityType) {
         self.name = name
