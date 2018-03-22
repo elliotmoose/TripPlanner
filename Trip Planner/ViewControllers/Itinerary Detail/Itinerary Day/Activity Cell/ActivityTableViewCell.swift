@@ -45,9 +45,10 @@ public class ActivityTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
  
-    public func SetName(_ name : String)
+    public func DisplayActivity(_ activity : Activity)
     {
-        nameLabel.text = name
+        nameLabel.text = activity.name
+        locationLabel.text = activity.location?.name
     }
     
     public func Expand()

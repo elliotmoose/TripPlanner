@@ -28,19 +28,11 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
     
     @IBOutlet weak var chooseLocationButton: UIButton!
     
-    @IBAction func BackButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    public weak var delegate : CreateActivityViewControllerDelegate?
     
-    @IBAction func AddButtonPressed(_ sender: Any) {
-    }
-    
-    @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
-        self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
-    }
-    
-    
-    private var activity : Activity?
+    private var selectedLocation : Location?
+    private var selectedStartDate : Date?
+    private var selectedEndDate : Date?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "CreateActivityViewController", bundle: Bundle.main)
@@ -83,7 +75,6 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
         
         ChooseLocationViewController.singleton.modalPresentationStyle = .overCurrentContext
         ChooseLocationViewController.singleton.modalTransitionStyle = .crossDissolve
-        ChooseLocationViewController.singleton.delegate = self
     }
 
 
@@ -93,7 +84,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        activity = Activity()
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         ResetScene()
@@ -112,14 +103,51 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
     }
     
     func DidChooseLocation(location: Location) {
-        activity?.location = location
+        selectedLocation = location
         chooseLocationButton.setTitle(location.name, for: .normal)
     }
     
     func ResetScene()
     {
         chooseLocationButton.setTitle("Choose Location", for: .normal)
-        activity = nil
+        selectedStartDate = nil
+        selectedLocation = nil
+        selectedEndDate = nil
     }
+    
+    @IBAction func BackButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func AddButtonPressed(_ sender: Any) {
+        
+        if nameTextField.text != ""
+        {
+            let activity = Activity()
+            activity.name = nameTextField.text!
+            activity.budget = budgetTextField.text!
+            activity.location = selectedLocation
+            
+            ItineraryManager.GetCurrent()?.AddActivity(activity)
+            
+            self.delegate?.DidCreateActivity()
+            self.dismiss(animated: true, completion: nil)
+        }
+        else
+        {
+            PopupManager.singleton.Popup(title: "Oops!", body: "Your activity has no name", presentationViewCont: self)
+        }
+    }
+    
+    @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
+        ChooseLocationViewController.singleton.delegate = self
+        self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
+    }
+    
+}
+
+public protocol CreateActivityViewControllerDelegate : class
+{
+    func DidCreateActivity()
 }
 

@@ -103,7 +103,7 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
                     //ADD ACTIVITY
                     if let delegate = self.delegate
                     {
-                        delegate.AddActivity(self)
+                        delegate.AddActivityRequest(self)
                     }
                 }
             }
@@ -151,7 +151,7 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
                     
                     if let activity = day.GetActivity(index: indexPath.row)
                     {
-                        cell?.SetName(activity.name)
+                        cell?.DisplayActivity(activity)
                         cell?.delegate = self
                     }
                     else
@@ -214,5 +214,5 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
 
 public protocol DayCollectionViewCellDelegate : class
 {
-    func AddActivity(_ sender : DayCollectionViewCell)
+    func AddActivityRequest(_ sender : DayCollectionViewCell)
 }

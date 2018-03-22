@@ -18,11 +18,12 @@ public class Day
     }
     
     
-    public func AddActivity(name : String,type : ActivityType)
+    public func AddActivity(_ activity : Activity)
     {
-        let activity = Activity(name: name, type: type)
-        
         activities.append(activity)
+        activities.sort { (a, b) -> Bool in
+            return a.startDate > b.startDate
+        }
     }
     
     public func RemoveActivity(index : Int)

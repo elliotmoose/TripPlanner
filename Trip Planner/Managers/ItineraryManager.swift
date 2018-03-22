@@ -17,8 +17,7 @@ public class ItineraryManager
     
     init() {
         let test = AddItinerary(name: "test", startDate: Date(), endDate: Date(timeIntervalSinceNow: TimeInterval(60*60*24*1)))
-        test.GetDay(index: 0)?.AddActivity(name: "Flight", type: .travel)
-        test.GetDay(index: 0)?.AddActivity(name: "Lunch", type: .meal)
+        
     }
     
     func AddItinerary(name : String, startDate : Date, endDate : Date) -> Itinerary
@@ -27,6 +26,19 @@ public class ItineraryManager
         ItineraryManager.itineraries.append(itinerary)
         return itinerary
     }
+    
+//    public func AddDayForCurrent() -> Bool
+//    {
+//        if let current = ItineraryManager.current
+//        {
+//            current.AddDay()
+//            return true
+//        }
+//        else
+//        {
+//            return false
+//        }
+//    }
     
     func RemoveItineraryAtIndex(index : Int)
     {

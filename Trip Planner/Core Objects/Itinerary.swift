@@ -46,13 +46,25 @@ public class Itinerary
     {
         self.startDate = date
         RefactorDates()
-    }
+    }        
     
     public func AddDay()
     {
         let date = startDate.addingTimeInterval(TimeInterval(60*60*24*days.count))
         let day = Day(date: date)
         days.append(day)
+    }
+    
+    public func AddActivity(_ activity : Activity)
+    {
+        for day in days
+        {
+            if day.GetDate().GetDDMMYYString() == activity.startDate.GetDDMMYYString()
+            {
+                day.AddActivity(activity)
+                break
+            }
+        }        
     }
     
     public func RemoveDay(index : Int)
