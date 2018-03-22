@@ -15,11 +15,15 @@ public class Activity
     public var budget = 0
     public var timeSpent = 0
     public var timeToTravel = 0
-    
+    public var location = Location()
     
     init(name : String, type : ActivityType) {
         self.name = name
         self.type = type
+    }
+    
+    init() {
+        
     }
 }
 

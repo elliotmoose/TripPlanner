@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateActivityViewController: UIViewController {
+class CreateActivityViewController: UIViewController,ChooseLocationDelegate {
 
     
     public static let singleton = CreateActivityViewController(nibName: "CreateActivityViewController", bundle: Bundle.main)
@@ -38,6 +38,9 @@ class CreateActivityViewController: UIViewController {
     @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
         self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
+    
+    
+    private var activity : Activity?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "CreateActivityViewController", bundle: Bundle.main)
@@ -80,11 +83,20 @@ class CreateActivityViewController: UIViewController {
         
         ChooseLocationViewController.singleton.modalPresentationStyle = .overCurrentContext
         ChooseLocationViewController.singleton.modalTransitionStyle = .crossDissolve
+        ChooseLocationViewController.singleton.delegate = self
     }
+
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("no implementation")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        activity = Activity()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        ResetScene()
     }
     
     @objc private func SetDate(_ sender : UIDatePicker)
@@ -97,6 +109,17 @@ class CreateActivityViewController: UIViewController {
         {
             endDateTextField.text = sender.date.Get24hString()
         }
+    }
+    
+    func DidChooseLocation(location: Location) {
+        activity?.location = location
+        chooseLocationButton.setTitle(location.name, for: .normal)
+    }
+    
+    func ResetScene()
+    {
+        chooseLocationButton.setTitle("Choose Location", for: .normal)
+        activity = nil
     }
 }
 

@@ -23,13 +23,14 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
         self.dismiss(animated: true, completion: nil)
     }
     
-    private var searchResults = [String]()
-    
+    //variables
+    public weak var delegate : ChooseLocationDelegate?
+    private var searchResults = [Location]()
+    private var selectedLocation : Location?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ChooseLocationViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("ChooseLocationViewController", owner: self, options: nil)
-        
         
         searchTextField.addTarget(self, action: #selector(Search), for: .valueChanged)
         
@@ -37,7 +38,7 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
         tableView.delegate = self
         tableView.dataSource = self
         
-        searchResults.append("Kuta Beach")
+        searchResults.append(Location(name:"Kuta Beach"))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +52,7 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     
     override func viewDidDisappear(_ animated: Bool) {
         self.modalTransitionStyle = .crossDissolve
+        ResetScene()
     }        
     
     
@@ -60,6 +62,20 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     }
     
     @IBAction func ChooseLocationPressed(_ sender: Any) {
+        
+        if let selection = self.selectedLocation
+        {
+            if let delegate = self.delegate
+            {
+                delegate.DidChooseLocation(location: selection)
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        else
+        {
+            PopupManager.singleton.Popup(title: "Oops!", body: "You did not choose a location", presentationViewCont: self)
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,7 +94,7 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
             cell = UITableViewCell()
         }
         
-        cell?.textLabel?.text = searchResults[indexPath.row]
+        cell?.textLabel?.text = searchResults[indexPath.row].name
         
         return cell!
     }
@@ -86,13 +102,43 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        chooseLocationButton.setTitle(searchResults[indexPath.row], for: .normal)
+        selectedLocation = searchResults[indexPath.row]
+        chooseLocationButton.setTitle(selectedLocation!.name, for: .normal)
         searchResults.removeAll()
         tableView.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+    
+    func ResetScene()
+    {
+        searchResults.removeAll()
+        tableView.reloadData()
+        selectedLocation = nil
+        chooseLocationButton.setTitle("Choose Location", for: .normal)
+    }
+}
+
+public protocol ChooseLocationDelegate : class
+{
+    func DidChooseLocation(location : Location)
+}
+
+public struct Location
+{
+    var name : String = ""
+    var address : String = ""
+    var lat : Double = 0
+    var long : Double = 0
+    
+    init(name : String) {
+        self.name = name
+    }
+    
+    init()
+    {
+        
     }
 }
