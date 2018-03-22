@@ -202,6 +202,10 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+    public func DidOpenLink(_ link: String) {
+        self.delegate?.DidOpenLink(link)
+    }
 //    if let day = itinerary.GetDay(index: dayNumber)
 //    {
 //
@@ -215,4 +219,5 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
 public protocol DayCollectionViewCellDelegate : class
 {
     func AddActivityRequest(_ sender : DayCollectionViewCell, dayIndex : Int)
+    func DidOpenLink(_ link : String)
 }

@@ -31,6 +31,8 @@
 		A49B7C222060CEA700C9BF35 /* CreateActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7C202060CEA700C9BF35 /* CreateActivityViewController.swift */; };
 		A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49B7C212060CEA700C9BF35 /* CreateActivityViewController.xib */; };
 		A4A8079A206340F000A3D8F9 /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A80799206340F000A3D8F9 /* PopupManager.swift */; };
+		A4A8079E2063FE4C00A3D8F9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8079C2063FE4C00A3D8F9 /* WebViewController.swift */; };
+		A4A8079F2063FE4C00A3D8F9 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A8079D2063FE4C00A3D8F9 /* WebViewController.xib */; };
 		A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844322060EA240061D369 /* ActivityTableViewCell.swift */; };
 		A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F844332060EA240061D369 /* ActivityTableViewCell.xib */; };
 		A4F844382060F8DA0061D369 /* NewDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */; };
@@ -69,6 +71,8 @@
 		A49B7C202060CEA700C9BF35 /* CreateActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateActivityViewController.swift; sourceTree = "<group>"; };
 		A49B7C212060CEA700C9BF35 /* CreateActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateActivityViewController.xib; sourceTree = "<group>"; };
 		A4A80799206340F000A3D8F9 /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupManager.swift; path = ../../../../../Resources/Scripts/swift/PopupManager.swift; sourceTree = "<group>"; };
+		A4A8079C2063FE4C00A3D8F9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A4A8079D2063FE4C00A3D8F9 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		A4F844322060EA240061D369 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A4F844332060EA240061D369 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 		A49B7C05205FC41B00C9BF35 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A4A8079B2063FE3D00A3D8F9 /* Web */,
 				A49B7C11205FD63E00C9BF35 /* Main */,
 				A49B7C08205FC45100C9BF35 /* ItineraryListViewController.swift */,
 				A49B7C1E2060CE8C00C9BF35 /* Create Itinerary */,
@@ -221,6 +226,15 @@
 				A4075ED520629B78008A7E6D /* Choose Location */,
 			);
 			path = "Create Activity";
+			sourceTree = "<group>";
+		};
+		A4A8079B2063FE3D00A3D8F9 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				A4A8079C2063FE4C00A3D8F9 /* WebViewController.swift */,
+				A4A8079D2063FE4C00A3D8F9 /* WebViewController.xib */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		A4F844312060E5EF0061D369 /* Itinerary Day */ = {
@@ -327,6 +341,7 @@
 				A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */,
 				A49B7BF6205FBFF300C9BF35 /* LaunchScreen.storyboard in Resources */,
 				A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */,
+				A4A8079F2063FE4C00A3D8F9 /* WebViewController.xib in Resources */,
 				A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */,
 				A49B7C0E205FD04D00C9BF35 /* ItineraryDetailViewController.xib in Resources */,
 				A4F844392060F8DA0061D369 /* NewDayCollectionViewCell.xib in Resources */,
@@ -397,6 +412,7 @@
 				A49B7C09205FC45100C9BF35 /* ItineraryListViewController.swift in Sources */,
 				A49B7C222060CEA700C9BF35 /* CreateActivityViewController.swift in Sources */,
 				A4F84441206254750061D369 /* ExtensionsAndStructs.swift in Sources */,
+				A4A8079E2063FE4C00A3D8F9 /* WebViewController.swift in Sources */,
 				A4F8443E206187750061D369 /* NewActivityTableViewCell.swift in Sources */,
 				A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */,
 				A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */,

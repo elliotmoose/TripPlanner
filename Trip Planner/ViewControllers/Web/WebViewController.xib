@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="Trip_Planner" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="12J-0h-TD1" id="PO7-5r-M6u"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9SK-Ti-bEm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U6-2C-d62">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <items>
+                        <barButtonItem title="Item" id="MuL-B1-BxN"/>
+                    </items>
+                </toolbar>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12J-0h-TD1">
+                    <rect key="frame" x="0.0" y="56" width="375" height="567"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9SK-Ti-bEm" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="1bm-M1-2dj"/>
+                <constraint firstItem="2U6-2C-d62" firstAttribute="top" secondItem="12J-0h-TD1" secondAttribute="bottom" id="CL8-jh-hcy"/>
+                <constraint firstItem="12J-0h-TD1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Pmc-ic-ukX"/>
+                <constraint firstItem="9SK-Ti-bEm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RUF-jc-zGj"/>
+                <constraint firstItem="2U6-2C-d62" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jqs-3u-nHa"/>
+                <constraint firstItem="2U6-2C-d62" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="k3a-ep-G2F"/>
+                <constraint firstItem="12J-0h-TD1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mMl-Bw-bPU"/>
+                <constraint firstItem="2U6-2C-d62" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="nQc-Rz-gUC"/>
+                <constraint firstItem="12J-0h-TD1" firstAttribute="top" secondItem="9SK-Ti-bEm" secondAttribute="bottom" id="oTf-28-AIC"/>
+                <constraint firstItem="9SK-Ti-bEm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sIf-XC-L5N"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

@@ -27,6 +27,8 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         
         //export button
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ShareButtonPressed))
+        
+        //nav cont
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -148,5 +150,12 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     func DidCreateActivity() {
         ReloadData()
+    }
+    
+    func DidOpenLink(_ link: String) {
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        WebViewController.singleton.LoadPage(urlString: link)
+        self.navigationController?.pushViewController(WebViewController.singleton, animated: true)
     }
 }

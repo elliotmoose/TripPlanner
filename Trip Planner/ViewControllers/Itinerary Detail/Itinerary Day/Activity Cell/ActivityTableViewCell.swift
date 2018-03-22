@@ -25,6 +25,7 @@ public class ActivityTableViewCell: UITableViewCell {
     
     
     public weak var delegate : ActivityCellDelegate?
+    private var activity : Activity = Activity()
     
     @IBOutlet weak var toggleExpandButton: UIButton!
     
@@ -38,6 +39,11 @@ public class ActivityTableViewCell: UITableViewCell {
     @IBAction func contactButtonPressed(_ sender: Any) {
     }
     @IBAction func linkButtonPressed(_ sender: Any) {
+        
+        if activity.link != ""
+        {
+            self.delegate?.DidOpenLink(activity.link)
+        }
     }
     
     override public func awakeFromNib() {
@@ -61,6 +67,8 @@ public class ActivityTableViewCell: UITableViewCell {
         
         
         SetLabelsAlpha(0)
+        
+        self.selectionStyle = .none
 
         
     }
@@ -73,6 +81,8 @@ public class ActivityTableViewCell: UITableViewCell {
  
     public func DisplayActivity(_ activity : Activity)
     {
+        self.activity = activity;
+        
         nameLabel.text = activity.name
         
         if let location = activity.location
@@ -159,4 +169,5 @@ public class ActivityTableViewCell: UITableViewCell {
 public protocol ActivityCellDelegate : class
 {
     func DidToggleExpand(_ sender : ActivityTableViewCell)
+    func DidOpenLink(_ link : String)
 }
