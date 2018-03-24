@@ -95,10 +95,8 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
             {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itineraryDayCell", for: indexPath) as! DayCollectionViewCell
                 cell.SetDay(dayNumber: indexPath.row)
-                cell.Initialize()
-                cell.delegate = self
+                cell.Initialize(delegate : self)
                 cell.ReloadData()
-                
                 return cell
             }
         }

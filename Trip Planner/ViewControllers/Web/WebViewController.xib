@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="Trip_Planner" customModuleProvider="target">
             <connections>
+                <outlet property="progressView" destination="2f7-xm-nSU" id="TGI-vr-GRF"/>
+                <outlet property="searchBar" destination="9SK-Ti-bEm" id="bY8-2h-j8e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="12J-0h-TD1" id="PO7-5r-M6u"/>
             </connections>
@@ -28,13 +30,16 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U6-2C-d62">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <items>
-                        <barButtonItem title="Item" id="MuL-B1-BxN"/>
+                        <barButtonItem title="&lt;" id="MuL-B1-BxN"/>
                     </items>
                 </toolbar>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12J-0h-TD1">
                     <rect key="frame" x="0.0" y="56" width="375" height="567"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </webView>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2f7-xm-nSU">
+                    <rect key="frame" x="0.0" y="56" width="375" height="2"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -42,12 +47,15 @@
                 <constraint firstItem="2U6-2C-d62" firstAttribute="top" secondItem="12J-0h-TD1" secondAttribute="bottom" id="CL8-jh-hcy"/>
                 <constraint firstItem="12J-0h-TD1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Pmc-ic-ukX"/>
                 <constraint firstItem="9SK-Ti-bEm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RUF-jc-zGj"/>
+                <constraint firstItem="2f7-xm-nSU" firstAttribute="top" secondItem="12J-0h-TD1" secondAttribute="top" id="g1h-I1-hs0"/>
+                <constraint firstItem="2f7-xm-nSU" firstAttribute="trailing" secondItem="9SK-Ti-bEm" secondAttribute="trailing" id="iOj-Gv-f1K"/>
                 <constraint firstItem="2U6-2C-d62" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jqs-3u-nHa"/>
                 <constraint firstItem="2U6-2C-d62" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="k3a-ep-G2F"/>
                 <constraint firstItem="12J-0h-TD1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mMl-Bw-bPU"/>
                 <constraint firstItem="2U6-2C-d62" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="nQc-Rz-gUC"/>
                 <constraint firstItem="12J-0h-TD1" firstAttribute="top" secondItem="9SK-Ti-bEm" secondAttribute="bottom" id="oTf-28-AIC"/>
                 <constraint firstItem="9SK-Ti-bEm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sIf-XC-L5N"/>
+                <constraint firstItem="2f7-xm-nSU" firstAttribute="leading" secondItem="9SK-Ti-bEm" secondAttribute="leading" id="tMJ-RH-cMN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>

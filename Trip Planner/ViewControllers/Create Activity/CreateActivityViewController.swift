@@ -38,7 +38,8 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     private var selectedLocation : Location?
     private var selectedStartDate : Date?
     private var selectedEndDate : Date?
-    
+    private var txtFields = [UITextField]()
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "CreateActivityViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("CreateActivityViewController", owner: self, options: nil)
@@ -67,6 +68,15 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         dollarImageView.tintColor = tintColor
         locationImageView.image = locationImageView.image?.withRenderingMode(.alwaysTemplate)
         locationImageView.tintColor = tintColor
+        
+        txtFields.append(nameTextField)
+        txtFields.append(startDateTextField)
+        txtFields.append(endDateTextField)
+        txtFields.append(websiteTextField)
+        txtFields.append(budgetTextField)
+        txtFields.append(contactTextField)
+        txtFields.append(emojiTextField)
+        
         
         nameTextField.layer.cornerRadius = 5
         nameTextField.layer.borderWidth = 1
@@ -347,38 +357,23 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     
     @objc func doneWithNumberPad()
     {
-        let txtfield = FirstResponder()
-        
-        if txtfield as! NSObject == nameTextField
+        if let txtfield = FirstResponder() as? UITextField
         {
-            startDateTextField.becomeFirstResponder()
-        }
-        else if txtfield as! NSObject == startDateTextField
-        {
-            endDateTextField.becomeFirstResponder()
-        }
-        else if txtfield as! NSObject == endDateTextField
-        {
-            websiteTextField.becomeFirstResponder()
-        }
-        else if txtfield as! NSObject == websiteTextField
-        {
-            contactTextField.becomeFirstResponder()
-        }
-        else if txtfield as! NSObject == contactTextField
-        {
-            budgetTextField.becomeFirstResponder()
-        }
-        else if txtfield as! NSObject == budgetTextField
-        {
-            emojiTextField.becomeFirstResponder()
-        }
-        else
-        {
+            if let currentIndex = txtFields.index(of: txtfield)
+            {
+                let nextIndex = currentIndex + 1
+                if nextIndex > 0 && nextIndex < txtFields.count
+                {
+                    txtFields[nextIndex].becomeFirstResponder()
+                    return
+                }
+            }
+            
             txtfield.resignFirstResponder()
+            return
         }
         
-        let _ = txtfield.endEditing(true)
+        resignFirstResponder()
     }
     
     

@@ -8,15 +8,19 @@
 
 import UIKit
 import WebKit
-class WebViewController: UIViewController {
+class WebViewController: UIViewController,UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var progressView: UIProgressView!
     
     public static let singleton = WebViewController(nibName: "WebViewController", bundle: Bundle.main)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "WebViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("WebViewController", owner: self, options: nil)
+        
+        webView.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,5 +33,15 @@ class WebViewController: UIViewController {
         let url = URL(string : urlString)!
         let urlRequest = URLRequest(url: url)
         webView.loadRequest(urlRequest)
+        searchBar.text = urlString
     }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        
+    }
+    
 }

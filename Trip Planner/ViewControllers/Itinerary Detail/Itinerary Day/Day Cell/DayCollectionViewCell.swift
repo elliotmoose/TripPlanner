@@ -38,9 +38,12 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
         tableView.register(UINib(nibName: "NewActivityTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "NewActivityTableViewCell")
     }
     
-    public func Initialize()
+    public func Initialize(delegate : DayCollectionViewCellDelegate)
     {
+        self.delegate = delegate
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        selectedRows.removeAll()
     }
     
     
@@ -112,6 +115,17 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedRows.contains(indexPath.row)
+        {
+            return 100
+        }
+        else
+        {
+            return 60
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedRows.contains(indexPath.row)
         {
             return 100
