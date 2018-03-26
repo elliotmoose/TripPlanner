@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout ,DayCollectionViewCellDelegate,CreateActivityViewControllerDelegate{
+class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout ,DayCollectionViewCellDelegate,CreateActivityViewControllerDelegate,EditActivityViewControllerDelegate{
 
 
     public static let singleton = ItineraryDetailViewController(nibName: "ItineraryDetailViewController", bundle: Bundle.main)
@@ -146,9 +146,21 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         self.present(CreateActivityViewController.singleton, animated: true, completion: {})
     }
     
+    func EditActivityRequest(_ sender: DayCollectionViewCell, dayIndex: Int, activityIndex: Int) {
+        EditActivityViewController.singleton.SetDay(index: dayIndex)
+        EditActivityViewController.singleton.delegate = self
+        EditActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
+        self.present(EditActivityViewController.singleton, animated: true, completion: {})
+    }
+    
     func DidCreateActivity() {
         ReloadData()
     }
+    
+    func DidFinishEditActivity() {
+        ReloadData()
+    }
+    
     
     func DidOpenLink(_ link: String) {
         

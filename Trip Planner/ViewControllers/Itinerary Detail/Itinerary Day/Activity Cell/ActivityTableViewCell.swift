@@ -29,6 +29,13 @@ public class ActivityTableViewCell: UITableViewCell {
     
     @IBOutlet weak var toggleExpandButton: UIButton!
     
+    @IBAction func EditButtonPressed(_ sender: Any) {
+        if let delegate = self.delegate
+        {
+            delegate.DidRequestEdit(self)
+        }
+    }
+    
     @IBAction func expandCollapseButtonPressed(_ sender: UIButton) {
         if let delegate = self.delegate
         {
@@ -87,7 +94,7 @@ public class ActivityTableViewCell: UITableViewCell {
         
         if let location = activity.location
         {
-            locationLabel.text = location.name
+            locationLabel.text = location.address
         }
         else
         {
@@ -170,4 +177,5 @@ public protocol ActivityCellDelegate : class
 {
     func DidToggleExpand(_ sender : ActivityTableViewCell)
     func DidOpenLink(_ link : String)
+    func DidRequestEdit(_ sender :ActivityTableViewCell)
 }

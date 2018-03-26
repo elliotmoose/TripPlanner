@@ -20,7 +20,7 @@ public class ItineraryManager
         
         let activity = Activity(name: "Surfing!!", type: .meal)
         activity.contact = "+65 98887666"
-        activity.location = Location(name: "Kuta Beach")
+        activity.location = Location(name: "Kuta Beach",lat: 0, long: 0)
         activity.link = "https://www.google.com"
         activity.budget = "99.00"
         activity.icon = "🏄🏻"

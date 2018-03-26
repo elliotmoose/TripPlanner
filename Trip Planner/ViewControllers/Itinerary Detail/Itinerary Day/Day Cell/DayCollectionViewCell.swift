@@ -27,9 +27,9 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
 
         //shadow
         self.clipsToBounds = false
-        self.layer.shadowOffset = CGSize(width: 3.5, height: 3.5)
+        self.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
         self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 5
+        self.layer.shadowRadius = 2
         
         //tableview
         tableView.delegate = self
@@ -54,8 +54,9 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
         {
             if let day = itinerary.GetDay(index: dayNumber)
             {
-                dayTitleLabel.text = "DAY \(dayNumber)"
-                dateLabel.setTitle(day.GetDate().GetDDMMYYString(), for: UIControlState.normal)
+                dayTitleLabel.text = "DAY \(dayNumber + 1)"
+//                dayTitleLabel.text = ""
+                dateLabel.setTitle(day.GetDate().GetPresentable(), for: UIControlState.normal)
                 self.dayNumber = dayNumber
             }
 
@@ -117,22 +118,22 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedRows.contains(indexPath.row)
         {
-            return 100
+            return 110
         }
         else
         {
-            return 60
+            return 70
         }
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedRows.contains(indexPath.row)
         {
-            return 100
+            return 110
         }
         else
         {
-            return 60
+            return 70
         }
     }
     
@@ -166,6 +167,7 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
                     if let activity = day.GetActivity(index: indexPath.row)
                     {
                         cell?.DisplayActivity(activity)
+                        cell?.Collapse()
                         cell?.delegate = self
                     }
                     else
@@ -193,10 +195,11 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
     
     public func ReloadData()
     {
+        selectedRows.removeAll()
         tableView.reloadData()
     }
     
-    
+    //DELEGATE FUNCTIONS
     public func DidToggleExpand(_ sender : ActivityTableViewCell) {
         
         let indexPath = tableView.indexPath(for: sender)!
@@ -220,18 +223,17 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
     public func DidOpenLink(_ link: String) {
         self.delegate?.DidOpenLink(link)
     }
-//    if let day = itinerary.GetDay(index: dayNumber)
-//    {
-//
-//    }
-//    else
-//    {
-//    NSLog("Day \(dayNumber) does not exist")
-//    }
+
+    public func DidRequestEdit(_ sender: ActivityTableViewCell) {
+        let indexPath = tableView.indexPath(for: sender)!
+        self.delegate?.EditActivityRequest(self,dayIndex :dayNumber ,activityIndex: indexPath.row)
+        
+    }
 }
 
 public protocol DayCollectionViewCellDelegate : class
 {
     func AddActivityRequest(_ sender : DayCollectionViewCell, dayIndex : Int)
+    func EditActivityRequest(_ sender : DayCollectionViewCell, dayIndex: Int, activityIndex : Int)
     func DidOpenLink(_ link : String)
 }

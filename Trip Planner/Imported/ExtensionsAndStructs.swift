@@ -93,6 +93,13 @@ extension UITextField{
 
 extension Date
 {
+    
+    func GetPresentable() -> String
+    {
+        let df = DateFormatter()
+        df.dateFormat = "EEEE, dd LLLL YYYY"
+        return df.string(from: self)
+    }
     func GetDDMMYYString() -> String
     {
         let df = DateFormatter()
@@ -106,5 +113,24 @@ extension Date
         df.dateFormat = "HH:mm"
         return df.string(from: self)
     }
+}
+
+extension UIViewController
+{
+    
+    //notifications for pushing up keyboard
+    func RegisterForKeyboardNotifications(show : Selector, hide : Selector){
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: show, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: hide, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func DeregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    
 }
 

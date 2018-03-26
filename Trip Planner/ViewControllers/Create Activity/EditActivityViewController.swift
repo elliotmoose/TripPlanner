@@ -1,5 +1,5 @@
 //
-//  CreateActivityViewController.swift
+//  EditActivityViewController.swift
 //  Trip Planner
 //
 //  Created by Koh Yi Zhi Elliot - Ezekiel on 20/3/18.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITextFieldDelegate {
+class EditActivityViewController: UIViewController,ChooseLocationDelegate,UITextFieldDelegate {
 
     
-    public static let singleton = CreateActivityViewController(nibName: "CreateActivityViewController", bundle: Bundle.main)
+    public static let singleton = EditActivityViewController(nibName: "EditActivityViewController", bundle: Bundle.main)
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
@@ -33,7 +33,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     @IBOutlet weak var scrollView: UIScrollView!
     var activeField : AnyObject?
     
-    public weak var delegate : CreateActivityViewControllerDelegate?
+    public weak var delegate : EditActivityViewControllerDelegate?
     
     private var selectedLocation : Location?
     private var selectedStartDate : Date?
@@ -41,8 +41,8 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     private var txtFields = [UITextField]()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: "CreateActivityViewController", bundle: Bundle.main)
-        Bundle.main.loadNibNamed("CreateActivityViewController", owner: self, options: nil)
+        super.init(nibName: "EditActivityViewController", bundle: Bundle.main)
+        Bundle.main.loadNibNamed("EditActivityViewController", owner: self, options: nil)
         
         containingView.clipsToBounds = true
         containingView.layer.cornerRadius = 12
@@ -123,6 +123,11 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         ResetScene()
     }
     
+    public func SetActivity(day : Int,activity : Activity)
+    {
+        
+    }
+    
     public func SetDay(index : Int)
     {
         //Get date for this day
@@ -186,7 +191,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func AddButtonPressed(_ sender: Any) {
+    @IBAction func EditButtonPressed(_ sender: Any) {
         
         if nameTextField.text != ""
         {
@@ -197,7 +202,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
             activity.icon = emojiTextField.text!
             ItineraryManager.GetCurrent()?.AddActivity(activity)
             
-            self.delegate?.DidCreateActivity()
+            self.delegate?.DidFinishEditActivity()
             self.dismiss(animated: true, completion: nil)
         }
         else
@@ -424,8 +429,8 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     
 }
 
-public protocol CreateActivityViewControllerDelegate : class
+public protocol EditActivityViewControllerDelegate : class
 {
-    func DidCreateActivity()
+    func DidFinishEditActivity()
 }
 

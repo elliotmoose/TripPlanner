@@ -33,6 +33,9 @@
 		A4A8079A206340F000A3D8F9 /* PopupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A80799206340F000A3D8F9 /* PopupManager.swift */; };
 		A4A8079E2063FE4C00A3D8F9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A8079C2063FE4C00A3D8F9 /* WebViewController.swift */; };
 		A4A8079F2063FE4C00A3D8F9 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A8079D2063FE4C00A3D8F9 /* WebViewController.xib */; };
+		A4A807A72068FCF000A3D8F9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A807A62068FCF000A3D8F9 /* Network.swift */; };
+		A4A807AA2069459800A3D8F9 /* EditActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A807A82069459800A3D8F9 /* EditActivityViewController.swift */; };
+		A4A807AB206947C000A3D8F9 /* EditActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A807A92069459800A3D8F9 /* EditActivityViewController.xib */; };
 		A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844322060EA240061D369 /* ActivityTableViewCell.swift */; };
 		A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F844332060EA240061D369 /* ActivityTableViewCell.xib */; };
 		A4F844382060F8DA0061D369 /* NewDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */; };
@@ -73,6 +76,9 @@
 		A4A80799206340F000A3D8F9 /* PopupManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopupManager.swift; path = ../../../../../Resources/Scripts/swift/PopupManager.swift; sourceTree = "<group>"; };
 		A4A8079C2063FE4C00A3D8F9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A4A8079D2063FE4C00A3D8F9 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		A4A807A62068FCF000A3D8F9 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Network.swift; path = ../../../../../Resources/Scripts/swift/Network.swift; sourceTree = "<group>"; };
+		A4A807A82069459800A3D8F9 /* EditActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityViewController.swift; sourceTree = "<group>"; };
+		A4A807A92069459800A3D8F9 /* EditActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditActivityViewController.xib; sourceTree = "<group>"; };
 		A4F844322060EA240061D369 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A4F844332060EA240061D369 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 		A49B7C1920601B7200C9BF35 /* Imported */ = {
 			isa = PBXGroup;
 			children = (
+				A4A807A62068FCF000A3D8F9 /* Network.swift */,
 				A4A80799206340F000A3D8F9 /* PopupManager.swift */,
 				A4F84440206254750061D369 /* ExtensionsAndStructs.swift */,
 				A49B7C1720601B6900C9BF35 /* Sizing.swift */,
@@ -223,6 +230,8 @@
 			children = (
 				A49B7C202060CEA700C9BF35 /* CreateActivityViewController.swift */,
 				A49B7C212060CEA700C9BF35 /* CreateActivityViewController.xib */,
+				A4A807A82069459800A3D8F9 /* EditActivityViewController.swift */,
+				A4A807A92069459800A3D8F9 /* EditActivityViewController.xib */,
 				A4075ED520629B78008A7E6D /* Choose Location */,
 			);
 			path = "Create Activity";
@@ -339,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */,
+				A4A807AB206947C000A3D8F9 /* EditActivityViewController.xib in Resources */,
 				A49B7BF6205FBFF300C9BF35 /* LaunchScreen.storyboard in Resources */,
 				A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */,
 				A4A8079F2063FE4C00A3D8F9 /* WebViewController.xib in Resources */,
@@ -424,6 +434,8 @@
 				A49B7BFF205FC19600C9BF35 /* Itinerary.swift in Sources */,
 				A49B7C02205FC1A400C9BF35 /* Activity.swift in Sources */,
 				A4075ED820629B90008A7E6D /* ChooseLocationViewController.swift in Sources */,
+				A4A807A72068FCF000A3D8F9 /* Network.swift in Sources */,
+				A4A807AA2069459800A3D8F9 /* EditActivityViewController.swift in Sources */,
 				A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */,
 				A4A8079A206340F000A3D8F9 /* PopupManager.swift in Sources */,
 				A49B7C04205FC3D500C9BF35 /* Day.swift in Sources */,

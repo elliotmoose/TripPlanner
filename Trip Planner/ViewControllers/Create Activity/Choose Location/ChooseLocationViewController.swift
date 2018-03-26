@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
 
     public static let singleton = ChooseLocationViewController(nibName: "ChooseLocationViewController", bundle: Bundle.main)
 
@@ -19,26 +19,38 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     @IBOutlet weak var chooseLocationButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var chooseLocationBottomConstraint: NSLayoutConstraint!
     @IBAction func cancelChooseLocationPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    private let marker = GMSMarker()
     
+
     //variables
     public weak var delegate : ChooseLocationDelegate?
-    private var searchResults = [Location]()
+    private var searchResults = [GMSAutocompletePrediction]()
     private var selectedLocation : Location?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ChooseLocationViewController", bundle: Bundle.main)
         Bundle.main.loadNibNamed("ChooseLocationViewController", owner: self, options: nil)
         
-        searchTextField.addTarget(self, action: #selector(Search), for: .valueChanged)
+        
+        marker.map = mapView
+        
+        searchTextField.addTarget(self, action: #selector(Search), for: .editingChanged)
         
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.delegate = self
         tableView.dataSource = self
         
-        searchResults.append(Location(name:"Kuta Beach"))
+        tableView.alpha = 0
+        //searchResults.append(Location(name:"Kuta Beach"))
+        
+        searchTextField.delegate = self
+        
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,19 +58,66 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
         fatalError("no implementation")
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.RegisterForKeyboardNotifications(show: #selector(keyboardWasShown(notification:)),hide: #selector(keyboardWillBeHidden))
+    }
     override func viewDidAppear(_ animated: Bool) {
         self.modalTransitionStyle = .coverVertical
+        
+        searchTextField.becomeFirstResponder()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+
+        self.DeregisterFromKeyboardNotifications()
         self.modalTransitionStyle = .crossDissolve
         ResetScene()
-    }        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    }
     
     
     @objc private func Search()
     {
-        tableView.reloadData()
+        
+        //query googlemaps
+        let placeClient = GMSPlacesClient.shared()
+        let search = searchTextField.text!
+        
+        if search == ""
+        {
+            searchResults.removeAll()
+            tableView.reloadData()
+            tableView.alpha = 0
+            selectedLocation = nil
+        }
+        
+        
+        
+        placeClient.autocompleteQuery(search, bounds: nil, filter: nil, callback: {
+            (results,error) -> Void in
+            
+            self.searchResults.removeAll()
+            
+            guard results != nil else {print("ERROR:" + error.debugDescription);return}
+            
+            for result in results!
+            {
+                self.searchResults.append(result)
+                
+            }
+            
+            //update search result dropdown list
+            
+            DispatchQueue.main
+            do {
+                self.tableView.alpha = 1
+                self.tableView.reloadData()
+            }
+        })
+        
     }
     
     @IBAction func ChooseLocationPressed(_ sender: Any) {
@@ -91,10 +150,15 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
         
         if cell == nil
         {
-            cell = UITableViewCell()
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         }
         
-        cell?.textLabel?.text = searchResults[indexPath.row].name
+        cell?.textLabel?.text = searchResults[indexPath.row].attributedPrimaryText.string
+        
+        if let secondaryString = searchResults[indexPath.row].attributedSecondaryText?.string
+        {
+            cell?.detailTextLabel?.text = secondaryString
+        }
         
         return cell!
     }
@@ -102,10 +166,46 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        selectedLocation = searchResults[indexPath.row]
-        chooseLocationButton.setTitle(selectedLocation!.name, for: .normal)
-        searchResults.removeAll()
-        tableView.reloadData()
+
+        let gmsSearchResult = searchResults[indexPath.row]
+        tableView.alpha = 0
+        self.searchTextField.text = gmsSearchResult.attributedPrimaryText.string
+        
+        if let placeID = gmsSearchResult.placeID
+        {
+            
+            //look up selected location information
+            GMSPlacesClient.shared().lookUpPlaceID(placeID, callback: {
+                (result,error) -> Void in
+                
+                if let result = result {
+                    let lat = Double(result.coordinate.latitude)
+                    let long = Double(result.coordinate.longitude)
+                    
+                    //LOCATION INITIALIZATION======================================================================================================
+                    var newLocation = Location(name: gmsSearchResult.attributedPrimaryText.string, lat: lat, long : long)
+                    newLocation.address = result.formattedAddress!
+                    newLocation.addressPrimary = gmsSearchResult.attributedPrimaryText.string
+                    
+                    if let secondaryAddress = gmsSearchResult.attributedSecondaryText?.string
+                    {
+                        newLocation.addressSecondary = secondaryAddress
+                    }
+                    
+                    self.selectedLocation = newLocation
+                    
+                    //ui
+                    self.searchResults.removeAll()
+                    tableView.reloadData()
+                    self.FocusLocation(lat, long)
+                    
+                    self.chooseLocationButton.setTitle(self.selectedLocation!.name, for: .normal)
+                }
+                
+            })
+        }
+        
+  
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -115,9 +215,58 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     func ResetScene()
     {
         searchResults.removeAll()
+        tableView.alpha = 0
         tableView.reloadData()
         selectedLocation = nil
         chooseLocationButton.setTitle("Choose Location", for: .normal)
+    }
+    
+    func FocusLocation(_ lat : CLLocationDegrees, _ long : CLLocationDegrees)
+    {
+        DispatchQueue.main.async {
+            //add marker
+            self.SetMarker(lat,long)
+            
+            //move to location
+            //let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            //self.mapView?.animate(toLocation: location)
+            self.mapView.camera = GMSCameraPosition.camera(withLatitude: lat,
+                                                           longitude: long,
+                                                           zoom: 15)
+        }
+    }
+    
+    func SetMarker(_ lat : CLLocationDegrees, _ long : CLLocationDegrees)
+    {
+        // Creates a marker in the center of the map.
+        marker.position = CLLocationCoordinate2D(latitude: lat,longitude: long)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        let keyboardHeight = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height
+        
+        chooseLocationBottomConstraint.constant = keyboardHeight!
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    
+        
+        
+        
+    }
+    
+    @objc func keyboardWillBeHidden(){
+
+        chooseLocationBottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }
 
@@ -130,11 +279,15 @@ public struct Location
 {
     var name : String = ""
     var address : String = ""
+    var addressPrimary : String = ""
+    var addressSecondary : String = ""
     var lat : Double = 0
     var long : Double = 0
     
-    init(name : String) {
+    init(name : String, lat : Double, long : Double) {
         self.name = name
+        self.lat = lat
+        self.long = long
     }
     
     init()

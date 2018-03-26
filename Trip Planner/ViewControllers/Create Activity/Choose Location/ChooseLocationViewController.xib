@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseLocationViewController" customModule="Trip_Planner" customModuleProvider="target">
             <connections>
+                <outlet property="chooseLocationBottomConstraint" destination="btW-sG-Z6q" id="UgE-bU-U6b"/>
                 <outlet property="chooseLocationButton" destination="sK4-82-dEt" id="wj1-tP-eIU"/>
                 <outlet property="mapView" destination="XUF-kc-fjS" id="NPu-sJ-Hf2"/>
                 <outlet property="searchTextField" destination="FYR-7A-Jkd" id="n3F-I6-QvJ"/>
@@ -45,11 +46,11 @@
                                 <action selector="cancelChooseLocationPressed:" destination="-1" eventType="touchUpInside" id="hQ4-LS-IJs"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FYR-7A-Jkd">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FYR-7A-Jkd">
                             <rect key="frame" x="54" y="56" width="267" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sK4-82-dEt">
                             <rect key="frame" x="0.0" y="627" width="375" height="40"/>
