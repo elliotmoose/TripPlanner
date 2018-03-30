@@ -101,6 +101,8 @@ public class ActivityTableViewCell: UITableViewCell {
             locationLabel.text = ""
         }
         
+        timeLabel.text = activity.startDate.Get24hString() + " - " + activity.endDate.Get24hString()
+        
         if activity.link == ""
         {
             linkButton.setTitle("", for: .normal)
@@ -136,6 +138,8 @@ public class ActivityTableViewCell: UITableViewCell {
         {
             emojiLabel.text = activity.icon.substring(to: 1)
         }
+        
+        
         
         
         

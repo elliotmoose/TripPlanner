@@ -125,7 +125,16 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     public func SetActivity(day : Int,activity : Activity)
     {
+        SetDay(index: day)
         
+        nameTextField.text = activity.name
+        budgetTextField.text = activity.budget
+        contactTextField.text = activity.contact
+        websiteTextField.text = activity.link        
+        emojiTextField.text = activity.icon
+        
+        startDateTextField.text = activity.startDate.Get24hString()
+        endDateTextField.text = activity.endDate.Get24hString()
     }
     
     public func SetDay(index : Int)
@@ -142,7 +151,6 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
             startDatePicker.maximumDate = maxDate
             endDatePicker.minimumDate = minDate
             endDatePicker.maximumDate = maxDate
-            
         }
     }
     

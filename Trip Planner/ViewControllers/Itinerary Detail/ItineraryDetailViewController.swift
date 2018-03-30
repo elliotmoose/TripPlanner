@@ -147,10 +147,19 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     func EditActivityRequest(_ sender: DayCollectionViewCell, dayIndex: Int, activityIndex: Int) {
-        EditActivityViewController.singleton.SetDay(index: dayIndex)
-        EditActivityViewController.singleton.delegate = self
-        EditActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
-        self.present(EditActivityViewController.singleton, animated: true, completion: {})
+        
+        if let activity = ItineraryManager.GetCurrent()?.GetDay(index: dayIndex)?.GetActivity(index: activityIndex)
+        {
+            EditActivityViewController.singleton.SetActivity(day: dayIndex, activity: activity)
+            EditActivityViewController.singleton.delegate = self
+            EditActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
+            self.present(EditActivityViewController.singleton, animated: true, completion: {})
+        }
+        else
+        {
+            NSLog("No activity for requested day and activity index")
+        }
+
     }
     
     func DidCreateActivity() {
