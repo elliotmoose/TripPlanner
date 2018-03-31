@@ -129,7 +129,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     @objc func ShareButtonPressed()
     {
-        
+        ItineraryManager.ExportCurrentItinerary()
     }
 
 
@@ -141,7 +141,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     //delegate functions
     func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {
         
-        CreateActivityViewController.singleton.SetDay(index: dayIndex)
+        CreateActivityViewController.singleton.UpdateDatePickerLimits(dayIndex : dayIndex)
         CreateActivityViewController.singleton.delegate = self
         CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
         self.present(CreateActivityViewController.singleton, animated: true, completion: {})
@@ -149,9 +149,11 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     func EditActivityRequest(_ sender: DayCollectionViewCell, dayIndex: Int, activityIndex: Int) {
         
-        if let activity = ItineraryManager.GetCurrent()?.GetDay(index: dayIndex)?.GetActivity(index: activityIndex)
+        let indexPath = IndexPath(row: dayIndex, section: activityIndex)
+        
+        if ItineraryManager.HasCurrent() && ItineraryManager.GetCurrent()!.HasIndexPath(indexPath)
         {
-            EditActivityViewController.singleton.SetActivity(day: dayIndex, activity: activity)
+            EditActivityViewController.singleton.SelectActivityAtIndexPath(indexPath)
             EditActivityViewController.singleton.delegate = self
             EditActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
             self.present(EditActivityViewController.singleton, animated: true, completion: {})

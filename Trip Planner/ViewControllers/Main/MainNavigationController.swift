@@ -13,7 +13,7 @@ class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MainManager.singleton
+        MainManager.singleton // loads mainmanager
     }
 
     override func didReceiveMemoryWarning() {

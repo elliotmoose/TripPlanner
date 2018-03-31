@@ -31,10 +31,10 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     @IBOutlet weak var emojiTextField: UITextField!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    var activeField : AnyObject?
     
     public weak var delegate : EditActivityViewControllerDelegate?
-    
+    var activeField : AnyObject?
+    private var selectedIndexPath : IndexPath?
     private var selectedLocation : Location?
     private var txtFields = [UITextField]()
 
@@ -121,10 +121,8 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         ResetScene()
     }
     
-    public func SetActivity(day : Int,activity : Activity)
-    {
-        SetDay(index: day)
-        
+    public func SetActivity(activity : Activity)
+    {        
         nameTextField.text = activity.name
         budgetTextField.text = activity.budget
         contactTextField.text = activity.contact
@@ -136,20 +134,39 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         DidChooseLocation(location: activity.location)
     }
     
-    public func SetDay(index : Int)
+    public func UpdateDatePickerLimits()
     {
         //Get date for this day
-        if let day = ItineraryManager.GetCurrent()?.GetDay(index: index)
+        if let indexPath = selectedIndexPath
         {
-            let startDatePicker = startDateTextField.inputView as! UIDatePicker
-            let endDatePicker = endDateTextField.inputView as! UIDatePicker
-            let calender = Calendar.current
-            let minDate = calender.date(bySettingHour: 0, minute: 0, second: 0, of: day.GetDate())!
-            let maxDate = calender.date(bySettingHour: 23, minute: 59, second: 59, of: day.GetDate())!
-            startDatePicker.minimumDate = minDate
-            startDatePicker.maximumDate = maxDate
-            endDatePicker.minimumDate = minDate
-            endDatePicker.maximumDate = maxDate
+            if let day = ItineraryManager.GetCurrent()?.GetDay(index: indexPath.section)
+            {
+                let startDatePicker = startDateTextField.inputView as! UIDatePicker
+                let endDatePicker = endDateTextField.inputView as! UIDatePicker
+                let calender = Calendar.current
+                let minDate = calender.date(bySettingHour: 0, minute: 0, second: 0, of: day.GetDate())!
+                let maxDate = calender.date(bySettingHour: 23, minute: 59, second: 59, of: day.GetDate())!
+                startDatePicker.minimumDate = minDate
+                startDatePicker.maximumDate = maxDate
+                endDatePicker.minimumDate = minDate
+                endDatePicker.maximumDate = maxDate
+            }
+        }
+    }
+    
+    public func SelectActivityAtIndexPath(_ indexPath : IndexPath)
+    {
+        self.selectedIndexPath = indexPath
+        UpdateDatePickerLimits()
+        
+        if let activity = ItineraryManager.GetCurrent()?.GetDay(index: indexPath.section)?.GetActivity(index: indexPath.row)
+        {
+            SetActivity(activity: activity)
+        }
+        else
+        {
+            NSLog("No activity for indexpath \(indexPath)")
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -198,6 +215,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         endDateTextField.text = ""
         
         emojiIndex = 0
+        selectedIndexPath = nil
         UpdateEmoji()
     }
     
@@ -214,8 +232,12 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
             activity.budget = budgetTextField.text!
             activity.location = selectedLocation
             activity.icon = emojiTextField.text!
-            ItineraryManager.GetCurrent()?.AddActivity(activity)
+            //ItineraryManager.GetCurrent()?.AddActivity(activity)
             
+            if let indexPath = selectedIndexPath
+            {
+                ItineraryManager.GetCurrent()?.EditActivityAtIndexPath(indexPath : indexPath, newActivity: activity)
+            }
             self.delegate?.DidFinishEditActivity()
             self.dismiss(animated: true, completion: nil)
         }

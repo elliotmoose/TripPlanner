@@ -30,6 +30,68 @@ public class Activity
         
     }
     
+    init(dict : NSDictionary) {
+        if let name = dict["name"] as? String
+        {
+            self.name = name
+        }
+        
+        if let icon = dict["icon"] as? String
+        {
+            self.icon = icon
+        }
+        
+        if let budget = dict["budget"] as? String
+        {
+            self.budget = budget
+        }
+        
+        if let link = dict["link"] as? String
+        {
+            self.link = link
+        }
+        
+        if let contact = dict["contact"] as? String
+        {
+            self.contact = contact
+        }
+        
+        if let startDateInterval = dict["startDate"] as? TimeInterval
+        {
+            self.startDate = Date(timeIntervalSince1970: startDateInterval)
+        }
+        
+        if let endDateInterval = dict["endDate"] as? TimeInterval
+        {
+            self.endDate = Date(timeIntervalSince1970: endDateInterval)
+        }
+        
+        if let locationDict = dict["location"] as? NSDictionary
+        {
+            let newLocation = Location(dict: locationDict)
+            self.location = newLocation
+        }
+    }
+    
+    public func Export() -> NSDictionary
+    {
+        let dict = NSMutableDictionary()
+        
+        dict["name"] = name
+        dict["icon"] = icon
+        dict["budget"] = budget
+        dict["link"] = link
+        dict["contact"] = contact
+        dict["startDate"] = startDate.timeIntervalSince1970
+        dict["endDate"] = endDate.timeIntervalSince1970
+        
+        if let location = self.location
+        {
+            dict["location"] = location.Export()
+        }
+        
+        return dict
+    }
 }
 
 

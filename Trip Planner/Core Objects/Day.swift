@@ -65,4 +65,48 @@ public class Day
     {
         return activities.count
     }
+    
+    init(dict : NSDictionary) {
+        
+        if let dateInterval = dict["date"] as? TimeInterval
+        {
+            self.date = Date(timeIntervalSince1970: dateInterval)
+        }
+        
+        if let activitiesDict = dict["activities"] as? NSDictionary
+        {
+            for index in 0..<activitiesDict.count
+            {
+                if let newActivityDict = activitiesDict["\(index)"] as? NSDictionary
+                {
+                    let newActivity = Activity(dict: newActivityDict)
+                    self.activities.append(newActivity)
+                }
+            }
+        }
+    }
+    
+    public func Export() -> NSDictionary
+    {
+        let dict = NSMutableDictionary()
+        
+        dict["date"] = date.timeIntervalSince1970
+        
+        if activities.count != 0
+        {
+            let activitiesDict = NSMutableDictionary()
+
+            for index in 0...activities.count-1
+            {
+                activitiesDict["\(index)"] = activities[index].Export()
+            }
+            
+            dict["activities"] = activitiesDict
+        }
+        
+        return dict
+    }
+    
+
+    
 }

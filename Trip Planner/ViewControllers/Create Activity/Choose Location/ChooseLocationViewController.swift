@@ -290,8 +290,45 @@ public struct Location
         self.long = long
     }
     
-    init()
+    init(dict : NSDictionary)
     {
+        if let name = dict["name"] as? String
+        {
+            self.name = name
+        }
+        if let addressPrimary = dict["addressPrimary"] as? String
+        {
+            self.addressPrimary = addressPrimary
+        }
+        if let addressSecondary = dict["addressSecondary"] as? String
+        {
+            self.addressSecondary = addressSecondary
+        }
+        if let address = dict["address"] as? String
+        {
+            self.address = address
+        }
+        if let lat = dict["lat"] as? Double
+        {
+            self.lat = lat
+        }
+        if let long = dict["long"] as? Double
+        {
+            self.long = long
+        }
         
+    }
+    
+    public func Export() -> NSDictionary
+    {
+        let dict = NSMutableDictionary()
+        dict["name"] = self.name
+        dict["addressPrimary"] = self.addressPrimary
+        dict["addressSecondary"] = self.addressSecondary
+        dict["address"] = self.address
+        dict["lat"] = self.lat
+        dict["long"] = self.long
+        
+        return dict
     }
 }

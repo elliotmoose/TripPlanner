@@ -123,10 +123,10 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         ResetScene()
     }
     
-    public func SetDay(index : Int)
+    public func UpdateDatePickerLimits(dayIndex : Int)
     {
         //Get date for this day
-        if let day = ItineraryManager.GetCurrent()?.GetDay(index: index)
+        if let day = ItineraryManager.GetCurrent()?.GetDay(index: dayIndex)
         {
             let startDatePicker = startDateTextField.inputView as! UIDatePicker
             let endDatePicker = endDateTextField.inputView as! UIDatePicker

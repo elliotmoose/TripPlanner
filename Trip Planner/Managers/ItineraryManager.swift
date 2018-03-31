@@ -31,6 +31,9 @@ public class ItineraryManager
     {
         let itinerary = Itinerary(name: name,startDate : startDate, endDate : endDate)
         ItineraryManager.itineraries.append(itinerary)
+
+        PersistenceManager.Save()
+        
         return itinerary
     }
     
@@ -70,6 +73,11 @@ public class ItineraryManager
         ItineraryManager.current = ItineraryManager.itineraries[index]
     }
     
+    public static func HasCurrent() -> Bool
+    {
+        return ItineraryManager.current != nil
+    }
+    
     public static func GetCurrent() -> Itinerary?
     {
         return ItineraryManager.current
@@ -80,5 +88,40 @@ public class ItineraryManager
         return ItineraryManager.itineraries
     }
     
+    public static func Export() -> NSDictionary
+    {
+        let dict = NSMutableDictionary()
+
+        for index in 0...ItineraryManager.itineraries.count-1
+        {
+            dict["\(index)"] = ItineraryManager.itineraries[index].Export()
+        }
+        
+        return dict
+    }
     
+    public static func Import(dict : NSDictionary)
+    {
+        if dict.count == 0 {return}
+        
+        for index in 0..<dict.count
+        {
+            if let thisItineraryDict = dict["\(index)"] as? NSDictionary
+            {
+                let newItinerary = Itinerary(dict: thisItineraryDict)
+                itineraries.append(newItinerary)
+            }
+        }
+    }
+    
+    public static func ExportCurrentItinerary() -> NSDictionary?
+    {
+        if let current = ItineraryManager.GetCurrent()
+        {
+            let output = current.Export()
+            return output
+        }
+        
+        return nil
+    }
 }

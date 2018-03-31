@@ -19,5 +19,7 @@ public class MainManager
     init() {
         GMSServices.provideAPIKey(gmsKey)
         GMSPlacesClient.provideAPIKey(gmsKey)
+        
+        PersistenceManager.Load()
     }
 }
