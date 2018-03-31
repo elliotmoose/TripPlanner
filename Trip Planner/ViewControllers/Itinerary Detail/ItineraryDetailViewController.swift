@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout ,DayCollectionViewCellDelegate,CreateActivityViewControllerDelegate,EditActivityViewControllerDelegate{
 
@@ -172,9 +173,12 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     
     func DidOpenLink(_ link: String) {
-        
-        self.navigationController?.navigationBar.isTranslucent = false
-        WebViewController.singleton.LoadPage(urlString: link)
-        self.navigationController?.pushViewController(WebViewController.singleton, animated: true)
+//
+//        self.navigationController?.navigationBar.isTranslucent = false
+//        WebViewController.singleton.LoadPage(urlString: link)
+//        self.navigationController?.pushViewController(WebViewController.singleton, animated: true)
+        let svc = SFSafariViewController(url: URL(string: link)!)
+        self.present(svc, animated: true, completion: nil)
+
     }
 }

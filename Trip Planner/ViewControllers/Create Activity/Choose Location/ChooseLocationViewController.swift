@@ -272,7 +272,7 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
 
 public protocol ChooseLocationDelegate : class
 {
-    func DidChooseLocation(location : Location)
+    func DidChooseLocation(location : Location?)
 }
 
 public struct Location

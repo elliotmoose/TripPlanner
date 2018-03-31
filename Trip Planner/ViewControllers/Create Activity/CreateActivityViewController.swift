@@ -159,9 +159,17 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     }
     
     //@CHOOSE LOCATION DELEGATE FUNCTION
-    func DidChooseLocation(location: Location) {
-        selectedLocation = location
-        chooseLocationButton.setTitle(location.name, for: .normal)
+    func DidChooseLocation(location: Location?) {
+        if let location = location
+        {
+            selectedLocation = location
+            chooseLocationButton.setTitle(location.name, for: .normal)
+        }
+        else
+        {
+            selectedLocation = nil
+            chooseLocationButton.setTitle("Choose Location", for: .normal)
+        }
     }
     
     func ResetScene()

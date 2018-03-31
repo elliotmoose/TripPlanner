@@ -36,8 +36,6 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     public weak var delegate : EditActivityViewControllerDelegate?
     
     private var selectedLocation : Location?
-    private var selectedStartDate : Date?
-    private var selectedEndDate : Date?
     private var txtFields = [UITextField]()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -132,9 +130,10 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         contactTextField.text = activity.contact
         websiteTextField.text = activity.link        
         emojiTextField.text = activity.icon
-        
         startDateTextField.text = activity.startDate.Get24hString()
         endDateTextField.text = activity.endDate.Get24hString()
+        
+        DidChooseLocation(location: activity.location)
     }
     
     public func SetDay(index : Int)
@@ -172,17 +171,24 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     }
     
     //@CHOOSE LOCATION DELEGATE FUNCTION
-    func DidChooseLocation(location: Location) {
-        selectedLocation = location
-        chooseLocationButton.setTitle(location.name, for: .normal)
+    func DidChooseLocation(location: Location?) {
+        
+        if let location = location
+        {
+            selectedLocation = location
+            chooseLocationButton.setTitle(location.name, for: .normal)
+        }
+        else
+        {
+            selectedLocation = nil
+            chooseLocationButton.setTitle("Choose Location", for: .normal)
+        }
     }
     
     func ResetScene()
     {
         chooseLocationButton.setTitle("Choose Location", for: .normal)
-        selectedStartDate = nil
         selectedLocation = nil
-        selectedEndDate = nil
         
         nameTextField.text = ""
         budgetTextField.text = ""
