@@ -16,14 +16,15 @@ public class Itinerary
     
     init(name : String,startDate : Date, endDate: Date) {
         self.name = name
-        
+        self.startDate = startDate
+
         let calender = Calendar.current
         let start = calender.date(bySettingHour: 12, minute: 0, second: 0, of: startDate)!
         let end = calender.date(bySettingHour: 12, minute: 0, second: 0, of: endDate)!
         
         if let tripLength = calender.dateComponents([.day], from: start, to: end).day
         {
-            for _ in 0...tripLength-1
+            for _ in 0...tripLength
             {
                 AddDay()
             }
@@ -33,7 +34,8 @@ public class Itinerary
             NSLog("Could not find trip length")
         }
         
-        self.startDate = startDate
+        
+        RefactorDates()
     }
 
 

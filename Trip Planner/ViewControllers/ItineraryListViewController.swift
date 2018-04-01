@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WWCalendarTimeSelector
 
-class ItineraryListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ItineraryListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,WWCalendarTimeSelectorProtocol{
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -62,7 +63,18 @@ class ItineraryListViewController: UIViewController,UITableViewDataSource,UITabl
     
     @objc func AddItineraryButtonPressed()
     {
-        self.navigationController?.pushViewController(CreateItineraryViewController.singleton, animated: true)
+        let selector = WWCalendarTimeSelector.instantiate()
+        selector.delegate = self
+        selector.optionMultipleSelectionGrouping = .pill
+        selector.optionSelectionType = .range
+        self.present(selector, animated: true, completion: nil)
+    }
+    
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date],name : String) {
+        
+        guard dates.count != 0 else {return}
+        let _ = ItineraryManager.singleton.AddItinerary(name: name, startDate: dates.first!, endDate: dates.last!)
+        self.tableView.reloadData()
     }
 
 

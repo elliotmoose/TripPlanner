@@ -6,15 +6,18 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.1.1):
     - GoogleMaps/Base (= 2.1.1)
+  - WWCalendarTimeSelector (1.3.13)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - WWCalendarTimeSelector
 
 SPEC CHECKSUMS:
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
+  WWCalendarTimeSelector: 334f8b4ff16367d75fb9f21073203641fbd3d749
 
-PODFILE CHECKSUM: 657a8d9a860bd90c1a241279273e536c29337d2b
+PODFILE CHECKSUM: 8530a5e7c8f5b83811bed06df896421591ea3fd0
 
 COCOAPODS: 1.1.1

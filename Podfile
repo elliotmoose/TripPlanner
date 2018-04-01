@@ -8,4 +8,5 @@ target 'Trip Planner' do
   # Pods for Trip Planner
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+pod 'WWCalendarTimeSelector'
 end

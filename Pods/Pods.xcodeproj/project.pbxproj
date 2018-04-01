@@ -3,75 +3,151 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FD3EFD062D8A666995084788D0526D4 /* Pods-Trip Planner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3434F96C80C6F876FA3E7FEDBC693DB /* Pods-Trip Planner-dummy.m */; };
-		2EC85923DCA13EDB59A34B1FEF2A8089 /* Pods-Trip Planner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2708F5054E2FC195F0DCE6434ADD78F /* Pods-Trip Planner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2B34B284D1E5817EA36FFA1938F0677 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		00C8EB53B27916CBA00E6A1EA67A724F /* WWCalendarTimeSelectorStoryboardBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FE73A1471DE0D28D164B28BE750F7529 /* WWCalendarTimeSelectorStoryboardBundle.bundle */; };
+		0A597CAA96D15F5866A7C6BE002C9F17 /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A7D0E2FB51A220D1490C4E05A9DCD /* NSCalendar+Timepiece.swift */; };
+		21A9659C487AC880444759DA169CB3FB /* WWCalendarTimeSelector-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB970CE345129798B20635E7DF2775CD /* WWCalendarTimeSelector-dummy.m */; };
+		271C1090036652121E8FDE162F630AEF /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CA374F6831C2C91C4818A15A20347A /* WWCalendarTimeSelector.storyboard */; };
+		2ED644FB4850FC0BB424E1F7AB6283A7 /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91296C99DAB6590ACC147281DACACE /* NSDateComponents+Timepiece.swift */; };
+		36DEC06608ABDB5C28B3DC3A9BAB1256 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		5D90C92D25927DE1303DB5D0463A25CB /* WWCalendarTimeSelector-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B83248F1B5000DEF65F6814E589936DE /* WWCalendarTimeSelector-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D2CD77A42BF8788310A0892E6459FC4 /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF9EBE76E6E9EC6C96380156681BE5 /* WWCalendarTimeSelector.swift */; };
+		70115DB1ACF95BEFB423276A7DD729F5 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3B686AA824831E3FA055F511960B7 /* Int+Timepiece.swift */; };
+		70A2398BBA0CC8D7080A6E3043EEBC8A /* Pods-Trip Planner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3434F96C80C6F876FA3E7FEDBC693DB /* Pods-Trip Planner-dummy.m */; };
+		844D6CC6DDE007E9A100DE4E6A7F08F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		C7EB7FC281A0D3E0938088400B82E5FE /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CC59DE64019750E3C578D44DD443B /* Duration.swift */; };
+		EBAEF090A30F0239D457D9210E16C984 /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADC257A3B28AB7C33A6E1FC7D60D35 /* NSDate+Timepiece.swift */; };
+		ED9CA1FB050630B8439527443391F9BE /* Pods-Trip Planner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2708F5054E2FC195F0DCE6434ADD78F /* Pods-Trip Planner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F43FB5D47945D7631018A35D95B2ED05 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2D8E2EE2FE094518A5CA4062AE814 /* String+Timepiece.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5B7B47A02DAADE6C0BCBF38589976139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BAF34ABE612C956C1F42D510AB4C41C;
+			remoteInfo = "WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle";
+		};
+		CCCF85F6E0F7BA749002A52C94354A35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 342F9FBCDEBD35687A84AA2689139F47;
+			remoteInfo = WWCalendarTimeSelector;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		22EAB37E87B6969A87F2C98E361D4FF1 /* Pods-Trip Planner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Trip Planner.modulemap"; sourceTree = "<group>"; };
+		00B0E028DA8F703B2F90871E5BE14493 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		1E83E7587940F306AB0F75312C131CD1 /* WWCalendarTimeSelector.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WWCalendarTimeSelector.xcconfig; sourceTree = "<group>"; };
+		22EAB37E87B6969A87F2C98E361D4FF1 /* Pods-Trip Planner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Trip Planner.modulemap"; sourceTree = "<group>"; };
+		268C614E1D3991A34B99566795F92FDA /* WWCalendarTimeSelector.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = WWCalendarTimeSelector.modulemap; sourceTree = "<group>"; };
 		2A1F10683E774329BA65A5B54EE83544 /* Pods-Trip Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trip Planner.release.xcconfig"; sourceTree = "<group>"; };
 		2C23FE5313283956BBC390DCCA6AE8F0 /* Pods-Trip Planner-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trip Planner-frameworks.sh"; sourceTree = "<group>"; };
+		2F91296C99DAB6590ACC147281DACACE /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSDateComponents+Timepiece.swift"; path = "Sources/NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
 		310A22C31B0DB630A19AB06FE6F999DE /* Pods-Trip Planner-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Trip Planner-acknowledgements.plist"; sourceTree = "<group>"; };
 		336F3130AB77755177CB211D1DB4DB4B /* Pods-Trip Planner-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Trip Planner-acknowledgements.markdown"; sourceTree = "<group>"; };
 		33F68EEC65079B4BEAE3337B63C6ACA8 /* Pods-Trip Planner-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Trip Planner-resources.sh"; sourceTree = "<group>"; };
-		4D1BDAD4DA71DF724EBBE0D055B2A112 /* Pods_Trip_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Trip_Planner.framework; path = "Pods-Trip Planner.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		AFD4D1E144CCB4285706E577C2602A44 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		38D8466D5FDA9FAF66D40F156DFB7A60 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		63CE6671E2C33EB05E246B44B8D4E9CB /* WWCalendarTimeSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WWCalendarTimeSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66C4C4C84A8D30A210A6CBACE92B0E9C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B242A9DC5F618326C04952394C28394 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		7B278029DB20B74B99AE5ACFF3CD998E /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		86ADC257A3B28AB7C33A6E1FC7D60D35 /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSDate+Timepiece.swift"; path = "Sources/NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95CA374F6831C2C91C4818A15A20347A /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
+		9DC2D8E2EE2FE094518A5CA4062AE814 /* String+Timepiece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Timepiece.swift"; path = "Sources/String+Timepiece.swift"; sourceTree = "<group>"; };
+		AB902954493DA3095E1548E9DEFF566A /* ResourceBundle-WWCalendarTimeSelectorStoryboardBundle-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-WWCalendarTimeSelectorStoryboardBundle-Info.plist"; sourceTree = "<group>"; };
+		B06CC59DE64019750E3C578D44DD443B /* Duration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = Sources/Duration.swift; sourceTree = "<group>"; };
+		B3BF9EBE76E6E9EC6C96380156681BE5 /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WWCalendarTimeSelector.swift; path = Sources/WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
+		B83248F1B5000DEF65F6814E589936DE /* WWCalendarTimeSelector-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WWCalendarTimeSelector-umbrella.h"; sourceTree = "<group>"; };
+		BB970CE345129798B20635E7DF2775CD /* WWCalendarTimeSelector-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WWCalendarTimeSelector-dummy.m"; sourceTree = "<group>"; };
+		BC8762AA69E45488C2847856888785BF /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		C2708F5054E2FC195F0DCE6434ADD78F /* Pods-Trip Planner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Trip Planner-umbrella.h"; sourceTree = "<group>"; };
+		C2E3B686AA824831E3FA055F511960B7 /* Int+Timepiece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+Timepiece.swift"; path = "Sources/Int+Timepiece.swift"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D21E10A48D94E99D4BACB485BB07E22F /* Pods-Trip Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Trip Planner.debug.xcconfig"; sourceTree = "<group>"; };
 		D45E5A716487995707D4A9EFB15E5914 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E006216C5339F0EE12B8837233D46BB7 /* WWCalendarTimeSelector-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WWCalendarTimeSelector-prefix.pch"; sourceTree = "<group>"; };
+		E58A7D0E2FB51A220D1490C4E05A9DCD /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSCalendar+Timepiece.swift"; path = "Sources/NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
 		F3434F96C80C6F876FA3E7FEDBC693DB /* Pods-Trip Planner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Trip Planner-dummy.m"; sourceTree = "<group>"; };
-		F88E2A6AB865C2A1EB845B27A14348FA /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		F9DDFF361AF7072BC7A6FBFE5789F618 /* Pods_Trip_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trip_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE73A1471DE0D28D164B28BE750F7529 /* WWCalendarTimeSelectorStoryboardBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WWCalendarTimeSelectorStoryboardBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFFC66EE52EFC4D5022EDA03560DD833 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		176CE72B9D1C440456C43E7543CA47AC /* Frameworks */ = {
+		293211532323928E7374BA71B07C8B07 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2B34B284D1E5817EA36FFA1938F0677 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87EA9C3AF4724DB05B5EFE247A10D107 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36DEC06608ABDB5C28B3DC3A9BAB1256 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3632A46E8572D65F1DC8E180EE3EBAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				844D6CC6DDE007E9A100DE4E6A7F08F2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */ = {
+		096428283EA9569A644FF8B6133A0CA5 /* WWCalendarTimeSelector */ = {
 			isa = PBXGroup;
 			children = (
-				475420FA59EFC8377CF994A338979247 /* Frameworks */,
-				4F6C8AC648A5703DF2BEC96A882D19E9 /* Resources */,
+				B06CC59DE64019750E3C578D44DD443B /* Duration.swift */,
+				C2E3B686AA824831E3FA055F511960B7 /* Int+Timepiece.swift */,
+				E58A7D0E2FB51A220D1490C4E05A9DCD /* NSCalendar+Timepiece.swift */,
+				86ADC257A3B28AB7C33A6E1FC7D60D35 /* NSDate+Timepiece.swift */,
+				2F91296C99DAB6590ACC147281DACACE /* NSDateComponents+Timepiece.swift */,
+				9DC2D8E2EE2FE094518A5CA4062AE814 /* String+Timepiece.swift */,
+				B3BF9EBE76E6E9EC6C96380156681BE5 /* WWCalendarTimeSelector.swift */,
+				95CA374F6831C2C91C4818A15A20347A /* WWCalendarTimeSelector.storyboard */,
+				2E68CF0939F08F33C7BCBB74221B7757 /* Resources */,
+				FD01E66EDC8E7C8DC1A41860678A4249 /* Support Files */,
 			);
-			name = GooglePlaces;
+			path = WWCalendarTimeSelector;
+			sourceTree = "<group>";
+		};
+		16BCA02E2FD8BF07C5DA47158A108FF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00B0E028DA8F703B2F90871E5BE14493 /* GoogleMaps.framework */,
+				BC8762AA69E45488C2847856888785BF /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C21BC041BB50E1A7951C8522B97C63D /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				3E20EDCD0B58746B8AA1B44F92829740 /* Frameworks */,
+				A5B8986B7CE371487B83AE4DD6D9F38E /* Resources */,
+			);
 			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
-		02AF3ECDDA222C574F9BF96F434B3825 /* Products */ = {
+		258720F77F88C84AD9C25D6BB4AD4504 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				4D1BDAD4DA71DF724EBBE0D055B2A112 /* Pods_Trip_Planner.framework */,
+				7F1F1E35DECF5EACE94EBE853F0B1A9A /* Frameworks */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				B2F22323EA3B1ADB4F96376E3F709A68 /* Base */,
-				488E301C4ACDDA928635C4886F5F6158 /* Maps */,
-			);
-			name = GoogleMaps;
-			path = GoogleMaps;
+			name = Base;
 			sourceTree = "<group>";
 		};
 		2E5E1271635354B0C870B77A8AA5F706 /* Pods-Trip Planner */ = {
@@ -92,6 +168,13 @@
 			path = "Target Support Files/Pods-Trip Planner";
 			sourceTree = "<group>";
 		};
+		2E68CF0939F08F33C7BCBB74221B7757 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2E9B7F57BA5A93B3ECADE3DE999A2A2E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,46 +183,21 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		385FA015FFB9210F372AB1078B856AAB /* Pods */ = {
+		3E20EDCD0B58746B8AA1B44F92829740 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				26C94CF6FBD559155351548F2127E7DB /* GoogleMaps */,
-				00B63D9B3EBC8ECAFD5DA8C24F1A42DF /* GooglePlaces */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		475420FA59EFC8377CF994A338979247 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */,
+				7B278029DB20B74B99AE5ACFF3CD998E /* GooglePlaces.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		488E301C4ACDDA928635C4886F5F6158 /* Maps */ = {
+		5E368678FBA42ED4455677071D483440 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */,
-				FAC5D957D919553947FEE0A96B739CC4 /* Resources */,
+				258720F77F88C84AD9C25D6BB4AD4504 /* Base */,
+				AC45E91F15787E2B0DDD5BC6989D2633 /* Maps */,
 			);
-			name = Maps;
-			sourceTree = "<group>";
-		};
-		4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B22C69ADCE7C9D529F11B17B4EF5E065 /* GoogleMapsBase.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4F6C8AC648A5703DF2BEC96A882D19E9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F88E2A6AB865C2A1EB845B27A14348FA /* GooglePlaces.bundle */,
-			);
-			name = Resources;
+			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -155,27 +213,35 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				385FA015FFB9210F372AB1078B856AAB /* Pods */,
-				02AF3ECDDA222C574F9BF96F434B3825 /* Products */,
+				FB8037653C8DD77C4A07A9724FAA98F4 /* Pods */,
+				F369321D6F454AA140763A3AF253DF12 /* Products */,
 				2E9B7F57BA5A93B3ECADE3DE999A2A2E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		82CE66B3B7EC3F6274BF43A52FEEAE6E /* Frameworks */ = {
+		7F1F1E35DECF5EACE94EBE853F0B1A9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				08F1229163C7F5E61C7C4B361510F11C /* GoogleMaps.framework */,
-				A92DFDA40F47C0FD221B2872C31099A1 /* GoogleMapsCore.framework */,
+				FFFC66EE52EFC4D5022EDA03560DD833 /* GoogleMapsBase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B2F22323EA3B1ADB4F96376E3F709A68 /* Base */ = {
+		A5B8986B7CE371487B83AE4DD6D9F38E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4CFA8C2E94378AFFDBA3DF92FBE7E3DC /* Frameworks */,
+				38D8466D5FDA9FAF66D40F156DFB7A60 /* GooglePlaces.bundle */,
 			);
-			name = Base;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AC45E91F15787E2B0DDD5BC6989D2633 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				16BCA02E2FD8BF07C5DA47158A108FF1 /* Frameworks */,
+				C3B545A8C9E23248343BBC582450C686 /* Resources */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -186,43 +252,123 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FAC5D957D919553947FEE0A96B739CC4 /* Resources */ = {
+		C3B545A8C9E23248343BBC582450C686 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AFD4D1E144CCB4285706E577C2602A44 /* GoogleMaps.bundle */,
+				7B242A9DC5F618326C04952394C28394 /* GoogleMaps.bundle */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		F369321D6F454AA140763A3AF253DF12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9DDFF361AF7072BC7A6FBFE5789F618 /* Pods_Trip_Planner.framework */,
+				63CE6671E2C33EB05E246B44B8D4E9CB /* WWCalendarTimeSelector.framework */,
+				FE73A1471DE0D28D164B28BE750F7529 /* WWCalendarTimeSelectorStoryboardBundle.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FB8037653C8DD77C4A07A9724FAA98F4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E368678FBA42ED4455677071D483440 /* GoogleMaps */,
+				1C21BC041BB50E1A7951C8522B97C63D /* GooglePlaces */,
+				096428283EA9569A644FF8B6133A0CA5 /* WWCalendarTimeSelector */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FD01E66EDC8E7C8DC1A41860678A4249 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				66C4C4C84A8D30A210A6CBACE92B0E9C /* Info.plist */,
+				AB902954493DA3095E1548E9DEFF566A /* ResourceBundle-WWCalendarTimeSelectorStoryboardBundle-Info.plist */,
+				268C614E1D3991A34B99566795F92FDA /* WWCalendarTimeSelector.modulemap */,
+				1E83E7587940F306AB0F75312C131CD1 /* WWCalendarTimeSelector.xcconfig */,
+				BB970CE345129798B20635E7DF2775CD /* WWCalendarTimeSelector-dummy.m */,
+				E006216C5339F0EE12B8837233D46BB7 /* WWCalendarTimeSelector-prefix.pch */,
+				B83248F1B5000DEF65F6814E589936DE /* WWCalendarTimeSelector-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/WWCalendarTimeSelector";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A028DAFFBCC199375D700DADAD35DDCB /* Headers */ = {
+		10218B70D7223D631DF36A0472EDEAD1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EC85923DCA13EDB59A34B1FEF2A8089 /* Pods-Trip Planner-umbrella.h in Headers */,
+				5D90C92D25927DE1303DB5D0463A25CB /* WWCalendarTimeSelector-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BABCC1DCC516DCF417D2DFD42BAAB20 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED9CA1FB050630B8439527443391F9BE /* Pods-Trip Planner-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D421597DD95D2805C37BAA1BFA35B9F0 /* Pods-Trip Planner */ = {
+		342F9FBCDEBD35687A84AA2689139F47 /* WWCalendarTimeSelector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5D7076E484AFC66B39E04F87DAC9697 /* Build configuration list for PBXNativeTarget "Pods-Trip Planner" */;
+			buildConfigurationList = 4143364B94E827E8712F54AC41BDEA57 /* Build configuration list for PBXNativeTarget "WWCalendarTimeSelector" */;
 			buildPhases = (
-				666DD0880C97D0DDB03CC44783C32720 /* Sources */,
-				176CE72B9D1C440456C43E7543CA47AC /* Frameworks */,
-				A028DAFFBCC199375D700DADAD35DDCB /* Headers */,
+				683C8C513D15AB022822E9EADD41A0F1 /* Sources */,
+				E3632A46E8572D65F1DC8E180EE3EBAA /* Frameworks */,
+				FCC7F4E7EDE69FC92E3141E96310CA3D /* Resources */,
+				10218B70D7223D631DF36A0472EDEAD1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7D68A67F785C33E75ED01427271A5C85 /* PBXTargetDependency */,
+			);
+			name = WWCalendarTimeSelector;
+			productName = WWCalendarTimeSelector;
+			productReference = 63CE6671E2C33EB05E246B44B8D4E9CB /* WWCalendarTimeSelector.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9BAF34ABE612C956C1F42D510AB4C41C /* WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC9376F4A119DB2A1E6BD20863394AFA /* Build configuration list for PBXNativeTarget "WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle" */;
+			buildPhases = (
+				C3D83922BFA366BAC7F2D51228690F49 /* Sources */,
+				293211532323928E7374BA71B07C8B07 /* Frameworks */,
+				044D273DA870DF494AF030BB84580A47 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = "WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle";
+			productName = "WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle";
+			productReference = FE73A1471DE0D28D164B28BE750F7529 /* WWCalendarTimeSelectorStoryboardBundle.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		B017E985BA42B63E91A5BB491C094663 /* Pods-Trip Planner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2998B28960A2801E9D426DB39B811B81 /* Build configuration list for PBXNativeTarget "Pods-Trip Planner" */;
+			buildPhases = (
+				995D1391993F85C2EB6522C0135E84BA /* Sources */,
+				87EA9C3AF4724DB05B5EFE247A10D107 /* Frameworks */,
+				2BABCC1DCC516DCF417D2DFD42BAAB20 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC229C84BC2625A25C1D673E32FFFE1C /* PBXTargetDependency */,
+			);
 			name = "Pods-Trip Planner";
 			productName = "Pods-Trip Planner";
-			productReference = 4D1BDAD4DA71DF724EBBE0D055B2A112 /* Pods_Trip_Planner.framework */;
+			productReference = F9DDFF361AF7072BC7A6FBFE5789F618 /* Pods_Trip_Planner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -242,27 +388,102 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 02AF3ECDDA222C574F9BF96F434B3825 /* Products */;
+			productRefGroup = F369321D6F454AA140763A3AF253DF12 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D421597DD95D2805C37BAA1BFA35B9F0 /* Pods-Trip Planner */,
+				B017E985BA42B63E91A5BB491C094663 /* Pods-Trip Planner */,
+				342F9FBCDEBD35687A84AA2689139F47 /* WWCalendarTimeSelector */,
+				9BAF34ABE612C956C1F42D510AB4C41C /* WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		044D273DA870DF494AF030BB84580A47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				271C1090036652121E8FDE162F630AEF /* WWCalendarTimeSelector.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FCC7F4E7EDE69FC92E3141E96310CA3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00C8EB53B27916CBA00E6A1EA67A724F /* WWCalendarTimeSelectorStoryboardBundle.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		666DD0880C97D0DDB03CC44783C32720 /* Sources */ = {
+		683C8C513D15AB022822E9EADD41A0F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD3EFD062D8A666995084788D0526D4 /* Pods-Trip Planner-dummy.m in Sources */,
+				C7EB7FC281A0D3E0938088400B82E5FE /* Duration.swift in Sources */,
+				70115DB1ACF95BEFB423276A7DD729F5 /* Int+Timepiece.swift in Sources */,
+				0A597CAA96D15F5866A7C6BE002C9F17 /* NSCalendar+Timepiece.swift in Sources */,
+				EBAEF090A30F0239D457D9210E16C984 /* NSDate+Timepiece.swift in Sources */,
+				2ED644FB4850FC0BB424E1F7AB6283A7 /* NSDateComponents+Timepiece.swift in Sources */,
+				F43FB5D47945D7631018A35D95B2ED05 /* String+Timepiece.swift in Sources */,
+				21A9659C487AC880444759DA169CB3FB /* WWCalendarTimeSelector-dummy.m in Sources */,
+				6D2CD77A42BF8788310A0892E6459FC4 /* WWCalendarTimeSelector.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		995D1391993F85C2EB6522C0135E84BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70A2398BBA0CC8D7080A6E3043EEBC8A /* Pods-Trip Planner-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D83922BFA366BAC7F2D51228690F49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7D68A67F785C33E75ED01427271A5C85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle";
+			target = 9BAF34ABE612C956C1F42D510AB4C41C /* WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle */;
+			targetProxy = 5B7B47A02DAADE6C0BCBF38589976139 /* PBXContainerItemProxy */;
+		};
+		DC229C84BC2625A25C1D673E32FFFE1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WWCalendarTimeSelector;
+			target = 342F9FBCDEBD35687A84AA2689139F47 /* WWCalendarTimeSelector */;
+			targetProxy = CCCF85F6E0F7BA749002A52C94354A35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0DF5D2086525273E7C52B1B158FC70CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E83E7587940F306AB0F75312C131CD1 /* WWCalendarTimeSelector.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WWCalendarTimeSelector";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/WWCalendarTimeSelector/ResourceBundle-WWCalendarTimeSelectorStoryboardBundle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = WWCalendarTimeSelectorStoryboardBundle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		13E96A645A77DAD1FD4F541F18F5DDBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -307,41 +528,6 @@
 			};
 			name = Debug;
 		};
-		7733E034CA5297053BF65E85780DE35E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A1F10683E774329BA65A5B54EE83544 /* Pods-Trip Planner.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Trip Planner/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Trip Planner/Pods-Trip Planner.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Trip_Planner;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		862AF3139CD84E18D34FAF2F43CD0DA6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -382,7 +568,7 @@
 			};
 			name = Release;
 		};
-		C27DE8EF7C6CE4D47DD4490A4D9EB7E4 /* Debug */ = {
+		96F1B04AE91B8636A83EC18424B02CFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D21E10A48D94E99D4BACB485BB07E22F /* Pods-Trip Planner.debug.xcconfig */;
 			buildSettings = {
@@ -411,6 +597,124 @@
 				PRODUCT_NAME = Pods_Trip_Planner;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DA8F67276112C145EA025DBEACAE115F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E83E7587940F306AB0F75312C131CD1 /* WWCalendarTimeSelector.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/WWCalendarTimeSelector/WWCalendarTimeSelector-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WWCalendarTimeSelector/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/WWCalendarTimeSelector/WWCalendarTimeSelector.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = WWCalendarTimeSelector;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E8902A549A6242ED9E3DFFAF2637D990 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A1F10683E774329BA65A5B54EE83544 /* Pods-Trip Planner.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Trip Planner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Trip Planner/Pods-Trip Planner.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Trip_Planner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FA470E596907650A7ECF0DFFB2DFADFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E83E7587940F306AB0F75312C131CD1 /* WWCalendarTimeSelector.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/WWCalendarTimeSelector";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/WWCalendarTimeSelector/ResourceBundle-WWCalendarTimeSelectorStoryboardBundle-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = WWCalendarTimeSelectorStoryboardBundle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		FE2C281E463428227602E9406AFBFA63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E83E7587940F306AB0F75312C131CD1 /* WWCalendarTimeSelector.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/WWCalendarTimeSelector/WWCalendarTimeSelector-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WWCalendarTimeSelector/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/WWCalendarTimeSelector/WWCalendarTimeSelector.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = WWCalendarTimeSelector;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -420,6 +724,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2998B28960A2801E9D426DB39B811B81 /* Build configuration list for PBXNativeTarget "Pods-Trip Planner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96F1B04AE91B8636A83EC18424B02CFB /* Debug */,
+				E8902A549A6242ED9E3DFFAF2637D990 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -429,11 +742,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5D7076E484AFC66B39E04F87DAC9697 /* Build configuration list for PBXNativeTarget "Pods-Trip Planner" */ = {
+		4143364B94E827E8712F54AC41BDEA57 /* Build configuration list for PBXNativeTarget "WWCalendarTimeSelector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C27DE8EF7C6CE4D47DD4490A4D9EB7E4 /* Debug */,
-				7733E034CA5297053BF65E85780DE35E /* Release */,
+				FE2C281E463428227602E9406AFBFA63 /* Debug */,
+				DA8F67276112C145EA025DBEACAE115F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC9376F4A119DB2A1E6BD20863394AFA /* Build configuration list for PBXNativeTarget "WWCalendarTimeSelector-WWCalendarTimeSelectorStoryboardBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA470E596907650A7ECF0DFFB2DFADFE /* Debug */,
+				0DF5D2086525273E7C52B1B158FC70CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
