@@ -55,6 +55,8 @@ public class ItineraryManager
         if(index < ItineraryManager.itineraries.count)
         {
             ItineraryManager.itineraries.remove(at: index)
+            
+            PersistenceManager.Save()
         }
         else
         {

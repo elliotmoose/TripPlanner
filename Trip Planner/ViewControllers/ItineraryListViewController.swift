@@ -61,6 +61,20 @@ class ItineraryListViewController: UIViewController,UITableViewDataSource,UITabl
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        return [UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+            ItineraryManager.singleton.RemoveItineraryAtIndex(index: indexPath.row)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })]
+    }
+    
     @objc func AddItineraryButtonPressed()
     {
         let selector = WWCalendarTimeSelector.instantiate()

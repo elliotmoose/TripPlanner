@@ -888,15 +888,31 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
             del?.WWCalendarTimeSelectorDone?(picker, date: optionCurrentDate)
         case .multiple:
             del?.WWCalendarTimeSelectorDone?(picker, dates: multipleDates,name: nameTextField.text!)
-            
-            
-            
         case .range:
             del?.WWCalendarTimeSelectorDone?(picker, dates: optionCurrentDateRange.array,name: nameTextField.text!)
         }
-        del?.WWCalendarTimeSelectorWillDismiss?(picker)
-        dismiss(animated: true) {
-            del?.WWCalendarTimeSelectorDidDismiss?(picker)
+        
+        
+        
+        if nameTextField.text == ""
+        {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Oops!", message: "Please specify the name for your itinerary", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        else
+        {
+            del?.WWCalendarTimeSelectorWillDismiss?(picker)
+            
+            
+            dismiss(animated: true) {
+                del?.WWCalendarTimeSelectorDidDismiss?(picker)
+            }
         }
     }
     
