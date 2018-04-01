@@ -66,6 +66,15 @@ public class Day
         return activities.count
     }
     
+    public func GetSummary() -> NSDictionary
+    {
+        let dict = NSMutableDictionary()
+        
+        dict["budget"] = "$100"
+        
+        return dict
+    }
+    
     init(dict : NSDictionary) {
         
         if let dateInterval = dict["date"] as? TimeInterval

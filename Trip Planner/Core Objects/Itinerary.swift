@@ -55,6 +55,8 @@ public class Itinerary
         let date = startDate.addingTimeInterval(TimeInterval(60*60*24*days.count))
         let day = Day(date: date)
         days.append(day)
+        
+        PersistenceManager.Save()
     }
     
     public func AddActivity(_ activity : Activity)
@@ -93,6 +95,8 @@ public class Itinerary
         {
             days.remove(at: index)
             RefactorDates()
+            
+            PersistenceManager.Save()
         }
     }
     

@@ -93,8 +93,8 @@ public class ItineraryManager
     public static func Export() -> NSDictionary
     {
         let dict = NSMutableDictionary()
-
-        for index in 0...ItineraryManager.itineraries.count-1
+        
+        for index in 0..<ItineraryManager.itineraries.count
         {
             dict["\(index)"] = ItineraryManager.itineraries[index].Export()
         }

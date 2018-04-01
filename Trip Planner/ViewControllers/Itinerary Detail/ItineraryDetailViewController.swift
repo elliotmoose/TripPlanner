@@ -15,6 +15,30 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     public static let singleton = ItineraryDetailViewController(nibName: "ItineraryDetailViewController", bundle: Bundle.main)
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var budgetLabel: UILabel!
+    
+    @IBOutlet weak var revealSummaryButton: UIButton!
+    @IBAction func RevealSummaryPressed(_ sender: Any) {
+        if collectionViewTopConstraint.constant == 120
+        {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: 0)
+            })
+            collectionViewTopConstraint.constant = 0
+        }
+        else
+        {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: (.pi))
+            })
+            collectionViewTopConstraint.constant = 120
+        }
+        
+        UIView.animate(withDuration: 0.4, animations: {
+                self.view.layoutIfNeeded()
+        })
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ItineraryDetailViewController", bundle: Bundle.main)
@@ -28,6 +52,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         
         //export button
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ShareButtonPressed))
+        self.navigationController?.navigationBar.isTranslucent = false
         
         //nav cont
     }
@@ -127,15 +152,33 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         return UIEdgeInsets(top: 32, left: 32, bottom: 32, right: 32)
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        UpdateSummaryForCurrentPage()
+    }
+    
     @objc func ShareButtonPressed()
     {
-        ItineraryManager.ExportCurrentItinerary()
+        let _ = ItineraryManager.ExportCurrentItinerary()
     }
 
 
     func ReloadData()
     {
         collectionView.reloadData()
+        
+        UpdateSummaryForCurrentPage()
+    }
+    
+    func UpdateSummaryForCurrentPage()
+    {
+        let pageWidth = collectionView.frame.size.width
+        let pageNumber = Int(ceil(collectionView.contentOffset.x / pageWidth))
+        
+        if let dict = ItineraryManager.GetCurrent()?.GetDay(index: pageNumber)?.GetSummary()
+        {
+            budgetLabel.text = dict["budget"] as? String
+        }
+        
     }
     
     //delegate functions
