@@ -146,16 +146,19 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         if startDateTextField.isFirstResponder
         {
             startDateTextField.text = sender.date.Get24hString()
-            
-            //end date cannot be earlier than start
-            let startDatePicker = startDateTextField.inputView as! UIDatePicker
-            let endDatePicker = endDateTextField.inputView as! UIDatePicker
-            endDatePicker.minimumDate = startDatePicker.date
+            selectedStartDate = sender.date
+//            let startDatePicker = startDateTextField.inputView as! UIDatePicker
+//            let endDatePicker = endDateTextField.inputView as! UIDatePicker
+//            endDatePicker.minimumDate = startDatePicker.date
         }
+        
         if endDateTextField.isFirstResponder
         {
+            selectedEndDate = sender.date
             endDateTextField.text = sender.date.Get24hString()
         }
+
+        
     }
     
     //@CHOOSE LOCATION DELEGATE FUNCTION
@@ -196,22 +199,30 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     
     @IBAction func AddButtonPressed(_ sender: Any) {
         
-        if nameTextField.text != ""
-        {
-            let activity = Activity()
-            activity.name = nameTextField.text!
-            activity.budget = budgetTextField.text!
-            activity.location = selectedLocation
-            activity.icon = emojiTextField.text!
-            ItineraryManager.GetCurrent()?.AddActivity(activity)
-            
-            self.delegate?.DidCreateActivity()
-            self.dismiss(animated: true, completion: nil)
-        }
-        else
+        if nameTextField.text == ""
         {
             PopupManager.singleton.Popup(title: "Oops!", body: "Your activity has no name", presentationViewCont: self)
+            return
         }
+        
+        if selectedStartDate == nil || selectedEndDate == nil
+        {
+            PopupManager.singleton.Popup(title: "Oops!", body: "Please choose the activity timing", presentationViewCont: self)
+            return
+        }
+
+        
+        let activity = Activity()
+        activity.name = nameTextField.text!
+        activity.startDate = selectedStartDate!
+        activity.endDate = selectedEndDate!
+        activity.budget = budgetTextField.text!
+        activity.location = selectedLocation
+        activity.icon = emojiTextField.text!
+        ItineraryManager.GetCurrent()?.AddActivity(activity)
+        
+        self.delegate?.DidCreateActivity()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func ChooseLocationButtonPressed(_ sender: Any) {

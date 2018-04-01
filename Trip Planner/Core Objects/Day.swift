@@ -66,13 +66,16 @@ public class Day
         return activities.count
     }
     
-    public func GetSummary() -> NSDictionary
+    public func GetBudget() -> Float
     {
-        let dict = NSMutableDictionary()
+        var sum : Float = 0
         
-        dict["budget"] = "$100"
+        for activity in activities
+        {
+            sum = sum + activity.GetBudget()
+        }
         
-        return dict
+        return sum
     }
     
     init(dict : NSDictionary) {

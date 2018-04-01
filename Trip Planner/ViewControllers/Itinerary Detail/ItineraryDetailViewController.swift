@@ -16,28 +16,36 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var budgetLabel: UILabel!
+    @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var budgetDayLabel: UILabel!
+    @IBOutlet weak var budgetTotalLabel: UILabel!
     
     @IBOutlet weak var revealSummaryButton: UIButton!
     @IBAction func RevealSummaryPressed(_ sender: Any) {
         if collectionViewTopConstraint.constant == 120
         {
             UIView.animate(withDuration: 0.4, animations: {
-                self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: 0)
+                self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: (.pi))
             })
             collectionViewTopConstraint.constant = 0
+            collectionViewBottomConstraint.constant = 0
         }
         else
         {
             UIView.animate(withDuration: 0.4, animations: {
-                self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: (.pi))
+                self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: 0)
             })
             collectionViewTopConstraint.constant = 120
+            collectionViewBottomConstraint.constant = 120
         }
         
         UIView.animate(withDuration: 0.4, animations: {
                 self.view.layoutIfNeeded()
         })
+    }
+    
+    @IBAction func ViewMapSummaryPressed(_ sender: Any) {
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -54,7 +62,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ShareButtonPressed))
         self.navigationController?.navigationBar.isTranslucent = false
         
-        //nav cont
+        self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: (.pi))        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -136,7 +144,8 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = Sizing.ScreenWidth() - 64
-        let height = Sizing.ScreenHeight() - Sizing.tabBarHeight - Sizing.statusBarHeight - 64
+        let height = Sizing.ScreenHeight() - Sizing.navBarHeight - Sizing.statusBarHeight - 64
+        //let height = self.view.frame.height - Sizing.navBarHeight - Sizing.statusBarHeight - 64
         return CGSize(width: width, height: height)
     }
     
@@ -174,9 +183,16 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         let pageWidth = collectionView.frame.size.width
         let pageNumber = Int(ceil(collectionView.contentOffset.x / pageWidth))
         
-        if let dict = ItineraryManager.GetCurrent()?.GetDay(index: pageNumber)?.GetSummary()
+        if let itinerary = ItineraryManager.GetCurrent()
         {
-            budgetLabel.text = dict["budget"] as? String
+            var budgetForDay :Float = 0
+            if let dayBudget = itinerary.GetDay(index: pageNumber)?.GetBudget()
+            {
+                budgetForDay = dayBudget
+            }
+ 
+            budgetDayLabel.text = String(format: "$%.2f", budgetForDay)
+            budgetTotalLabel.text = String(format: "$%.2f", itinerary.GetBudget())
         }
         
     }

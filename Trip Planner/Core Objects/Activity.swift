@@ -73,6 +73,27 @@ public class Activity
         }
     }
     
+    public func GetBudget() -> Float
+    {
+        if budget.substring(to: 0) != "$"
+        {
+            if let output = Float(budget)
+            {
+                return output
+            }
+        }
+        else
+        {
+            if let output = Float(budget.substring(from: 1))
+            {
+                return output
+            }
+        }
+        
+        
+        return 0
+    }
+    
     public func Export() -> NSDictionary
     {
         let dict = NSMutableDictionary()

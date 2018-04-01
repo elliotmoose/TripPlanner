@@ -139,6 +139,20 @@ public class Itinerary
     }
     
     
+    public func GetBudget() -> Float
+    {
+        var sum : Float = 0
+        
+        for day in days
+        {
+            sum = sum + day.GetBudget()
+        }
+        
+        return sum
+    }
+    
+    
+    
     init(dict : NSDictionary)
     {
         if let name = dict["name"] as? String
