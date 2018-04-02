@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WWCalendarTimeSelector
+//import WWCalendarTimeSelector
 
 class ItineraryListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,WWCalendarTimeSelectorProtocol{
     
@@ -44,10 +44,12 @@ class ItineraryListViewController: UIViewController,UITableViewDataSource,UITabl
         
         if(cell == nil)
         {
-            cell = UITableViewCell()
+            cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         }
         
-        cell?.textLabel?.text = ItineraryManager.singleton.GetItineraries()[indexPath.row].name
+        let itinerary = ItineraryManager.singleton.GetItineraries()[indexPath.row]
+        cell?.textLabel?.text = itinerary.name
+        cell?.detailTextLabel?.text = itinerary.GetTripDateRangeText()
         
         return cell!
     }

@@ -30,8 +30,8 @@ public class ItineraryManager
     func AddItinerary(name : String, startDate : Date, endDate : Date) -> Itinerary
     {
         let itinerary = Itinerary(name: name,startDate : startDate, endDate : endDate)
-        ItineraryManager.itineraries.append(itinerary)
-
+        
+        ItineraryManager.itineraries.insert(itinerary, at: 0)
         PersistenceManager.Save()
         
         return itinerary

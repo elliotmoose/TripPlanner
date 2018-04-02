@@ -37,6 +37,16 @@
 		A4EE34C8207119850023B22D /* ActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4EE34C6207119850023B22D /* ActivityDetailViewController.xib */; };
 		A4EE34CB207119B90023B22D /* ActivityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34C9207119B90023B22D /* ActivityDetailTableViewCell.swift */; };
 		A4EE34CC207119B90023B22D /* ActivityDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4EE34CA207119B90023B22D /* ActivityDetailTableViewCell.xib */; };
+		A4EE34CF207234040023B22D /* CurrencyUIPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34CE207234040023B22D /* CurrencyUIPicker.swift */; };
+		A4EE34D0207235350023B22D /* CurrencyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4EE34CD207232430023B22D /* CurrencyList.plist */; };
+		A4EE34DD207238960023B22D /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34D5207237F40023B22D /* Duration.swift */; };
+		A4EE34DE207238960023B22D /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34D6207237F40023B22D /* Int+Timepiece.swift */; };
+		A4EE34DF207238960023B22D /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34D7207237F40023B22D /* NSCalendar+Timepiece.swift */; };
+		A4EE34E0207238960023B22D /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34D8207237F40023B22D /* NSDate+Timepiece.swift */; };
+		A4EE34E1207238960023B22D /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34D9207237F40023B22D /* NSDateComponents+Timepiece.swift */; };
+		A4EE34E2207238960023B22D /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34DA207237F40023B22D /* String+Timepiece.swift */; };
+		A4EE34E3207238960023B22D /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EE34DB207237F40023B22D /* WWCalendarTimeSelector.swift */; };
+		A4EE34E4207238960023B22D /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4EE34DC207237F40023B22D /* WWCalendarTimeSelector.storyboard */; };
 		A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844322060EA240061D369 /* ActivityTableViewCell.swift */; };
 		A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F844332060EA240061D369 /* ActivityTableViewCell.xib */; };
 		A4F844382060F8DA0061D369 /* NewDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */; };
@@ -81,6 +91,18 @@
 		A4EE34C6207119850023B22D /* ActivityDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityDetailViewController.xib; sourceTree = "<group>"; };
 		A4EE34C9207119B90023B22D /* ActivityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A4EE34CA207119B90023B22D /* ActivityDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityDetailTableViewCell.xib; sourceTree = "<group>"; };
+		A4EE34CD207232430023B22D /* CurrencyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CurrencyList.plist; sourceTree = "<group>"; };
+		A4EE34CE207234040023B22D /* CurrencyUIPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyUIPicker.swift; sourceTree = "<group>"; };
+		A4EE34D2207237F40023B22D /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A4EE34D3207237F40023B22D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A4EE34D5207237F40023B22D /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		A4EE34D6207237F40023B22D /* Int+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
+		A4EE34D7207237F40023B22D /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
+		A4EE34D8207237F40023B22D /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		A4EE34D9207237F40023B22D /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		A4EE34DA207237F40023B22D /* String+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		A4EE34DB207237F40023B22D /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
+		A4EE34DC207237F40023B22D /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
 		A4F844322060EA240061D369 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		A4F844332060EA240061D369 /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
 		A4F844362060F8DA0061D369 /* NewDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -213,6 +235,9 @@
 				A4A80799206340F000A3D8F9 /* PopupManager.swift */,
 				A4F84440206254750061D369 /* ExtensionsAndStructs.swift */,
 				A49B7C1720601B6900C9BF35 /* Sizing.swift */,
+				A4EE34CD207232430023B22D /* CurrencyList.plist */,
+				A4EE34CE207234040023B22D /* CurrencyUIPicker.swift */,
+				A4EE34D1207237F40023B22D /* WWCalendarTimeSelector */,
 			);
 			path = Imported;
 			sourceTree = "<group>";
@@ -238,6 +263,31 @@
 				A4EE34CA207119B90023B22D /* ActivityDetailTableViewCell.xib */,
 			);
 			path = "Activity Detail View";
+			sourceTree = "<group>";
+		};
+		A4EE34D1207237F40023B22D /* WWCalendarTimeSelector */ = {
+			isa = PBXGroup;
+			children = (
+				A4EE34D2207237F40023B22D /* LICENSE */,
+				A4EE34D3207237F40023B22D /* README.md */,
+				A4EE34D4207237F40023B22D /* Sources */,
+				A4EE34DC207237F40023B22D /* WWCalendarTimeSelector.storyboard */,
+			);
+			path = WWCalendarTimeSelector;
+			sourceTree = "<group>";
+		};
+		A4EE34D4207237F40023B22D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A4EE34D5207237F40023B22D /* Duration.swift */,
+				A4EE34D6207237F40023B22D /* Int+Timepiece.swift */,
+				A4EE34D7207237F40023B22D /* NSCalendar+Timepiece.swift */,
+				A4EE34D8207237F40023B22D /* NSDate+Timepiece.swift */,
+				A4EE34D9207237F40023B22D /* NSDateComponents+Timepiece.swift */,
+				A4EE34DA207237F40023B22D /* String+Timepiece.swift */,
+				A4EE34DB207237F40023B22D /* WWCalendarTimeSelector.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		A4F844312060E5EF0061D369 /* Itinerary Day */ = {
@@ -343,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */,
+				A4EE34E4207238960023B22D /* WWCalendarTimeSelector.storyboard in Resources */,
 				A4A807AB206947C000A3D8F9 /* EditActivityViewController.xib in Resources */,
 				A49B7BF6205FBFF300C9BF35 /* LaunchScreen.storyboard in Resources */,
 				A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */,
@@ -351,6 +402,7 @@
 				A4F844392060F8DA0061D369 /* NewDayCollectionViewCell.xib in Resources */,
 				A49B7BF3205FBFF300C9BF35 /* Assets.xcassets in Resources */,
 				A4EE34C8207119850023B22D /* ActivityDetailViewController.xib in Resources */,
+				A4EE34D0207235350023B22D /* CurrencyList.plist in Resources */,
 				A4F8443F206187750061D369 /* NewActivityTableViewCell.xib in Resources */,
 				A4EE34CC207119B90023B22D /* ActivityDetailTableViewCell.xib in Resources */,
 				A49B7C15206018C300C9BF35 /* DayCollectionViewCell.xib in Resources */,
@@ -417,23 +469,31 @@
 				A49B7C09205FC45100C9BF35 /* ItineraryListViewController.swift in Sources */,
 				A49B7C222060CEA700C9BF35 /* CreateActivityViewController.swift in Sources */,
 				A4F84441206254750061D369 /* ExtensionsAndStructs.swift in Sources */,
+				A4EE34E2207238960023B22D /* String+Timepiece.swift in Sources */,
+				A4EE34DF207238960023B22D /* NSCalendar+Timepiece.swift in Sources */,
 				A4F8443E206187750061D369 /* NewActivityTableViewCell.swift in Sources */,
 				A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */,
 				A4F844342060EA240061D369 /* ActivityTableViewCell.swift in Sources */,
 				A4F844382060F8DA0061D369 /* NewDayCollectionViewCell.swift in Sources */,
 				A49B7C14206018C300C9BF35 /* DayCollectionViewCell.swift in Sources */,
 				A49B7C07205FC43B00C9BF35 /* ItineraryDetailViewController.swift in Sources */,
+				A4EE34CF207234040023B22D /* CurrencyUIPicker.swift in Sources */,
+				A4EE34E0207238960023B22D /* NSDate+Timepiece.swift in Sources */,
 				A4CC8659206F9FF000F5F0BE /* PersistenceManager.swift in Sources */,
+				A4EE34E3207238960023B22D /* WWCalendarTimeSelector.swift in Sources */,
 				A49B7C0C205FC48D00C9BF35 /* ItineraryManager.swift in Sources */,
 				A49B7BFF205FC19600C9BF35 /* Itinerary.swift in Sources */,
+				A4EE34E1207238960023B22D /* NSDateComponents+Timepiece.swift in Sources */,
 				A4EE34C7207119850023B22D /* ActivityDetailViewController.swift in Sources */,
 				A49B7C02205FC1A400C9BF35 /* Activity.swift in Sources */,
 				A4075ED820629B90008A7E6D /* ChooseLocationViewController.swift in Sources */,
+				A4EE34DD207238960023B22D /* Duration.swift in Sources */,
 				A4A807A72068FCF000A3D8F9 /* Network.swift in Sources */,
 				A4A807AA2069459800A3D8F9 /* EditActivityViewController.swift in Sources */,
 				A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */,
 				A4A8079A206340F000A3D8F9 /* PopupManager.swift in Sources */,
 				A49B7C04205FC3D500C9BF35 /* Day.swift in Sources */,
+				A4EE34DE207238960023B22D /* Int+Timepiece.swift in Sources */,
 				A4EE34CB207119B90023B22D /* ActivityDetailTableViewCell.swift in Sources */,
 				A49B7BEC205FBFF300C9BF35 /* AppDelegate.swift in Sources */,
 				A49B7C1820601B6A00C9BF35 /* Sizing.swift in Sources */,

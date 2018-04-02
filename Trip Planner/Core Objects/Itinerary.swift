@@ -44,6 +44,12 @@ public class Itinerary
         return days.count
     }
     
+    public func GetTripDateRangeText() -> String
+    {
+        let endDate = Date(timeIntervalSince1970: startDate.timeIntervalSince1970 + TimeInterval(60*60*24*(days.count-1)))
+        return "\(startDate.GetDDMMYYString()) - \(endDate.GetDDMMYYString())"
+    }
+    
     public func SetStartDate(date : Date)
     {
         self.startDate = date
@@ -113,6 +119,19 @@ public class Itinerary
         }
     }
     
+    public func GetBudget() -> Float
+    {
+        var sum : Float = 0
+        
+        for day in days
+        {
+            sum = sum + day.GetBudget()
+        }
+        
+        return sum
+    }
+    
+    
     public func RefactorDates()
     {
         for index in 0...days.count-1
@@ -138,19 +157,7 @@ public class Itinerary
         return false
     }
     
-    
-    public func GetBudget() -> Float
-    {
-        var sum : Float = 0
-        
-        for day in days
-        {
-            sum = sum + day.GetBudget()
-        }
-        
-        return sum
-    }
-    
+
     
     
     init(dict : NSDictionary)
