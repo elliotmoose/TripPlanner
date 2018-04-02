@@ -86,10 +86,10 @@ class ItineraryListViewController: UIViewController,UITableViewDataSource,UITabl
         self.present(selector, animated: true, completion: nil)
     }
     
-    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date],name : String) {
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date],name : String,currency : [String]?) {
         
         guard dates.count != 0 else {return}
-        let _ = ItineraryManager.singleton.AddItinerary(name: name, startDate: dates.first!, endDate: dates.last!)
+        let _ = ItineraryManager.singleton.AddItinerary(name: name,currency : currency,startDate: dates.first!, endDate: dates.last!)
         self.tableView.reloadData()
     }
 

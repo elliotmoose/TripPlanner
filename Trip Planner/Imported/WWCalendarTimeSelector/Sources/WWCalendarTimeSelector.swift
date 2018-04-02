@@ -177,7 +177,7 @@ import UIKit
     /// - Parameters:
     ///     - selector: The selector that will be dismissed.
     ///     - dates: Selected dates.
-    @objc optional func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date], name : String)
+    @objc optional func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date], name : String,currency : [String]?)
     
     /// Method called before the selector is dismissed, and when user is Done with the selector.
     ///
@@ -241,7 +241,7 @@ import UIKit
     @objc optional func WWCalendarTimeSelectorShouldSelectDate(_ selector: WWCalendarTimeSelector, date: Date) -> Bool
 }
 
-open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITableViewDataSource, WWCalendarRowProtocol, WWClockProtocol {
+open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITableViewDataSource, WWCalendarRowProtocol, WWClockProtocol,CurrencyPickerDelegate {
     
     /// The delegate of `WWCalendarTimeSelector` can adopt the `WWCalendarTimeSelectorProtocol` optional methods. The following Optional methods are available:
     ///
@@ -533,6 +533,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet fileprivate weak var monthsView: UIView!
     @IBOutlet fileprivate var monthsButtons: [UIButton]!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
     
     // All Constraints
     @IBOutlet fileprivate weak var dayViewHeightConstraint: NSLayoutConstraint!
@@ -587,7 +588,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     fileprivate var multipleDatesLastAdded: Date?
     fileprivate var flashDate: Date?
     fileprivate let defaultTopPanelTitleForMultipleDates = "Select Multiple Dates"
-    fileprivate let portraitHeight: CGFloat = max(UIScreen.main.bounds.height-150, UIScreen.main.bounds.width)
+    fileprivate let portraitHeight: CGFloat = max(UIScreen.main.bounds.height-230, UIScreen.main.bounds.width)
     fileprivate let portraitWidth: CGFloat = min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
     fileprivate var isSelectingStartRange: Bool = true { didSet { rangeStartLabel.textColor = isSelectingStartRange ? optionSelectorPanelFontColorDateHighlight : optionSelectorPanelFontColorDate; rangeEndLabel.textColor = isSelectingStartRange ? optionSelectorPanelFontColorDate : optionSelectorPanelFontColorDateHighlight } }
     fileprivate var shouldResetRange: Bool = true
@@ -698,6 +699,64 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
         updateDate()
         
         isFirstLoad = true
+        
+        //keyboard
+        AddKeyboardToolBar()
+        let currencyPickerView = CurrencyUIPicker.init(frame: CGRect.zero)
+        currencyPickerView.currencyPickerDelegate = self
+        currencyTextField.inputView = currencyPickerView
+    }
+    
+    var selectedCurrency : [String]?
+    func DidSelectCurrency(_ currency: [String]) {
+        currencyTextField.text = "\(currency[3])"
+        selectedCurrency = currency
+    }
+    
+    func AddKeyboardToolBar()
+    {
+        let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: 30))
+        numberToolbar.barStyle = UIBarStyle.default
+        numberToolbar.items = [
+            UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelNumberPad)),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneWithNumberPad))]
+        numberToolbar.sizeToFit()
+        nameTextField.inputAccessoryView = numberToolbar
+        currencyTextField.inputAccessoryView = numberToolbar
+    }
+    
+    @objc func cancelNumberPad()
+    {
+        let txtfield = FirstResponder()
+        let _ = txtfield.endEditing(true)
+        
+    }
+    
+    @objc func doneWithNumberPad()
+    {
+        if let txtfield = FirstResponder() as? UITextField
+        {
+            if txtfield == nameTextField
+            {
+                currencyTextField.becomeFirstResponder()
+                return
+            }
+            
+            txtfield.resignFirstResponder()
+            return
+        }
+        
+        resignFirstResponder()
+    }
+    
+    func FirstResponder() -> AnyObject
+    {
+        if nameTextField.isFirstResponder
+        {
+            return nameTextField
+        }
+        else {return currencyTextField}
     }
     
     open override func viewDidLayoutSubviews() {
@@ -729,6 +788,14 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         isFirstLoad = false
+        
+        nameTextField.becomeFirstResponder()
+    }
+    
+    open override func viewDidDisappear(_ animated: Bool) {
+        nameTextField.text = ""
+        currencyTextField.text = ""
+        selectedCurrency = nil
     }
     
     open override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -751,7 +818,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 let height = max(size.width, size.height)
                 
                 topContainerLeftConstraint.constant = (width - topContainerWidthConstraint.constant) / 2
-                topContainerTopConstraint.constant = (height - 150 - (topContainerHeightConstraint.constant + bottomContainerHeightConstraint.constant)) / 2
+                topContainerTopConstraint.constant = (height - 230 - (topContainerHeightConstraint.constant + bottomContainerHeightConstraint.constant)) / 2
                 bottomContainerLeftConstraint.constant = optionShowTopContainer ? topContainerLeftConstraint.constant : (width - bottomContainerWidthConstraint.constant) / 2
                 bottomContainerTopConstraint.constant = topContainerTopConstraint.constant + topContainerHeightConstraint.constant
             }
@@ -883,36 +950,34 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     @IBAction func done() {
         let picker = self
         let del = delegate
+
+        
+        if nameTextField.text == ""
+        {
+            PopupManager.singleton.Popup(title: "Oops!", body: "Please specify the name for your itinerary", presentationViewCont: self)
+            return            
+        }
+        
+        if currencyTextField.text == "" || selectedCurrency == nil
+        {
+            PopupManager.singleton.Popup(title: "Oops!", body: "Please specify the currency", presentationViewCont: self)
+            return
+        }
+        
         switch optionSelectionType {
         case .single:
             del?.WWCalendarTimeSelectorDone?(picker, date: optionCurrentDate)
         case .multiple:
-            del?.WWCalendarTimeSelectorDone?(picker, dates: multipleDates,name: nameTextField.text!)
+            del?.WWCalendarTimeSelectorDone?(picker, dates: multipleDates,name: nameTextField.text!,currency : selectedCurrency)
         case .range:
-            del?.WWCalendarTimeSelectorDone?(picker, dates: optionCurrentDateRange.array,name: nameTextField.text!)
+            del?.WWCalendarTimeSelectorDone?(picker, dates: optionCurrentDateRange.array,name: nameTextField.text!,currency : selectedCurrency)
         }
         
+        del?.WWCalendarTimeSelectorWillDismiss?(picker)
         
         
-        if nameTextField.text == ""
-        {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Oops!", message: "Please specify the name for your itinerary", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-                    
-                }))
-                
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        else
-        {
-            del?.WWCalendarTimeSelectorWillDismiss?(picker)
-            
-            
-            dismiss(animated: true) {
-                del?.WWCalendarTimeSelectorDidDismiss?(picker)
-            }
+        dismiss(animated: true) {
+            del?.WWCalendarTimeSelectorDidDismiss?(picker)
         }
     }
     

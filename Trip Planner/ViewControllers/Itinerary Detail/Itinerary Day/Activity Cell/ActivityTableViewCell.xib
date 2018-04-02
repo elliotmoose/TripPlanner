@@ -65,7 +65,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="65.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFy-Sr-m8t">
-                        <rect key="frame" x="44" y="64" width="35.5" height="18"/>
+                        <rect key="frame" x="36" y="64" width="35.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="YRt-8f-5BP"/>
                         </constraints>
@@ -109,7 +109,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6Q-Rs-v5B">
-                        <rect key="frame" x="44" y="84" width="64" height="18"/>
+                        <rect key="frame" x="36" y="84" width="64" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Cyo-te-Q6F"/>
                         </constraints>
@@ -122,7 +122,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1100 - 1330" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsX-9a-yId">
-                        <rect key="frame" x="44" y="42" width="130" height="18"/>
+                        <rect key="frame" x="36" y="42" width="130" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="DFS-hu-vGc"/>
                             <constraint firstAttribute="width" constant="130" id="r11-uG-cRS"/>
@@ -149,16 +149,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eq-jM-aCp">
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eq-jM-aCp">
                         <rect key="frame" x="375" y="10" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="3yG-5k-uCq"/>
                             <constraint firstAttribute="height" constant="20" id="euF-Yq-6lx"/>
                         </constraints>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <state key="normal" image="Edit_0002_1x"/>
+                        <state key="normal" image="Eye_0002_1x"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="EditButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dy5-fP-M0O"/>
+                            <action selector="DetailButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NYO-dN-vQb"/>
                         </connections>
                     </button>
                 </subviews>
@@ -184,6 +189,7 @@
                     <constraint firstItem="g6Q-Rs-v5B" firstAttribute="centerY" secondItem="hjD-er-zCw" secondAttribute="centerY" id="TU4-f3-Nff"/>
                     <constraint firstItem="axQ-w9-Skq" firstAttribute="centerY" secondItem="c5C-j2-F7m" secondAttribute="centerY" id="U9F-cc-q78"/>
                     <constraint firstItem="g6Q-Rs-v5B" firstAttribute="leading" secondItem="hsX-9a-yId" secondAttribute="leading" id="UjU-Q6-cPq"/>
+                    <constraint firstItem="hsX-9a-yId" firstAttribute="leading" secondItem="22K-N1-fhw" secondAttribute="trailing" constant="4" id="VKi-xx-vJO"/>
                     <constraint firstItem="ub1-RP-Mre" firstAttribute="centerX" secondItem="m5M-z6-Lxs" secondAttribute="centerX" id="Vx2-C9-I8D"/>
                     <constraint firstAttribute="trailing" secondItem="FKL-lv-g91" secondAttribute="trailing" constant="10" id="ZuK-CZ-5Dk"/>
                     <constraint firstItem="FKL-lv-g91" firstAttribute="leading" secondItem="fVo-ma-eaQ" secondAttribute="trailing" constant="8" id="aMa-Hc-1ga"/>
@@ -191,7 +197,6 @@
                     <constraint firstItem="m5M-z6-Lxs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dLB-sp-FRl"/>
                     <constraint firstItem="hsX-9a-yId" firstAttribute="top" secondItem="c5C-j2-F7m" secondAttribute="bottom" constant="8" id="eb8-eR-Hbt"/>
                     <constraint firstItem="fVo-ma-eaQ" firstAttribute="leading" secondItem="m5M-z6-Lxs" secondAttribute="trailing" constant="4" id="fII-fK-JX7"/>
-                    <constraint firstItem="hsX-9a-yId" firstAttribute="leading" secondItem="c5C-j2-F7m" secondAttribute="leading" id="mgt-18-uBX"/>
                     <constraint firstItem="fVo-ma-eaQ" firstAttribute="centerY" secondItem="m5M-z6-Lxs" secondAttribute="centerY" id="rKs-TU-7f1"/>
                     <constraint firstItem="hjD-er-zCw" firstAttribute="centerX" secondItem="K2C-bh-5ev" secondAttribute="centerX" id="rP7-P0-0GV"/>
                     <constraint firstAttribute="trailing" secondItem="HZd-ch-72O" secondAttribute="trailing" constant="58" id="uzE-rZ-2Vb"/>
@@ -225,7 +230,7 @@
     </objects>
     <resources>
         <image name="Clock_0002_1x" width="284" height="327"/>
-        <image name="Edit_0002_1x" width="327" height="327"/>
+        <image name="Eye_0002_1x" width="328" height="177"/>
         <image name="Marker-48" width="48" height="48"/>
         <image name="Phone-48" width="48" height="48"/>
         <image name="dollar_0002_1x" width="128" height="277"/>

@@ -29,10 +29,10 @@ public class ActivityTableViewCell: UITableViewCell {
     
     @IBOutlet weak var toggleExpandButton: UIButton!
     
-    @IBAction func EditButtonPressed(_ sender: Any) {
+    @IBAction func DetailButtonPressed(_ sender: Any) {
         if let delegate = self.delegate
         {
-            delegate.DidRequestEdit(self)
+            delegate.DidRequestDetail(self)
         }
     }
     
@@ -182,4 +182,5 @@ public protocol ActivityCellDelegate : class
     func DidToggleExpand(_ sender : ActivityTableViewCell)
     func DidOpenLink(_ link : String)
     func DidRequestEdit(_ sender :ActivityTableViewCell)
+    func DidRequestDetail(_ sender :ActivityTableViewCell)
 }

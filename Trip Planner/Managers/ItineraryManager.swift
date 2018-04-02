@@ -16,20 +16,20 @@ public class ItineraryManager
     public static var current : Itinerary? = nil
     
     init() {
-        let test = AddItinerary(name: "test", startDate: Date(), endDate: Date(timeIntervalSinceNow: TimeInterval(60*60*24*1)))
-        
-        let activity = Activity(name: "Surfing!!", type: .meal)
-        activity.contact = "+65 98887666"
-        activity.location = Location(name: "Kuta Beach",lat: 0, long: 0)
-        activity.link = "https://www.google.com"
-        activity.budget = "99.00"
-        activity.icon = "🏄🏻"
-        test.AddActivity(activity)
+//        let test = AddItinerary(name: "test", currency: nil, startDate: Date(), endDate: Date(timeIntervalSinceNow: TimeInterval(60*60*24*1)))
+//
+//        let activity = Activity(name: "Surfing!!", type: .meal)
+//        activity.contact = "+65 98887666"
+//        activity.location = Location(name: "Kuta Beach",lat: 0, long: 0)
+//        activity.link = "https://www.google.com"
+//        activity.budget = "99.00"
+//        activity.icon = "🏄🏻"
+//        test.AddActivity(activity)
     }
     
-    func AddItinerary(name : String, startDate : Date, endDate : Date) -> Itinerary
+    func AddItinerary(name : String,currency: [String]?, startDate : Date, endDate : Date) -> Itinerary
     {
-        let itinerary = Itinerary(name: name,startDate : startDate, endDate : endDate)
+        let itinerary = Itinerary(name: name,currency : currency,startDate : startDate, endDate : endDate)
         
         ItineraryManager.itineraries.insert(itinerary, at: 0)
         PersistenceManager.Save()

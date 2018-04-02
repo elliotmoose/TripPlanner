@@ -192,7 +192,6 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
 
     }
     
-    
     public func ReloadData()
     {
         selectedRows.removeAll()
@@ -229,11 +228,17 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
         self.delegate?.EditActivityRequest(self,dayIndex :dayNumber ,activityIndex: indexPath.row)
         
     }
+    
+    public func DidRequestDetail(_ sender: ActivityTableViewCell) {
+        let indexPath = tableView.indexPath(for: sender)!
+        self.delegate?.DetailActivityRequest(self,dayIndex :dayNumber ,activityIndex: indexPath.row)
+    }
 }
 
 public protocol DayCollectionViewCellDelegate : class
 {
     func AddActivityRequest(_ sender : DayCollectionViewCell, dayIndex : Int)
     func EditActivityRequest(_ sender : DayCollectionViewCell, dayIndex: Int, activityIndex : Int)
-    func DidOpenLink(_ link : String)
+    func DetailActivityRequest(_ sender : DayCollectionViewCell, dayIndex: Int, activityIndex : Int)
+    func DidOpenLink(_ link : String)    
 }

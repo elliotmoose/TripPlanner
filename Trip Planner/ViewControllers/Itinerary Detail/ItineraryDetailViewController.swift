@@ -208,7 +208,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     func EditActivityRequest(_ sender: DayCollectionViewCell, dayIndex: Int, activityIndex: Int) {
         
-        let indexPath = IndexPath(row: dayIndex, section: activityIndex)
+        let indexPath = IndexPath(row: activityIndex, section: dayIndex)
         
         if ItineraryManager.HasCurrent() && ItineraryManager.GetCurrent()!.HasIndexPath(indexPath)
         {
@@ -222,6 +222,21 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
             NSLog("No activity for requested day and activity index")
         }
 
+    }
+    
+    func DetailActivityRequest(_ sender: DayCollectionViewCell, dayIndex: Int, activityIndex: Int) {
+        let indexPath = IndexPath(row: activityIndex, section: dayIndex)
+        
+        if ItineraryManager.HasCurrent() && ItineraryManager.GetCurrent()!.HasIndexPath(indexPath)
+        {
+            ActivityDetailViewController.singleton.SelectDay(dayIndex)
+            ActivityDetailViewController.singleton.ScrollToActivity(activityIndex)
+            self.navigationController?.pushViewController(ActivityDetailViewController.singleton, animated: true)
+        }
+        else
+        {
+            NSLog("No activity for requested day and activity index")
+        }
     }
     
     func DidCreateActivity() {

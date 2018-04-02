@@ -19,7 +19,7 @@ public class PersistenceManager
     
     public static func Load()
     {
-        Clear()
+        //Clear()
         let defaults = UserDefaults.standard
         
         if let data = defaults.value(forKey: "Itineraries") as? NSDictionary

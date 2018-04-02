@@ -22,7 +22,7 @@ public class Day
     {
         activities.append(activity)
         activities.sort { (a, b) -> Bool in
-            return a.startDate > b.startDate
+            return a.startDate.timeIntervalSince1970 < b.startDate.timeIntervalSince1970
         }
     }
     

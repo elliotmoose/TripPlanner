@@ -11,7 +11,9 @@ import UIKit
 class CurrencyUIPicker: UIPickerView,UIPickerViewDelegate,UIPickerViewDataSource{
     
     var currencies = [Array<String>]()
-
+    weak var currencyPickerDelegate : CurrencyPickerDelegate?
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         Initialize()
@@ -52,11 +54,22 @@ class CurrencyUIPicker: UIPickerView,UIPickerViewDelegate,UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let view = UILabel(frame: CGRect.zero)
-        
-        view.text = currencies[row][0]
+        view.textAlignment = .center
+        //view.text = "\(currencies[row][0]) - \(currencies[row][1]) - \(currencies[row][2])"
+        view.text = currencies[row][3]
         
         return view
     }
     
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+        currencyPickerDelegate?.DidSelectCurrency(currencies[row])
+    }
+    
+}
+
+protocol CurrencyPickerDelegate : class
+{
+    func DidSelectCurrency(_ currency : [String])
 }

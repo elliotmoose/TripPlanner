@@ -11,13 +11,25 @@ import Foundation
 public class Itinerary
 {
     public var name = ""
+    public var currency : [String]
     public var startDate = Date();
     private var days = [Day]()
     
-    init(name : String,startDate : Date, endDate: Date) {
+    init(name : String,currency : [String]?,startDate : Date, endDate: Date) {
         self.name = name
-        self.startDate = startDate
+        
+        if let curr = currency
+        {
+            self.currency = curr
+        }
+        else
+        {
+            self.currency = ["United States","USD","$","United States: $ (USD)"]
+        }
 
+        
+        
+        self.startDate = startDate
         let calender = Calendar.current
         let start = calender.date(bySettingHour: 12, minute: 0, second: 0, of: startDate)!
         let end = calender.date(bySettingHour: 12, minute: 0, second: 0, of: endDate)!
@@ -92,7 +104,10 @@ public class Itinerary
         if dayIndex >= 0 && dayIndex < days.count
         {
             days[dayIndex].RemoveActivity(index: activityIndex)
+            PersistenceManager.Save()
         }
+        
+
     }
     
     public func RemoveDay(index : Int)
@@ -167,6 +182,14 @@ public class Itinerary
             self.name = name
         }
         
+        if let currency = dict["currency"] as? [String]
+        {
+            self.currency = currency
+        }
+        else
+        {
+            self.currency = ["United States","USD","$","United States: $ (USD)"]
+        }
         if let startDateInterval = dict["startDate"] as? TimeInterval
         {
             self.startDate = Date(timeIntervalSince1970: startDateInterval)
@@ -190,6 +213,7 @@ public class Itinerary
         let dict = NSMutableDictionary()
         
         dict["name"] = name
+        dict["currency"] = currency
         dict["start_date"] = startDate.timeIntervalSince1970
 
         let daysDict = NSMutableDictionary()

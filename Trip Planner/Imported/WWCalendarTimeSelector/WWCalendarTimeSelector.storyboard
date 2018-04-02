@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZx-N2-yKn">
-                                <rect key="frame" x="20" y="91" width="280" height="184"/>
+                                <rect key="frame" x="20" y="186" width="280" height="184"/>
                                 <subviews>
                                     <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmz-PS-Tfb">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
@@ -237,23 +238,23 @@
                                     <constraint firstItem="cmz-PS-Tfb" firstAttribute="leading" secondItem="yZx-N2-yKn" secondAttribute="leading" id="tl4-iW-GeI"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sty-sd-4rQ">
-                                <rect key="frame" x="64" y="61" width="247" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Currency" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sty-sd-4rQ" customClass="CantPasteTextField" customModule="Trip_Planner" customModuleProvider="target">
+                                <rect key="frame" x="64" y="156" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD NEW ITINERARY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC7-YC-gRs">
-                                <rect key="frame" x="64" y="32" width="247" height="21"/>
+                                <rect key="frame" x="64" y="72" width="247" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="eHj-C7-wGH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WyW-5f-hIf">
-                                <rect key="frame" x="40" y="281" width="280" height="344"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyW-5f-hIf">
+                                <rect key="frame" x="20" y="416" width="280" height="344"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5t-1q-LX1">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="306"/>
@@ -506,19 +507,40 @@
                                     <constraint firstItem="PHa-ht-de9" firstAttribute="leading" secondItem="WyW-5f-hIf" secondAttribute="leading" id="xQ0-9j-2Ud"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61l-ga-ifc">
+                                <rect key="frame" x="64" y="93" width="247" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURRENCY:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQb-2f-vQe">
+                                <rect key="frame" x="16" y="135" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="38x-dA-LI5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="61l-ga-ifc" firstAttribute="centerX" secondItem="zMM-Fk-JLe" secondAttribute="centerX" id="8W8-Dd-s9v"/>
                             <constraint firstItem="WyW-5f-hIf" firstAttribute="leading" secondItem="zMM-Fk-JLe" secondAttribute="leading" constant="20" id="C9D-y6-A1S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PQb-2f-vQe" secondAttribute="trailing" id="KNn-Jo-EkZ"/>
                             <constraint firstAttribute="trailing" secondItem="QC7-YC-gRs" secondAttribute="trailing" constant="64" id="OA8-xe-C3I"/>
                             <constraint firstItem="Sty-sd-4rQ" firstAttribute="leading" secondItem="zMM-Fk-JLe" secondAttribute="leading" constant="64" id="OVs-ah-WG4"/>
                             <constraint firstItem="yZx-N2-yKn" firstAttribute="leading" secondItem="zMM-Fk-JLe" secondAttribute="leading" constant="20" id="P1f-9g-7aZ"/>
-                            <constraint firstItem="Sty-sd-4rQ" firstAttribute="top" secondItem="QC7-YC-gRs" secondAttribute="bottom" constant="8" id="TzF-jO-oYa"/>
-                            <constraint firstItem="QC7-YC-gRs" firstAttribute="top" secondItem="zMM-Fk-JLe" secondAttribute="top" constant="32" id="ggI-yB-Mtv"/>
+                            <constraint firstItem="61l-ga-ifc" firstAttribute="width" secondItem="Sty-sd-4rQ" secondAttribute="width" id="SWZ-DO-D3Y"/>
+                            <constraint firstItem="PQb-2f-vQe" firstAttribute="top" secondItem="61l-ga-ifc" secondAttribute="bottom" constant="12" id="ZFo-4l-JdK"/>
+                            <constraint firstItem="61l-ga-ifc" firstAttribute="top" secondItem="QC7-YC-gRs" secondAttribute="bottom" id="dcv-nx-GWg"/>
+                            <constraint firstItem="QC7-YC-gRs" firstAttribute="top" secondItem="zMM-Fk-JLe" secondAttribute="top" constant="72" id="ggI-yB-Mtv"/>
                             <constraint firstItem="yZx-N2-yKn" firstAttribute="top" secondItem="Sty-sd-4rQ" secondAttribute="bottom" id="iU7-ts-td0"/>
                             <constraint firstAttribute="trailing" secondItem="Sty-sd-4rQ" secondAttribute="trailing" constant="64" id="ikR-cH-I7C"/>
                             <constraint firstItem="WyW-5f-hIf" firstAttribute="top" secondItem="Sty-sd-4rQ" secondAttribute="bottom" constant="230" id="jDC-o9-gTd"/>
                             <constraint firstItem="QC7-YC-gRs" firstAttribute="leading" secondItem="zMM-Fk-JLe" secondAttribute="leading" constant="64" id="pNd-Mh-fNA"/>
+                            <constraint firstItem="PQb-2f-vQe" firstAttribute="leading" secondItem="zMM-Fk-JLe" secondAttribute="leadingMargin" id="rV7-cO-aKc"/>
+                            <constraint firstItem="Sty-sd-4rQ" firstAttribute="top" secondItem="PQb-2f-vQe" secondAttribute="bottom" id="vCK-kg-lTZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -535,13 +557,14 @@
                         <outlet property="calendarTable" destination="Qdk-04-U5s" id="J2k-Q9-W78"/>
                         <outlet property="cancelButton" destination="uaO-9T-OmA" id="Nfa-Tv-E62"/>
                         <outlet property="clockView" destination="Sdw-Mc-C2Q" id="AnO-Bu-31q"/>
+                        <outlet property="currencyTextField" destination="Sty-sd-4rQ" id="cEN-xu-02C"/>
                         <outlet property="dateLabel" destination="Yrt-vu-FRn" id="J1Z-iR-uqs"/>
                         <outlet property="dayLabel" destination="cRz-DT-zDj" id="WBC-zT-MZf"/>
                         <outlet property="dayViewHeightConstraint" destination="VOY-qT-L2z" id="5oj-qs-ThL"/>
                         <outlet property="doneButton" destination="MbZ-dk-Lr7" id="YMv-Pf-w94"/>
                         <outlet property="monthLabel" destination="TE8-jR-vLh" id="Amd-mb-fPG"/>
                         <outlet property="monthsView" destination="sYP-fa-FFm" id="RT9-7z-TEQ"/>
-                        <outlet property="nameTextField" destination="Sty-sd-4rQ" id="2N4-Zy-f6b"/>
+                        <outlet property="nameTextField" destination="61l-ga-ifc" id="Spo-if-W6j"/>
                         <outlet property="rangeEndLabel" destination="bMc-b5-1mw" id="D2Z-mK-OUu"/>
                         <outlet property="rangeStartLabel" destination="6KR-IR-Y73" id="cH7-4P-MIl"/>
                         <outlet property="rangeToLabel" destination="4WB-OT-Xs4" id="rut-qP-WIL"/>
@@ -589,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euz-gs-gtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="147" y="362"/>
+            <point key="canvasLocation" x="146.40000000000001" y="361.16941529235385"/>
         </scene>
     </scenes>
 </document>
