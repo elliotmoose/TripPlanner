@@ -103,7 +103,7 @@ public class Activity
     
     public func SetNote(_ note : String)
     {
-        if note != "" && note != "tap to enter notes"
+        if note != "tap to enter notes"
         {
             self.notes = note
             
