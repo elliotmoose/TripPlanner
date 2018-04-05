@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SafariServices
 class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ActivityDetailCollectionViewCellDelegate,EditActivityViewControllerDelegate,EditNotesViewControllerDelegate{
 
     public static let singleton = ActivityDetailViewController(nibName: "ActivityDetailViewController", bundle: Bundle.main)
@@ -54,6 +54,8 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
     func SelectDay(_ index : Int)
     {
         selectedDayIndex = index
+        
+        self.title = "Day \(index+1)"
     }
     
     func ScrollToActivity(_ index : Int)
@@ -194,7 +196,67 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
         ReloadData()
     }
     
+
     
+    func DidOpenLink(_ sender: ActivityDetailCollectionViewCell) {
+        if let dayIndex = selectedDayIndex
+        {
+            let activityIndex = collectionView.indexPath(for: sender)!.row
+            if let activity = ItineraryManager.GetCurrent()?.GetDay(index: dayIndex)?.GetActivity(index: activityIndex)
+            {
+                let link = activity.link
+                if link != ""
+                {
+                    guard var url = NSURL(string: link) else {
+                        print("INVALID URL")
+                        return
+                    }
+                    
+                    /// Test for valid scheme & append "http" if needed
+                    if url.scheme == nil || !(["http", "https"].contains(url.scheme!.lowercased())) {
+                        let appendedLink = "http://" + link
+                        
+                        url = NSURL(string: appendedLink)!
+                    }
+                    
+                    let safariViewController = SFSafariViewController(url: url as URL)
+                    self.navigationController?.present(safariViewController, animated: true, completion: nil)
+                }
+            }
+
+        }
+    }
+    
+    func DidCallContact(_ sender: ActivityDetailCollectionViewCell) {
+        if let dayIndex = selectedDayIndex
+        {
+            let activityIndex = collectionView.indexPath(for: sender)!.row
+            if let activity = ItineraryManager.GetCurrent()?.GetDay(index: dayIndex)?.GetActivity(index: activityIndex)
+            {
+                let contact = activity.contact
+                if contact != ""
+                {
+                    
+                }
+            }
+            
+        }
+    }
+    
+    func DidOpenLocation(_ sender: ActivityDetailCollectionViewCell) {
+        if let dayIndex = selectedDayIndex
+        {
+            let activityIndex = collectionView.indexPath(for: sender)!.row
+            if let activity = ItineraryManager.GetCurrent()?.GetDay(index: dayIndex)?.GetActivity(index: activityIndex)
+            {
+                if let location = activity.location
+                {
+                    
+                }
+            }
+            
+        }
+    }
     
     
 }

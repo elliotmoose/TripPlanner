@@ -26,7 +26,8 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        notesTextView.layer.cornerRadius = 12
+        self.layer.cornerRadius = 12
+        //notesTextView.layer.cornerRadius = 12
         AddKeyboardToolBar()
     }
 
@@ -36,6 +37,18 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
     
     @IBAction func DeleteButtonPressd(_ sender: Any) {
         self.delegate?.DidPressDelete(self)
+    }
+    
+    @IBAction func LocationButtonPressed(_ sender: Any) {
+        self.delegate?.DidOpenLocation(self)
+    }
+    
+    @IBAction func LinkButtonPressed(_ sender: Any) {
+        self.delegate?.DidOpenLink(self)
+    }
+    
+    @IBAction func ContactButtonPressed(_ sender: Any) {
+        self.delegate?.DidCallContact(self)
     }
     
     public func DisplayActivity(_ activity : Activity)
@@ -51,9 +64,9 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
             locationTextView.text = "No address"
         }
         
-        locationTextView.sizeToFit()
-        textViewHeight.constant = locationTextView.frame.height
-        locationTextView.isScrollEnabled = false
+        //locationTextView.sizeToFit()
+        //textViewHeight.constant = locationTextView.frame.height
+        //locationTextView.isScrollEnabled = false
         
         timeLabel.text = activity.startDate.Get24hString() + " - " + activity.endDate.Get24hString()
         
@@ -131,5 +144,8 @@ public protocol ActivityDetailCollectionViewCellDelegate : class
     func DidPressDelete(_ sender : ActivityDetailCollectionViewCell)
     func DidPressEdit(_ sender : ActivityDetailCollectionViewCell)
     func DidRequestEditNotes(_ sender : ActivityDetailCollectionViewCell)
+    func DidOpenLink(_ sender : ActivityDetailCollectionViewCell)
+    func DidCallContact(_ sender : ActivityDetailCollectionViewCell)
+    func DidOpenLocation(_ sender : ActivityDetailCollectionViewCell)
 }
 

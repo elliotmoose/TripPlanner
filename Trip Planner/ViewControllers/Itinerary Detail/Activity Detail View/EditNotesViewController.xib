@@ -24,7 +24,7 @@
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hST-en-kvc">
                     <rect key="frame" x="32" y="76" width="311" height="535"/>
-                    <color key="backgroundColor" red="0.9702026691143375" green="0.97488064236111116" blue="0.67824953677309729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.96846109629999999" green="0.96831852200000001" blue="0.98891395329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>

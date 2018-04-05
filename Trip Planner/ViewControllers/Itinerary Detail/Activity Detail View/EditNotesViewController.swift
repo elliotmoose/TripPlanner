@@ -44,8 +44,10 @@ class EditNotesViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //show keyboard
-        
-        textView.becomeFirstResponder()
+        if textView.text == ""
+        {
+            textView.becomeFirstResponder()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
