@@ -99,12 +99,7 @@ class EditNotesViewController: UIViewController {
         textView.resignFirstResponder()
         
         let newNote = textView.text!
-        
-        if newNote == "" || newNote == "tap to enter notes"
-        {
-            return
-        }
-        
+    
         if let indexPath = self.selectedIndexPath
         {
             
