@@ -94,7 +94,7 @@ public class ActivityTableViewCell: UITableViewCell {
         
         if let location = activity.location
         {
-            locationLabel.text = location.address
+            locationLabel.text = location.addressPrimary
         }
         else
         {

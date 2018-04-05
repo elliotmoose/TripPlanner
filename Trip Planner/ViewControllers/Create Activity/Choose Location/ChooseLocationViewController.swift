@@ -184,7 +184,12 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
                     
                     //LOCATION INITIALIZATION======================================================================================================
                     var newLocation = Location(name: gmsSearchResult.attributedPrimaryText.string, lat: lat, long : long)
-                    newLocation.address = result.formattedAddress!
+                    
+                    if let formattedAdd = result.formattedAddress
+                    {
+                        newLocation.addressFormatted = formattedAdd
+                    }
+                    
                     newLocation.addressPrimary = gmsSearchResult.attributedPrimaryText.string
                     
                     if let secondaryAddress = gmsSearchResult.attributedSecondaryText?.string
@@ -278,7 +283,7 @@ public protocol ChooseLocationDelegate : class
 public struct Location
 {
     var name : String = ""
-    var address : String = ""
+    var addressFormatted : String = ""
     var addressPrimary : String = ""
     var addressSecondary : String = ""
     var lat : Double = 0
@@ -296,6 +301,10 @@ public struct Location
         {
             self.name = name
         }
+        if let addressFormatted = dict["addressFormatted"] as? String
+        {
+            self.addressFormatted = addressFormatted
+        }
         if let addressPrimary = dict["addressPrimary"] as? String
         {
             self.addressPrimary = addressPrimary
@@ -303,10 +312,6 @@ public struct Location
         if let addressSecondary = dict["addressSecondary"] as? String
         {
             self.addressSecondary = addressSecondary
-        }
-        if let address = dict["address"] as? String
-        {
-            self.address = address
         }
         if let lat = dict["lat"] as? Double
         {
@@ -323,9 +328,9 @@ public struct Location
     {
         let dict = NSMutableDictionary()
         dict["name"] = self.name
+        dict["addressFormatted"] = self.addressFormatted
         dict["addressPrimary"] = self.addressPrimary
         dict["addressSecondary"] = self.addressSecondary
-        dict["address"] = self.address
         dict["lat"] = self.lat
         dict["long"] = self.long
         

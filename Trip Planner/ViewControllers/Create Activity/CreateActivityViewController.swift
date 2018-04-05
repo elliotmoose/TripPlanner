@@ -216,6 +216,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         activity.name = nameTextField.text!
         activity.startDate = selectedStartDate!
         activity.endDate = selectedEndDate!
+        activity.link = websiteTextField.text!
         activity.budget = budgetTextField.text!
         activity.location = selectedLocation
         activity.icon = emojiTextField.text!

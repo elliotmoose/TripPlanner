@@ -18,7 +18,7 @@ public class PersistenceManager
     }
     
     public static func Load()
-    {
+    {        
         //Clear()
         let defaults = UserDefaults.standard
         

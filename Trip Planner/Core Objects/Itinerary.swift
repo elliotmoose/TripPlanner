@@ -79,22 +79,37 @@ public class Itinerary
     
     public func AddActivity(_ activity : Activity)
     {
+        var hasAdded = false
+        
         for day in days
         {
             if day.GetDate().GetDDMMYYString() == activity.startDate.GetDDMMYYString()
             {
+                hasAdded = true
                 day.AddActivity(activity)
                 PersistenceManager.Save()
                 
                 break
             }
-        }        
+        }
+        
+        if !hasAdded
+        {
+            NSLog("Could not find a day for activity with name \(activity.name)")
+        }
     }
     
     public func EditActivityAtIndexPath(indexPath : IndexPath, newActivity : Activity)
     {
-        RemoveActivityAtIndexPath(indexPath)
-        AddActivity(newActivity)
+        if HasIndexPath(indexPath)
+        {
+            RemoveActivityAtIndexPath(indexPath)
+            AddActivity(newActivity)
+        }
+        else
+        {
+            NSLog("Failed at editing activity at indexpath \(indexPath)")
+        }
     }
     
     public func RemoveActivityAtIndexPath(_ indexPath : IndexPath)

@@ -55,8 +55,6 @@ class ItineraryListViewController: UIViewController,UITableViewDataSource,UITabl
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         ItineraryManager.SetCurrent(index: indexPath.row)
         self.navigationController?.pushViewController(ItineraryDetailViewController.singleton, animated: true)
         
@@ -68,7 +66,9 @@ class ItineraryListViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         return [UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+            
             ItineraryManager.singleton.RemoveItineraryAtIndex(index: indexPath.row)
             
             DispatchQueue.main.async {

@@ -70,8 +70,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = ItineraryManager.GetCurrent()?.name
-        
+        self.title = ItineraryManager.GetCurrent()?.name        
         ReloadData()
     }
     
@@ -198,8 +197,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     //delegate functions
-    func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {
-        
+    func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {        
         CreateActivityViewController.singleton.UpdateDatePickerLimits(dayIndex : dayIndex)
         CreateActivityViewController.singleton.delegate = self
         CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
@@ -253,8 +251,23 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
 //        self.navigationController?.navigationBar.isTranslucent = false
 //        WebViewController.singleton.LoadPage(urlString: link)
 //        self.navigationController?.pushViewController(WebViewController.singleton, animated: true)
-        let svc = SFSafariViewController(url: URL(string: link)!)
-        self.present(svc, animated: true, completion: nil)
+//        let svc = SFSafariViewController(url: URL(string: link)!)
+//        self.present(svc, animated: true, completion: nil)
+            guard var url = NSURL(string: link) else {
+                print("INVALID URL")
+                return
+            }
+            
+            /// Test for valid scheme & append "http" if needed
+        if url.scheme == nil || !(["http", "https"].contains(url.scheme!.lowercased())) {
+                let appendedLink = "http://" + link
+                
+                url = NSURL(string: appendedLink)!
+            }
+            
+        let safariViewController = SFSafariViewController(url: url as URL)
+            //presentViewController(safariViewController, animated: true, completion: nil)
+        self.navigationController?.present(safariViewController, animated: true, completion: nil)
 
     }
 }

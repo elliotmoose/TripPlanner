@@ -33,12 +33,16 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        ResetScene()
+        //ResetScene()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ReloadData()
     }
     
     func ResetScene()
     {
-        self.selectedDayIndex = nil
+        //self.selectedDayIndex = nil
     }
     
     func ReloadData()
@@ -54,7 +58,11 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
     func ScrollToActivity(_ index : Int)
     {
         let indexPath = IndexPath(row: index, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+        
+        if collectionView.cellForItem(at: indexPath) != nil
+        {
+            collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -77,6 +85,15 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityDetailCollectionViewCell", for: indexPath) as! ActivityDetailCollectionViewCell
 
         cell.delegate = self
+        
+        if let activity = ItineraryManager.GetCurrent()?.GetDay(index: selectedDayIndex!)?.GetActivity(index: indexPath.row)
+        {
+            cell.DisplayActivity(activity)
+        }
+        else
+        {
+            NSLog("No activity for index path \(indexPath)")
+        }
         
         return cell
     }
@@ -144,6 +161,36 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
             {
                 NSLog("No activity for requested day and activity index")
             }
+        }
+        else
+        {
+            NSLog("No Day selected for activity detail view")
+        }
+    }
+    
+    func DidFinishEditingNotes(_ sender: ActivityDetailCollectionViewCell,newNote : String) {
+        if newNote == "" || newNote == "tap to enter notes"
+        {
+            return
+        }
+        
+        if let dayIndex = selectedDayIndex
+        {
+            let activityIndex = collectionView.indexPath(for: sender)!.row
+            let indexPath = IndexPath(row: activityIndex, section: dayIndex)
+            
+            if let itinerary = ItineraryManager.GetCurrent()
+            {
+                if let activity = itinerary.GetDay(index: indexPath.section)?.GetActivity(index: indexPath.row)
+                {
+                    activity.SetNote(newNote)
+                }
+            }
+            else
+            {
+                NSLog("No activity for requested day and activity index")
+            }
+
         }
         else
         {

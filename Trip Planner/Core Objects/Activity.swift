@@ -12,11 +12,13 @@ public class Activity
 {
     public var name = ""
     public var icon = ""
+    public var notes = ""
     public var type = ActivityType.others
     public var budget = ""
     public var link = ""
     public var contact = ""
     public var location : Location?
+    
     
     public var startDate = Date()
     public var endDate = Date()
@@ -39,6 +41,11 @@ public class Activity
         if let icon = dict["icon"] as? String
         {
             self.icon = icon
+        }
+        
+        if let notes = dict["notes"] as? String
+        {
+            self.notes = notes
         }
         
         if let budget = dict["budget"] as? String
@@ -94,12 +101,23 @@ public class Activity
         return 0
     }
     
+    public func SetNote(_ note : String)
+    {
+        if note != "" && note != "tap to enter notes"
+        {
+            self.notes = note
+            
+            PersistenceManager.Save()
+        }
+    }
+    
     public func Export() -> NSDictionary
     {
         let dict = NSMutableDictionary()
         
         dict["name"] = name
         dict["icon"] = icon
+        dict["notes"] = notes
         dict["budget"] = budget
         dict["link"] = link
         dict["contact"] = contact

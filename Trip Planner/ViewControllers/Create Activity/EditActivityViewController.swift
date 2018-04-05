@@ -34,7 +34,11 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     public weak var delegate : EditActivityViewControllerDelegate?
     var activeField : AnyObject?
+    
+    
     private var selectedIndexPath : IndexPath?
+    private var selectedStartDate : Date?
+    private var selectedEndDate : Date?
     private var selectedLocation : Location?
     private var txtFields = [UITextField]()
 
@@ -120,20 +124,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         deregisterFromKeyboardNotifications()
         ResetScene()
     }
-    
-    public func SetActivity(activity : Activity)
-    {        
-        nameTextField.text = activity.name
-        budgetTextField.text = activity.budget
-        contactTextField.text = activity.contact
-        websiteTextField.text = activity.link        
-        emojiTextField.text = activity.icon
-        startDateTextField.text = activity.startDate.Get24hString()
-        endDateTextField.text = activity.endDate.Get24hString()
-        
-        DidChooseLocation(location: activity.location)
-    }
-    
+
     public func UpdateDatePickerLimits()
     {
         //Get date for this day
@@ -169,6 +160,22 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
+    public func SetActivity(activity : Activity)
+    {
+        nameTextField.text = activity.name
+        budgetTextField.text = activity.budget
+        contactTextField.text = activity.contact
+        websiteTextField.text = activity.link
+        emojiTextField.text = activity.icon
+        selectedStartDate = activity.startDate
+        selectedEndDate = activity.endDate
+        startDateTextField.text = activity.startDate.Get24hString()
+        endDateTextField.text = activity.endDate.Get24hString()
+        
+        DidChooseLocation(location: activity.location)
+    }
+    
     
     @objc private func SetDate(_ sender : UIDatePicker)
     {
@@ -206,6 +213,9 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     {
         chooseLocationButton.setTitle("Choose Location", for: .normal)
         selectedLocation = nil
+        selectedStartDate = nil
+        selectedEndDate = nil
+        selectedIndexPath = nil
         
         nameTextField.text = ""
         budgetTextField.text = ""
@@ -215,7 +225,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         endDateTextField.text = ""
         
         emojiIndex = 0
-        selectedIndexPath = nil
+
         UpdateEmoji()
     }
     
@@ -225,26 +235,38 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     @IBAction func EditButtonPressed(_ sender: Any) {
         
-        if nameTextField.text != ""
-        {
-            let activity = Activity()
-            activity.name = nameTextField.text!
-            activity.budget = budgetTextField.text!
-            activity.location = selectedLocation
-            activity.icon = emojiTextField.text!
-            //ItineraryManager.GetCurrent()?.AddActivity(activity)
-            
-            if let indexPath = selectedIndexPath
-            {
-                ItineraryManager.GetCurrent()?.EditActivityAtIndexPath(indexPath : indexPath, newActivity: activity)
-            }
-            self.delegate?.DidFinishEditActivity()
-            self.dismiss(animated: true, completion: nil)
-        }
-        else
+        
+        
+        if nameTextField.text == ""
         {
             PopupManager.singleton.Popup(title: "Oops!", body: "Your activity has no name", presentationViewCont: self)
+            return
         }
+        
+        if selectedStartDate == nil || selectedEndDate == nil
+        {
+            PopupManager.singleton.Popup(title: "Oops!", body: "Please choose the activity timing", presentationViewCont: self)
+            return
+        }
+        
+        
+        let activity = Activity()
+        activity.name = nameTextField.text!
+        activity.startDate = selectedStartDate!
+        activity.endDate = selectedEndDate!
+        activity.location = selectedLocation
+        activity.link = websiteTextField.text!
+        activity.budget = budgetTextField.text!
+        activity.icon = emojiTextField.text!
+        
+        if let indexPath = selectedIndexPath
+        {
+            ItineraryManager.GetCurrent()?.EditActivityAtIndexPath(indexPath : indexPath, newActivity: activity)
+        }
+        
+                
+        self.delegate?.DidFinishEditActivity()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
