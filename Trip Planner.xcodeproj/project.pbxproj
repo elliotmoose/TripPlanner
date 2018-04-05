@@ -10,6 +10,8 @@
 		A4075ED820629B90008A7E6D /* ChooseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4075ED620629B90008A7E6D /* ChooseLocationViewController.swift */; };
 		A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */; };
 		A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4075EDC2062A8F1008A7E6D /* MainManager.swift */; };
+		A46B25FA2075FC6A00E2749D /* EditNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */; };
+		A46B25FB2075FC6A00E2749D /* EditNotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */; };
 		A49B7BEC205FBFF300C9BF35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */; };
 		A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BED205FBFF300C9BF35 /* ViewController.swift */; };
 		A49B7BF1205FBFF300C9BF35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49B7BEF205FBFF300C9BF35 /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		A4075ED620629B90008A7E6D /* ChooseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLocationViewController.swift; sourceTree = "<group>"; };
 		A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseLocationViewController.xib; sourceTree = "<group>"; };
 		A4075EDC2062A8F1008A7E6D /* MainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
+		A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotesViewController.swift; sourceTree = "<group>"; };
+		A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNotesViewController.xib; sourceTree = "<group>"; };
 		A49B7BE8205FBFF300C9BF35 /* Trip Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49B7BED205FBFF300C9BF35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				A4EE34C6207119850023B22D /* ActivityDetailViewController.xib */,
 				A4EE34E720727D250023B22D /* ActivityDetailCollectionViewCell.swift */,
 				A4EE34E820727D250023B22D /* ActivityDetailCollectionViewCell.xib */,
+				A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */,
+				A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */,
 			);
 			path = "Activity Detail View";
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 				A49B7C0E205FD04D00C9BF35 /* ItineraryDetailViewController.xib in Resources */,
 				A4F844392060F8DA0061D369 /* NewDayCollectionViewCell.xib in Resources */,
 				A49B7BF3205FBFF300C9BF35 /* Assets.xcassets in Resources */,
+				A46B25FB2075FC6A00E2749D /* EditNotesViewController.xib in Resources */,
 				A4EE34C8207119850023B22D /* ActivityDetailViewController.xib in Resources */,
 				A4EE34D0207235350023B22D /* CurrencyList.plist in Resources */,
 				A4F8443F206187750061D369 /* NewActivityTableViewCell.xib in Resources */,
@@ -472,6 +479,7 @@
 				A49B7C09205FC45100C9BF35 /* ItineraryListViewController.swift in Sources */,
 				A49B7C222060CEA700C9BF35 /* CreateActivityViewController.swift in Sources */,
 				A4F84441206254750061D369 /* ExtensionsAndStructs.swift in Sources */,
+				A46B25FA2075FC6A00E2749D /* EditNotesViewController.swift in Sources */,
 				A4EE34E2207238960023B22D /* String+Timepiece.swift in Sources */,
 				A4EE34E920727D250023B22D /* ActivityDetailCollectionViewCell.swift in Sources */,
 				A4EE34DF207238960023B22D /* NSCalendar+Timepiece.swift in Sources */,

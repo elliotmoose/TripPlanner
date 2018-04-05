@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ActivityDetailCollectionViewCellDelegate,EditActivityViewControllerDelegate {
+class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ActivityDetailCollectionViewCellDelegate,EditActivityViewControllerDelegate,EditNotesViewControllerDelegate{
 
     public static let singleton = ActivityDetailViewController(nibName: "ActivityDetailViewController", bundle: Bundle.main)
     
@@ -24,6 +24,7 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ActivityDetailCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ActivityDetailCollectionViewCell")
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -168,33 +169,24 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
         }
     }
     
-    func DidFinishEditingNotes(_ sender: ActivityDetailCollectionViewCell,newNote : String) {
-        if newNote == "" || newNote == "tap to enter notes"
-        {
-            return
-        }
+    func DidFinishEditNotes() {
+        ReloadData()                
+    }
+    
+    func DidRequestEditNotes(_ sender: ActivityDetailCollectionViewCell) {
         
         if let dayIndex = selectedDayIndex
         {
             let activityIndex = collectionView.indexPath(for: sender)!.row
-            let indexPath = IndexPath(row: activityIndex, section: dayIndex)
-            
-            if let itinerary = ItineraryManager.GetCurrent()
-            {
-                if let activity = itinerary.GetDay(index: indexPath.section)?.GetActivity(index: indexPath.row)
-                {
-                    activity.SetNote(newNote)
-                }
-            }
-            else
-            {
-                NSLog("No activity for requested day and activity index")
-            }
+            let indexPath = IndexPath(row: activityIndex, section: dayIndex)            
 
-        }
-        else
-        {
-            NSLog("No Day selected for activity detail view")
+
+            EditNotesViewController.singleton.delegate = self
+            EditNotesViewController.singleton.SetIndexPath(indexPath)
+            self.view.window?.rootViewController?.present(EditNotesViewController.singleton, animated: true, completion: nil)
+            
+            
+            //self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

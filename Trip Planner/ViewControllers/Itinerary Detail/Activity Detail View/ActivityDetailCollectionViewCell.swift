@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ActivityDetailCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
+public class ActivityDetailCollectionViewCell: UICollectionViewCell {
 
     public weak var delegate : ActivityDetailCollectionViewCellDelegate?
     
@@ -26,7 +26,8 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell,UITextViewDe
         super.awakeFromNib()
         // Initialization code
         
-        notesTextView.delegate = self
+        notesTextView.layer.cornerRadius = 12
+        AddKeyboardToolBar()
     }
 
     @IBAction func EditButtonPressed(_ sender: Any) {
@@ -55,6 +56,15 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell,UITextViewDe
         locationTextView.isScrollEnabled = false
         
         timeLabel.text = activity.startDate.Get24hString() + " - " + activity.endDate.Get24hString()
+        
+        if activity.notes == ""
+        {
+            notesTextView.text = "tap to enter notes"
+        }
+        else
+        {
+            notesTextView.text = activity.notes
+        }
         
         if activity.link == ""
         {
@@ -93,22 +103,24 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell,UITextViewDe
         }
     }
 
-    public func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "tap to enter notes"
-        {
-            textView.text = ""
-        }
+    @IBAction func EditNotesButtonPressed(_ sender: Any) {
+        self.delegate?.DidRequestEditNotes(self)
     }
     
-    public func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == ""
-        {
-            textView.text = "tap to enter notes"
-        }
-        else
-        {
-            
-        }
+    
+    func AddKeyboardToolBar()
+    {
+        let finishedToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: 30))
+        finishedToolBar.barStyle = UIBarStyle.default
+        finishedToolBar.items = [
+            UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TextViewDone))]
+        finishedToolBar.sizeToFit()
+        notesTextView.inputAccessoryView = finishedToolBar
+    }
+    
+    @objc func TextViewDone()
+    {
+        notesTextView.resignFirstResponder()
     }
 }
 
@@ -118,6 +130,6 @@ public protocol ActivityDetailCollectionViewCellDelegate : class
 {
     func DidPressDelete(_ sender : ActivityDetailCollectionViewCell)
     func DidPressEdit(_ sender : ActivityDetailCollectionViewCell)
-    func DidFinishEditingNotes(_ sender : ActivityDetailCollectionViewCell, newNote : String)
+    func DidRequestEditNotes(_ sender : ActivityDetailCollectionViewCell)
 }
 
