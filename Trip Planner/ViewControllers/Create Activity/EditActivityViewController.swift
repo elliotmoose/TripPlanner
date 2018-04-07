@@ -37,6 +37,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     
     private var selectedIndexPath : IndexPath?
+    private var selectedActivityNotes : String?
     private var selectedStartDate : Date?
     private var selectedEndDate : Date?
     private var selectedLocation : Location?
@@ -172,6 +173,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         selectedEndDate = activity.endDate
         startDateTextField.text = activity.startDate.Get24hString()
         endDateTextField.text = activity.endDate.Get24hString()
+        selectedActivityNotes = activity.notes
         
         DidChooseLocation(location: activity.location)
     }
@@ -182,17 +184,16 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         if startDateTextField.isFirstResponder
         {
             startDateTextField.text = sender.date.Get24hString()
-            
-            //end date cannot be earlier than start
-            let startDatePicker = startDateTextField.inputView as! UIDatePicker
-            let endDatePicker = endDateTextField.inputView as! UIDatePicker
-            endDatePicker.minimumDate = startDatePicker.date
+            selectedStartDate = sender.date
         }
+        
         if endDateTextField.isFirstResponder
         {
+            selectedEndDate = sender.date
             endDateTextField.text = sender.date.Get24hString()
         }
     }
+    
     
     //@CHOOSE LOCATION DELEGATE FUNCTION
     func DidChooseLocation(location: Location?) {
@@ -216,6 +217,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         selectedStartDate = nil
         selectedEndDate = nil
         selectedIndexPath = nil
+        selectedActivityNotes = nil
         
         nameTextField.text = ""
         budgetTextField.text = ""
@@ -223,6 +225,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         websiteTextField.text = ""
         startDateTextField.text = ""
         endDateTextField.text = ""
+        
         
         emojiIndex = 0
 
@@ -258,6 +261,11 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         activity.link = websiteTextField.text!
         activity.budget = budgetTextField.text!
         activity.icon = emojiTextField.text!
+        
+        if let notes = selectedActivityNotes
+        {
+            activity.notes = notes
+        }
         
         if let indexPath = selectedIndexPath
         {

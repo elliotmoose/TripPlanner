@@ -151,7 +151,7 @@
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="tap to enter notes" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fhB-ym-o6a">
                         <rect key="frame" x="0.0" y="373" width="381" height="189"/>
-                        <color key="backgroundColor" red="0.97864018480500359" green="0.97848581130092482" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.82259507287239153" green="0.82246531437094328" blue="0.84054904513888884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="textColor" red="0.24018513806409342" green="0.23997206963563117" blue="0.2465248637729221" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -208,7 +208,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" red="0.83518424998719654" green="0.83444335736971198" blue="0.85722907384236657" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="yyC-Cp-FfA" firstAttribute="leading" secondItem="s2Z-ur-jaN" secondAttribute="trailing" constant="8" id="21n-9I-nAi"/>
                 <constraint firstAttribute="trailing" secondItem="Yst-4v-Pn5" secondAttribute="trailing" constant="20" id="3PG-zZ-5aY"/>

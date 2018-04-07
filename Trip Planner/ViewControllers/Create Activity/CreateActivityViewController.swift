@@ -147,9 +147,6 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         {
             startDateTextField.text = sender.date.Get24hString()
             selectedStartDate = sender.date
-//            let startDatePicker = startDateTextField.inputView as! UIDatePicker
-//            let endDatePicker = endDateTextField.inputView as! UIDatePicker
-//            endDatePicker.minimumDate = startDatePicker.date
         }
         
         if endDateTextField.isFirstResponder
@@ -157,8 +154,6 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
             selectedEndDate = sender.date
             endDateTextField.text = sender.date.Get24hString()
         }
-
-        
     }
     
     //@CHOOSE LOCATION DELEGATE FUNCTION
