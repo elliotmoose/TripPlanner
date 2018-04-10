@@ -26,6 +26,7 @@
                 <outlet property="nameTextField" destination="gWL-VO-ut6" id="XeE-Lx-orS"/>
                 <outlet property="scrollView" destination="B7h-RG-0bY" id="Jlq-7I-WAr"/>
                 <outlet property="startDateTextField" destination="z7V-OJ-wls" id="m09-iQ-eO1"/>
+                <outlet property="travelTimeTextField" destination="FaE-wt-dtE" id="7YY-GK-mRX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websiteTextField" destination="7bD-Gw-Uqf" id="o25-89-BcS"/>
             </connections>

@@ -134,3 +134,26 @@ extension UIViewController
     
 }
 
+extension TimeInterval
+{
+    func GetPresentable() -> String
+    {
+        let hours = floor(self/3600)
+        
+        var mins : Double = 0
+        if hours != 0
+        {
+            mins = (self.truncatingRemainder(dividingBy: (hours*3600)))/60
+        }
+        else
+        {
+            mins = self/60
+        }
+        
+        
+        let hoursString = "\(Int(hours))"
+        let minsString = "\(Int(mins))"
+        
+        return "\(hoursString)h \(minsString)m"
+    }
+}

@@ -206,23 +206,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         
         selectedTravelTime = duration
         
-        let hours = floor(duration/3600)
-        
-        var mins : Double = 0
-        if hours != 0
-        {
-            mins = (duration.truncatingRemainder(dividingBy: (hours*3600)))/60
-        }
-        else
-        {
-            mins = duration/60
-        }
-        
-        
-        let hoursString = "\(Int(hours))"
-        let minsString = "\(Int(mins))"
-        
-        travelTimeTextField.text = "\(hoursString)h \(minsString)m"
+        travelTimeTextField.text = duration.GetPresentable()
         
         //adjust start date
         if selectedEndDate == nil && previousEndDate != nil

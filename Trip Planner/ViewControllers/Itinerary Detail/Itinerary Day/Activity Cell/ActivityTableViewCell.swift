@@ -22,6 +22,8 @@ public class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var budgetImageView: UIImageView!
     @IBOutlet weak var emojiLabel: UILabel!
+    @IBOutlet weak var travelDurationLabel: UILabel!
+    @IBOutlet weak var travelDurationImageView: UIImageView!
     
     
     public weak var delegate : ActivityCellDelegate?
@@ -71,6 +73,9 @@ public class ActivityTableViewCell: UITableViewCell {
         budgetImageView.tintColor = tintColor
         contactImageView.image = contactImageView.image?.withRenderingMode(.alwaysTemplate)
         contactImageView.tintColor = tintColor
+        travelDurationImageView.image = travelDurationImageView.image?.withRenderingMode(.alwaysTemplate)
+        travelDurationImageView.tintColor = tintColor
+        
         
         
         SetLabelsAlpha(0)
@@ -172,6 +177,8 @@ public class ActivityTableViewCell: UITableViewCell {
         self.contactImageView.alpha = alpha
         self.linkButton.alpha = alpha
         self.linkImageView.alpha = alpha
+        self.travelDurationLabel.alpha = alpha
+        self.travelDurationImageView.alpha = alpha
     }
     
     

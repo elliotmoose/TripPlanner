@@ -8,11 +8,12 @@
 
 import UIKit
 
-class EditActivityViewController: UIViewController,ChooseLocationDelegate,UITextFieldDelegate {
+class EditActivityViewController: UIViewController,ChooseLocationDelegate,UITextFieldDelegate,TimeDurationPickerDelegate {
 
     
     public static let singleton = EditActivityViewController(nibName: "EditActivityViewController", bundle: Bundle.main)
     
+    @IBOutlet weak var travelTimeTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var startDateTextField: UITextField!
@@ -32,12 +33,18 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    
+    
     public weak var delegate : EditActivityViewControllerDelegate?
     var activeField : AnyObject?
     
+
     
     private var selectedIndexPath : IndexPath?
     private var selectedActivityNotes : String?
+    
+    private var selectedTravelTime : TimeInterval = 0
+    private var previousEndDate : Date?
     private var selectedStartDate : Date?
     private var selectedEndDate : Date?
     private var selectedLocation : Location?
@@ -49,6 +56,11 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         
         containingView.clipsToBounds = true
         containingView.layer.cornerRadius = 12
+        
+        //travel time input view
+        let travelTimeDatePicker = TimeDurationPicker()
+        travelTimeDatePicker.durationPickerDelegate = self
+        travelTimeTextField.inputView = travelTimeDatePicker
         
         
         let startDatePicker = UIDatePicker()
@@ -72,6 +84,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         locationImageView.image = locationImageView.image?.withRenderingMode(.alwaysTemplate)
         locationImageView.tintColor = tintColor
         
+        txtFields.append(travelTimeTextField)
         txtFields.append(nameTextField)
         txtFields.append(startDateTextField)
         txtFields.append(endDateTextField)
@@ -80,7 +93,9 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         txtFields.append(contactTextField)
         txtFields.append(emojiTextField)
         
-        
+        travelTimeTextField.layer.cornerRadius = 5
+        travelTimeTextField.layer.borderWidth = 1
+        travelTimeTextField.layer.borderColor = UIColor.gray.cgColor
         nameTextField.layer.cornerRadius = 5
         nameTextField.layer.borderWidth = 1
         nameTextField.layer.borderColor = UIColor.gray.cgColor
@@ -126,6 +141,32 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         ResetScene()
     }
 
+    func ResetScene()
+    {
+        chooseLocationButton.setTitle("Choose Location", for: .normal)
+        selectedLocation = nil
+        selectedStartDate = nil
+        selectedEndDate = nil
+        previousEndDate = nil
+        selectedTravelTime = 0
+        
+        selectedIndexPath = nil
+        selectedActivityNotes = nil
+        
+        travelTimeTextField.text = ""
+        nameTextField.text = ""
+        budgetTextField.text = ""
+        contactTextField.text = ""
+        websiteTextField.text = ""
+        startDateTextField.text = ""
+        endDateTextField.text = ""
+        
+        
+        emojiIndex = 0
+        
+        UpdateEmoji()
+    }
+    
     public func UpdateDatePickerLimits()
     {
         //Get date for this day
@@ -164,6 +205,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     public func SetActivity(activity : Activity)
     {
+        travelTimeTextField.text = activity.travelTime.GetPresentable()
         nameTextField.text = activity.name
         budgetTextField.text = activity.budget
         contactTextField.text = activity.contact
@@ -179,18 +221,72 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     }
     
     
+    
+    //textfield change function
     @objc private func SetDate(_ sender : UIDatePicker)
     {
         if startDateTextField.isFirstResponder
         {
-            startDateTextField.text = sender.date.Get24hString()
             selectedStartDate = sender.date
         }
         
         if endDateTextField.isFirstResponder
         {
             selectedEndDate = sender.date
-            endDateTextField.text = sender.date.Get24hString()
+        }
+        
+        UpdateDateTextField()
+    }
+    
+    //travel duration
+    func DidSelectDuration(_ duration: TimeInterval) {
+        
+        selectedTravelTime = duration
+        
+        let hours = floor(duration/3600)
+        
+        var mins : Double = 0
+        if hours != 0
+        {
+            mins = (duration.truncatingRemainder(dividingBy: (hours*3600)))/60
+        }
+        else
+        {
+            mins = duration/60
+        }
+        
+        
+        let hoursString = "\(Int(hours))"
+        let minsString = "\(Int(mins))"
+        
+        travelTimeTextField.text = "\(hoursString)h \(minsString)m"
+        
+        //adjust start date
+        if selectedEndDate == nil && previousEndDate != nil
+        {
+            selectedStartDate = Date(timeInterval: (duration), since: previousEndDate!)
+            UpdateDateTextField()
+        }
+    }
+    
+    private func UpdateDateTextField()
+    {
+        if let start = selectedStartDate
+        {
+            startDateTextField.text = start.Get24hString()
+        }
+        else
+        {
+            startDateTextField.text = ""
+        }
+        
+        if let end = selectedEndDate
+        {
+            endDateTextField.text = end.Get24hString()
+        }
+        else
+        {
+            endDateTextField.text = ""
         }
     }
     
@@ -216,27 +312,8 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         }
     }
     
-    func ResetScene()
-    {
-        chooseLocationButton.setTitle("Choose Location", for: .normal)
-        selectedLocation = nil
-        selectedStartDate = nil
-        selectedEndDate = nil
-        selectedIndexPath = nil
-        selectedActivityNotes = nil
-        
-        nameTextField.text = ""
-        budgetTextField.text = ""
-        contactTextField.text = ""
-        websiteTextField.text = ""
-        startDateTextField.text = ""
-        endDateTextField.text = ""
-        
-        
-        emojiIndex = 0
 
-        UpdateEmoji()
-    }
+    
     
     @IBAction func BackButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -261,6 +338,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         
         let activity = Activity()
         activity.name = nameTextField.text!
+        activity.travelTime = selectedTravelTime
         activity.startDate = selectedStartDate!
         activity.endDate = selectedEndDate!
         activity.location = selectedLocation
@@ -321,6 +399,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     //push up scroll
     func SetTextViewDelegates()
     {
+        travelTimeTextField.delegate = self
         nameTextField.delegate = self
         websiteTextField.delegate = self
         contactTextField.delegate = self
@@ -434,20 +513,18 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     func AddKeyboardToolBar()
     {
-        let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: 30))
-        numberToolbar.barStyle = UIBarStyle.default
-        numberToolbar.items = [
+        let textFieldToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: Sizing.ScreenWidth(), height: 30))
+        textFieldToolBar.barStyle = UIBarStyle.default
+        textFieldToolBar.items = [
             UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelNumberPad)),
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil),
             UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(doneWithNumberPad))]
-        numberToolbar.sizeToFit()
-        nameTextField.inputAccessoryView = numberToolbar
-        websiteTextField.inputAccessoryView = numberToolbar
-        contactTextField.inputAccessoryView = numberToolbar
-        budgetTextField.inputAccessoryView = numberToolbar
-        startDateTextField.inputAccessoryView = numberToolbar
-        endDateTextField.inputAccessoryView = numberToolbar
-        emojiTextField.inputAccessoryView = numberToolbar
+        textFieldToolBar.sizeToFit()
+        
+        for txtField in txtFields
+        {
+            txtField.inputAccessoryView = textFieldToolBar
+        }
     }
     
     @objc func cancelNumberPad()
@@ -481,7 +558,11 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     func FirstResponder() -> AnyObject
     {
-        if nameTextField.isFirstResponder
+        if travelTimeTextField.isFirstResponder
+        {
+            return travelTimeTextField
+        }
+        else if nameTextField.isFirstResponder
         {
             return nameTextField
         }

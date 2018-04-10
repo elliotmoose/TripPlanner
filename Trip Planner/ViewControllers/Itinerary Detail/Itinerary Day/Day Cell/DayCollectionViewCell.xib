@@ -36,7 +36,7 @@
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ydr-BQ-AHl">
-                        <rect key="frame" x="18" y="63" width="313" height="450"/>
+                        <rect key="frame" x="0.0" y="63" width="349" height="450"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0z-kU-N8W">
@@ -57,12 +57,12 @@
                 <constraint firstItem="ydr-BQ-AHl" firstAttribute="top" secondItem="5cb-nE-WTk" secondAttribute="bottom" constant="2" id="4Ee-kL-Sc5"/>
                 <constraint firstAttribute="bottom" secondItem="ydr-BQ-AHl" secondAttribute="bottom" constant="18" id="Bmp-W4-ErZ"/>
                 <constraint firstItem="o0z-kU-N8W" firstAttribute="bottom" secondItem="SBE-pN-4cf" secondAttribute="bottom" constant="8" id="HgF-HF-dGL"/>
-                <constraint firstAttribute="trailing" secondItem="ydr-BQ-AHl" secondAttribute="trailing" constant="18" id="JnN-cH-I23"/>
+                <constraint firstAttribute="trailing" secondItem="ydr-BQ-AHl" secondAttribute="trailing" id="JnN-cH-I23"/>
                 <constraint firstItem="5cb-nE-WTk" firstAttribute="top" secondItem="SBE-pN-4cf" secondAttribute="bottom" constant="6" id="PyD-Fq-W0f"/>
                 <constraint firstItem="5cb-nE-WTk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="QaM-bk-yyu"/>
                 <constraint firstItem="SBE-pN-4cf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="32" id="Yv9-lB-Qsz"/>
                 <constraint firstItem="SBE-pN-4cf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="nXl-QB-uaw"/>
-                <constraint firstItem="ydr-BQ-AHl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="pef-Gy-2eT"/>
+                <constraint firstItem="ydr-BQ-AHl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pef-Gy-2eT"/>
                 <constraint firstAttribute="trailing" secondItem="o0z-kU-N8W" secondAttribute="trailing" constant="24" id="q8l-1I-49u"/>
                 <constraint firstAttribute="trailing" secondItem="SBE-pN-4cf" secondAttribute="trailing" constant="24" id="vm9-O3-XxO"/>
             </constraints>
