@@ -18,8 +18,8 @@ public class Activity
     public var link = ""
     public var contact = ""
     public var location : Location?
-    
-    
+
+    public var travelTime : TimeInterval = 0
     public var startDate = Date()
     public var endDate = Date()
     
@@ -61,6 +61,11 @@ public class Activity
         if let contact = dict["contact"] as? String
         {
             self.contact = contact
+        }
+        
+        if let travelTime = dict["travelTime"] as? TimeInterval
+        {
+            self.travelTime = travelTime
         }
         
         if let startDateInterval = dict["startDate"] as? TimeInterval
@@ -121,6 +126,7 @@ public class Activity
         dict["budget"] = budget
         dict["link"] = link
         dict["contact"] = contact
+        dict["travelTime"] = travelTime
         dict["startDate"] = startDate.timeIntervalSince1970
         dict["endDate"] = endDate.timeIntervalSince1970
         

@@ -105,10 +105,14 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
                 if indexPath.row == count //IF IS ADD ROW CELL
                 {
                     //REQUEST ADD ACTIVITY
-                    if let delegate = self.delegate
-                    {
-                        delegate.AddActivityRequest(self,dayIndex: dayNumber)
-                    }
+                    delegate?.AddActivityRequest(self,dayIndex: dayNumber)
+                    
+                }
+                else
+                {
+                    //REQUEST ADD ACTIVITY
+                    let activityIndexPath = IndexPath(row: indexPath.row, section: dayNumber)
+                    delegate?.AddActivityAtIndexPathRequest(self, indexPath: activityIndexPath)
                 }
             }
         }
@@ -238,6 +242,7 @@ public class DayCollectionViewCell: UICollectionViewCell,UITableViewDelegate,UIT
 public protocol DayCollectionViewCellDelegate : class
 {
     func AddActivityRequest(_ sender : DayCollectionViewCell, dayIndex : Int)
+    func AddActivityAtIndexPathRequest(_ sender : DayCollectionViewCell, indexPath : IndexPath)
     func EditActivityRequest(_ sender : DayCollectionViewCell, dayIndex: Int, activityIndex : Int)
     func DetailActivityRequest(_ sender : DayCollectionViewCell, dayIndex: Int, activityIndex : Int)
     func DidOpenLink(_ link : String)    

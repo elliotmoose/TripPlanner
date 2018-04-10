@@ -190,8 +190,16 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
                 budgetForDay = dayBudget
             }
  
-            budgetDayLabel.text = String(format: "$%.2f", budgetForDay)
-            budgetTotalLabel.text = String(format: "$%.2f", itinerary.GetBudget())
+            let budgetForItinerary = itinerary.GetBudget()
+            
+//            var dayPerc = budgetForDay/budgetForItinerary * 100
+//            if budgetForItinerary == 0
+//            {
+//                dayPerc = 0
+//            }
+            
+            budgetDayLabel.text = itinerary.currency[1] + String(format: "%.2f", budgetForDay) + "  (" + itinerary.currency[2] + ")"
+            budgetTotalLabel.text = itinerary.currency[1] + String(format: "%.2f", budgetForItinerary) + "  (" + itinerary.currency[2] + ")"
         }
         
     }
@@ -199,6 +207,20 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     //delegate functions
     func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {        
         CreateActivityViewController.singleton.UpdateDatePickerLimits(dayIndex : dayIndex)
+        CreateActivityViewController.singleton.delegate = self
+        CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
+        self.present(CreateActivityViewController.singleton, animated: true, completion: {})
+    }
+    
+    func AddActivityAtIndexPathRequest(_ sender : DayCollectionViewCell, indexPath : IndexPath)
+    {
+        CreateActivityViewController.singleton.UpdateDatePickerLimits(dayIndex : indexPath.section)
+                
+        if let activity = ItineraryManager.GetCurrent()?.GetActivity(indexPath: indexPath)
+        {
+            CreateActivityViewController.singleton.SetPreviousEndTime(date : activity.startDate)
+        }
+        
         CreateActivityViewController.singleton.delegate = self
         CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
         self.present(CreateActivityViewController.singleton, animated: true, completion: {})

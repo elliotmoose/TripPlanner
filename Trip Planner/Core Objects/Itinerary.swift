@@ -149,6 +149,16 @@ public class Itinerary
         }
     }
     
+    public func GetActivity(indexPath : IndexPath) -> Activity?
+    {
+        if let activity = GetDay(index: indexPath.section)?.GetActivity(index: indexPath.row)
+        {
+            return activity
+        }
+        
+        return nil
+    }
+    
     public func GetBudget() -> Float
     {
         var sum : Float = 0

@@ -202,6 +202,12 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         {
             selectedLocation = location
             chooseLocationButton.setTitle(location.name, for: .normal)
+            
+            //automate name if choosing location was first action
+            if nameTextField.text == ""
+            {
+                nameTextField.text = location.name
+            }
         }
         else
         {
@@ -332,6 +338,29 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         {
             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
         }
+        
+        if textField == startDateTextField
+        {
+            if let datePicker = textField.inputView as? UIDatePicker
+            {
+                if let date = selectedStartDate
+                {
+                    datePicker.date = date
+                }
+            }
+        }
+        
+         if textField == endDateTextField
+         {
+            if let datePicker = textField.inputView as? UIDatePicker
+            {
+                if let date = selectedEndDate
+                {
+                    datePicker.date = date
+                }
+                
+            }
+         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

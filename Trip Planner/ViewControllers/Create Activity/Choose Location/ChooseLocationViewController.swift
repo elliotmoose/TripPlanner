@@ -219,6 +219,7 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     
     func ResetScene()
     {
+        searchTextField.text = ""
         searchResults.removeAll()
         tableView.alpha = 0
         tableView.reloadData()
