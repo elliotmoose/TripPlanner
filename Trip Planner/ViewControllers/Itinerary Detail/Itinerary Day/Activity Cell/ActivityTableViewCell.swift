@@ -26,10 +26,17 @@ public class ActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var travelDurationImageView: UIImageView!
     
     
+    @IBOutlet weak var eye: UIImageView!
+    @IBOutlet weak var arrow2: UIImageView!
+    @IBOutlet weak var arrow1: UIImageView!
+    @IBOutlet weak var arrow1LayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var arrow2LayoutConstraint: NSLayoutConstraint!
+    
     public weak var delegate : ActivityCellDelegate?
     private var activity : Activity = Activity()
     
-    @IBOutlet weak var toggleExpandButton: UIButton!
+    
+    
     
     @IBAction func DetailButtonPressed(_ sender: Any) {
         if let delegate = self.delegate
@@ -59,7 +66,7 @@ public class ActivityTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.toggleExpandButton.transform = CGAffineTransform(rotationAngle: -(.pi)/2)
+        self.arrow2.transform = CGAffineTransform(rotationAngle: -(.pi))
         
         //ui init
         let tintColor = UIColor.darkGray
@@ -76,7 +83,12 @@ public class ActivityTableViewCell: UITableViewCell {
         travelDurationImageView.image = travelDurationImageView.image?.withRenderingMode(.alwaysTemplate)
         travelDurationImageView.tintColor = tintColor
         
-        
+        arrow1.image = arrow1.image?.withRenderingMode(.alwaysTemplate)
+        arrow1.tintColor = UIColor.gray
+        arrow2.image = arrow2.image?.withRenderingMode(.alwaysTemplate)
+        arrow2.tintColor = UIColor.gray
+        eye.image = eye.image?.withRenderingMode(.alwaysTemplate)
+        eye.tintColor = tintColor
         
         SetLabelsAlpha(0)
         
@@ -144,6 +156,7 @@ public class ActivityTableViewCell: UITableViewCell {
             emojiLabel.text = activity.icon.substring(to: 1)
         }
         
+        travelDurationLabel.text = activity.travelTime.GetPresentable()
         
         
         
@@ -152,16 +165,25 @@ public class ActivityTableViewCell: UITableViewCell {
     
     public func Expand()
     {
+        arrow1LayoutConstraint.constant = 20
+        arrow2LayoutConstraint.constant = -20
+        
         UIView.animate(withDuration: 0.3, animations: {
-                self.toggleExpandButton.transform = CGAffineTransform(rotationAngle: (.pi/2))
+            self.layoutIfNeeded()
+            //self.toggleExpandButton.transform = CGAffineTransform(rotationAngle: (.pi/2))
             self.SetLabelsAlpha(1)
         })
     }
     
     public func Collapse()
     {
+        arrow1LayoutConstraint.constant = -12
+        arrow2LayoutConstraint.constant = 12
+        
         UIView.animate(withDuration: 0.3, animations: {
-            self.toggleExpandButton.transform = CGAffineTransform(rotationAngle: -(.pi/2))
+            //self.toggleExpandButton.transform = CGAffineTransform(rotationAngle: -(.pi/2))
+            self.layoutIfNeeded()
+            
             self.SetLabelsAlpha(0)
         })
 
