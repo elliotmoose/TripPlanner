@@ -161,6 +161,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="26" id="zQp-NP-kcn"/>
                         </constraints>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="Call" image="Phone-48"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
@@ -176,6 +177,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="26" id="WvB-ha-Q0U"/>
                         </constraints>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="View" image="link_0002_1x"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="imageView.contentMode">
@@ -188,6 +190,7 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yst-4v-Pn5">
                         <rect key="frame" x="331" y="118" width="30" height="76"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="Nav"/>
                         <connections>
                             <action selector="LocationButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="14l-Vr-Zjg"/>
@@ -199,6 +202,24 @@
                             <action selector="EditNotesButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ARs-Fa-X43"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRAVEL TIME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPQ-WB-kvX">
+                        <rect key="frame" x="173.5" y="67" width="74.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Jsc-CE-Lz0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00 - 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a1-2R-cb3">
+                        <rect key="frame" x="173.5" y="87" width="108.5" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="85o-pM-Aam"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.2056158297" green="0.20543342780000001" blue="0.21104309290000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPm-u2-WCh">
                         <rect key="frame" x="24" y="373" width="333" height="1"/>
                         <color key="backgroundColor" red="0.55150619101987375" green="0.56163085271826851" blue="0.61070421006944442" alpha="1" colorSpace="calibratedRGB"/>
@@ -216,6 +237,7 @@
                 <constraint firstItem="epa-X6-TO7" firstAttribute="top" secondItem="JQh-3w-27c" secondAttribute="bottom" constant="6" id="4zr-Mg-Jsn"/>
                 <constraint firstItem="Jvj-ty-ip6" firstAttribute="bottom" secondItem="zze-MH-Elc" secondAttribute="bottom" id="9wp-Nn-sdb"/>
                 <constraint firstItem="fhB-ym-o6a" firstAttribute="top" secondItem="O3r-ok-s0O" secondAttribute="bottom" constant="6" id="AKP-pC-t5o"/>
+                <constraint firstItem="rPQ-WB-kvX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="20" id="B1I-8C-HvN"/>
                 <constraint firstItem="JQh-3w-27c" firstAttribute="height" secondItem="G1L-hd-M2l" secondAttribute="height" id="B4Q-dZ-JMy"/>
                 <constraint firstItem="O3r-ok-s0O" firstAttribute="leading" secondItem="G1L-hd-M2l" secondAttribute="leading" id="BKK-xY-UIc"/>
                 <constraint firstItem="y42-6S-jYa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="BSW-7V-0Kw"/>
@@ -224,8 +246,10 @@
                 <constraint firstAttribute="bottom" secondItem="cry-rK-kvq" secondAttribute="bottom" constant="20" id="Fwq-Zj-KB9"/>
                 <constraint firstItem="ZFk-xk-PbO" firstAttribute="centerX" secondItem="fhB-ym-o6a" secondAttribute="centerX" id="GLZ-EX-eVK"/>
                 <constraint firstItem="K9t-73-XDi" firstAttribute="height" secondItem="G1L-hd-M2l" secondAttribute="height" id="IXR-zW-BMj"/>
+                <constraint firstItem="3a1-2R-cb3" firstAttribute="top" secondItem="rPQ-WB-kvX" secondAttribute="bottom" id="IXs-5A-YF2"/>
                 <constraint firstItem="pOV-35-ybl" firstAttribute="leading" secondItem="Cor-Lw-xbG" secondAttribute="leading" id="Ido-lN-KgH"/>
                 <constraint firstAttribute="trailing" secondItem="cry-rK-kvq" secondAttribute="trailing" constant="20" id="JhW-YH-XAf"/>
+                <constraint firstItem="3a1-2R-cb3" firstAttribute="leading" secondItem="rPQ-WB-kvX" secondAttribute="leading" id="KvU-rm-a7f"/>
                 <constraint firstItem="zze-MH-Elc" firstAttribute="height" secondItem="Cor-Lw-xbG" secondAttribute="height" id="LxS-Ba-3aT"/>
                 <constraint firstItem="O3r-ok-s0O" firstAttribute="top" secondItem="qnv-MD-Phc" secondAttribute="bottom" id="MuG-5J-Npu"/>
                 <constraint firstAttribute="trailing" secondItem="epa-X6-TO7" secondAttribute="trailing" constant="20" id="NKp-ly-ffd"/>
@@ -233,6 +257,7 @@
                 <constraint firstItem="G1L-hd-M2l" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="OJq-z1-2Rl"/>
                 <constraint firstItem="Yst-4v-Pn5" firstAttribute="bottom" secondItem="epa-X6-TO7" secondAttribute="bottom" id="Odn-v1-m0B"/>
                 <constraint firstItem="Yst-4v-Pn5" firstAttribute="top" secondItem="JQh-3w-27c" secondAttribute="top" id="Oyf-6n-h94"/>
+                <constraint firstItem="rPQ-WB-kvX" firstAttribute="centerY" secondItem="G1L-hd-M2l" secondAttribute="centerY" id="PNW-vS-Lg0"/>
                 <constraint firstItem="pOV-35-ybl" firstAttribute="top" secondItem="Paq-aY-XNX" secondAttribute="bottom" id="Qzd-k4-tje"/>
                 <constraint firstAttribute="trailing" secondItem="fhB-ym-o6a" secondAttribute="trailing" id="REZ-aV-wOe"/>
                 <constraint firstAttribute="bottom" secondItem="y42-6S-jYa" secondAttribute="bottom" constant="20" id="RLS-0f-Vvc"/>
@@ -287,6 +312,7 @@
                 <outlet property="notesTextView" destination="fhB-ym-o6a" id="AfB-G7-Zmd"/>
                 <outlet property="textViewHeight" destination="648-59-TWo" id="71J-1U-rJg"/>
                 <outlet property="timeLabel" destination="Cor-Lw-xbG" id="jQ5-sZ-9kW"/>
+                <outlet property="travelTimeLabel" destination="3a1-2R-cb3" id="ONV-ka-YvX"/>
                 <outlet property="websiteLabel" destination="pOV-35-ybl" id="xSB-Rk-tv9"/>
             </connections>
             <point key="canvasLocation" x="-39.5" y="43"/>

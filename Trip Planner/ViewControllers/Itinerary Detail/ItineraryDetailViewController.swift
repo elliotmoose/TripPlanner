@@ -218,6 +218,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
                 
         if let activity = ItineraryManager.GetCurrent()?.GetActivity(indexPath: indexPath)
         {
+            CreateActivityViewController.singleton.SetTitle(activity.name)
             CreateActivityViewController.singleton.SetPreviousEndTime(date : activity.startDate)
         }
         

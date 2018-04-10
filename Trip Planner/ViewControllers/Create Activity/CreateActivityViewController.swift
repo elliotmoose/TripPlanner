@@ -13,6 +13,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     
     public static let singleton = CreateActivityViewController(nibName: "CreateActivityViewController", bundle: Bundle.main)
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var startDateTextField: UITextField!
@@ -141,6 +142,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     
     func ResetScene()
     {
+        
         chooseLocationButton.setTitle("Choose Location", for: .normal)
         selectedStartDate = nil
         selectedLocation = nil
@@ -149,6 +151,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         
         selectedTravelTime = 0
         
+        titleLabel.text = "ADD ACTIVITY"
         travelTimeTextField.text = ""
         nameTextField.text = ""
         budgetTextField.text = ""
@@ -176,6 +179,11 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
             endDatePicker.minimumDate = minDate
             endDatePicker.maximumDate = maxDate
         }
+    }
+    
+    public func SetTitle(_ previousActivityName : String)
+    {
+        titleLabel.text = "ADD ACTIVITY AFTER: ( \(previousActivityName))"
     }
     
     public func SetPreviousEndTime(date : Date)

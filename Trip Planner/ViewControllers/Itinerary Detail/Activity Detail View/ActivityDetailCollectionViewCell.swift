@@ -12,6 +12,7 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
 
     public weak var delegate : ActivityDetailCollectionViewCellDelegate?
     
+    @IBOutlet weak var travelTimeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -114,6 +115,9 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
         {
             iconLabel.text = activity.icon.substring(to: 1)
         }
+        
+        travelTimeLabel.text = activity.travelTime.GetPresentable()
+        
     }
 
     @IBAction func EditNotesButtonPressed(_ sender: Any) {

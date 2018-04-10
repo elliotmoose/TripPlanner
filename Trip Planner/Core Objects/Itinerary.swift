@@ -73,7 +73,8 @@ public class Itinerary
         let date = startDate.addingTimeInterval(TimeInterval(60*60*24*days.count))
         let day = Day(date: date)
         days.append(day)
-        
+        RefactorDates()
+
         PersistenceManager.Save()
     }
     
