@@ -84,8 +84,8 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         locationImageView.image = locationImageView.image?.withRenderingMode(.alwaysTemplate)
         locationImageView.tintColor = tintColor
         
-        txtFields.append(travelTimeTextField)
         txtFields.append(nameTextField)
+        txtFields.append(travelTimeTextField)
         txtFields.append(startDateTextField)
         txtFields.append(endDateTextField)
         txtFields.append(websiteTextField)
