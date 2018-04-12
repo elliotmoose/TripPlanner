@@ -299,7 +299,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
+    @IBAction func ChooseLocationButtonPressed(_ sender: Any) {        
         ChooseLocationViewController.singleton.delegate = self
         self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
@@ -395,6 +395,11 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
             let newLength = text.count + string.count - range.length
             return newLength <= 1
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        doneWithNumberPad()
+        return false
     }
     
     

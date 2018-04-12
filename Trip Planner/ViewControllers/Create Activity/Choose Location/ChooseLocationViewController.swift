@@ -78,6 +78,18 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     override func viewWillDisappear(_ animated: Bool) {
     }
     
+    public func PresentWithLocation(location : Location?)
+    {
+        if let location = location
+        {
+            self.searchTextField.text = location.name
+            self.selectedLocation = location
+            
+            chooseLocationButton.setTitle(location.name, for: .normal)
+            self.FocusLocation(location.lat, location.long)
+        }
+    }
+    
     
     @objc private func Search()
     {
@@ -92,6 +104,8 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
             tableView.reloadData()
             tableView.alpha = 0
             selectedLocation = nil
+            chooseLocationButton.setTitle("Choose Location", for: .normal)
+            marker.map = nil
         }
         
         
@@ -239,8 +253,6 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
             self.SetMarker(lat,long)
             
             //move to location
-            //let location = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            //self.mapView?.animate(toLocation: location)
             self.mapView.camera = GMSCameraPosition.camera(withLatitude: lat,
                                                            longitude: long,
                                                            zoom: 15)
@@ -250,12 +262,18 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     func SetMarker(_ lat : CLLocationDegrees, _ long : CLLocationDegrees)
     {
         // Creates a marker in the center of the map.
+        marker.map = mapView
         marker.position = CLLocationCoordinate2D(latitude: lat,longitude: long)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        Search()
+        return true
     }
     
     @objc func keyboardWasShown(notification: NSNotification){

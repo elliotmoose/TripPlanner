@@ -362,6 +362,15 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     }
     
     @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
+        
+        if let indexPath = selectedIndexPath
+        {
+            if let location = ItineraryManager.GetCurrent()?.GetActivity(indexPath: indexPath)?.location
+            {
+                ChooseLocationViewController.singleton.PresentWithLocation(location: location)
+            }
+        }
+        
         ChooseLocationViewController.singleton.delegate = self
         self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
