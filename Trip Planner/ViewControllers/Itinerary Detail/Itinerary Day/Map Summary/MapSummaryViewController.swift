@@ -57,12 +57,11 @@ class MapSummaryViewController: UIViewController {
                 //to make sure there is at least one location to focus to
                 count = count + 1
             }
-            
         }
         
         if count != 0
         {
-            let gmsUpdate = GMSCameraUpdate.fit(bounds, withPadding: 45)
+            let gmsUpdate = GMSCameraUpdate.fit(bounds, withPadding: 70)
             mapView.animate(with: gmsUpdate)
         }
         else

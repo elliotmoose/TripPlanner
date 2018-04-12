@@ -151,6 +151,11 @@ public class Itinerary
         }
     }
     
+    public func GetDays() -> [Day]
+    {
+        return days
+    }
+    
     public func GetActivity(indexPath : IndexPath) -> Activity?
     {
         if let activity = GetDay(index: indexPath.section)?.GetActivity(index: indexPath.row)

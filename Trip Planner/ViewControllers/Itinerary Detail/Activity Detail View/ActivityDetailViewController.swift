@@ -14,6 +14,26 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
     
     private var selectedDayIndex : Int?
     
+    @IBOutlet weak var dayLabel: UILabel!
+    
+    @IBAction func previousButtonPressed(_ sender: Any) {
+        guard let index = selectedDayIndex else {return}
+        if ItineraryManager.GetCurrent()?.GetDay(index: index-1) != nil
+        {
+            SelectDay(index - 1)
+            ReloadData()
+        }
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        
+        guard let index = selectedDayIndex else {return}
+        if ItineraryManager.GetCurrent()?.GetDay(index: index+1) != nil
+        {
+            SelectDay(index + 1)
+            ReloadData()
+        }
+    }
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -25,6 +45,7 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "ActivityDetailCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "ActivityDetailCollectionViewCell")
         
+        self.title = "Details"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,7 +76,7 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
     {
         selectedDayIndex = index
         
-        self.title = "Day \(index+1)"
+        dayLabel.text = "Day \(index+1)"
     }
     
     func ScrollToActivity(_ index : Int)
@@ -104,7 +125,7 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = Sizing.ScreenWidth() - 32
-        let height = Sizing.ScreenHeight() - Sizing.tabBarHeight - Sizing.statusBarHeight - 24
+        let height = Sizing.ScreenHeight() - Sizing.tabBarHeight - Sizing.statusBarHeight - 24 - 44
         return CGSize(width: width, height: height)
     }
     

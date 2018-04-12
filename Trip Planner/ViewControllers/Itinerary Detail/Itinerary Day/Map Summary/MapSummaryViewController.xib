@@ -22,15 +22,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xku-XO-9gi" customClass="GMSMapView">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Xku-XO-9gi" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="62X-Dk-e6S"/>
-                <constraint firstItem="Xku-XO-9gi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8ev-bo-Thw"/>
                 <constraint firstItem="Xku-XO-9gi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BPU-zm-WVo"/>
+                <constraint firstItem="Xku-XO-9gi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="f9o-eX-a5C"/>
                 <constraint firstItem="Xku-XO-9gi" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zps-Mn-awe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
