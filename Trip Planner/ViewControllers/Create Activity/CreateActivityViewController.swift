@@ -299,7 +299,8 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func ChooseLocationButtonPressed(_ sender: Any) {        
+    @IBAction func ChooseLocationButtonPressed(_ sender: Any) {
+        ChooseLocationViewController.singleton.PresentWithLocation(location: selectedLocation)
         ChooseLocationViewController.singleton.delegate = self
         self.present(ChooseLocationViewController.singleton, animated: true, completion: nil)
     }
