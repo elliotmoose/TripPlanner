@@ -11,6 +11,8 @@
 		A4075ED920629B90008A7E6D /* ChooseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */; };
 		A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4075EDC2062A8F1008A7E6D /* MainManager.swift */; };
 		A4210BBC207BABA200F7EE50 /* TimeDurationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4210BBB207BABA200F7EE50 /* TimeDurationPicker.swift */; };
+		A4210BC0207D174F00F7EE50 /* MapSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4210BBE207D174F00F7EE50 /* MapSummaryViewController.swift */; };
+		A4210BC1207D174F00F7EE50 /* MapSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4210BBF207D174F00F7EE50 /* MapSummaryViewController.xib */; };
 		A46B25FA2075FC6A00E2749D /* EditNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */; };
 		A46B25FB2075FC6A00E2749D /* EditNotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */; };
 		A49B7BEC205FBFF300C9BF35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */; };
@@ -67,6 +69,8 @@
 		A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseLocationViewController.xib; sourceTree = "<group>"; };
 		A4075EDC2062A8F1008A7E6D /* MainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
 		A4210BBB207BABA200F7EE50 /* TimeDurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDurationPicker.swift; sourceTree = "<group>"; };
+		A4210BBE207D174F00F7EE50 /* MapSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSummaryViewController.swift; sourceTree = "<group>"; };
+		A4210BBF207D174F00F7EE50 /* MapSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSummaryViewController.xib; sourceTree = "<group>"; };
 		A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotesViewController.swift; sourceTree = "<group>"; };
 		A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNotesViewController.xib; sourceTree = "<group>"; };
 		A49B7BE8205FBFF300C9BF35 /* Trip Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +154,15 @@
 				A4075ED720629B90008A7E6D /* ChooseLocationViewController.xib */,
 			);
 			path = "Choose Location";
+			sourceTree = "<group>";
+		};
+		A4210BBD207D173800F7EE50 /* Map Summary */ = {
+			isa = PBXGroup;
+			children = (
+				A4210BBE207D174F00F7EE50 /* MapSummaryViewController.swift */,
+				A4210BBF207D174F00F7EE50 /* MapSummaryViewController.xib */,
+			);
+			path = "Map Summary";
 			sourceTree = "<group>";
 		};
 		A49B7BDF205FBFF300C9BF35 = {
@@ -306,6 +319,7 @@
 		A4F844312060E5EF0061D369 /* Itinerary Day */ = {
 			isa = PBXGroup;
 			children = (
+				A4210BBD207D173800F7EE50 /* Map Summary */,
 				A4F8443B206187560061D369 /* Day Cell */,
 				A4F8443A206187440061D369 /* Activity Cell */,
 			);
@@ -409,6 +423,7 @@
 				A4EE34EA20727D250023B22D /* ActivityDetailCollectionViewCell.xib in Resources */,
 				A4A807AB206947C000A3D8F9 /* EditActivityViewController.xib in Resources */,
 				A49B7BF6205FBFF300C9BF35 /* LaunchScreen.storyboard in Resources */,
+				A4210BC1207D174F00F7EE50 /* MapSummaryViewController.xib in Resources */,
 				A49B7C232060CEA700C9BF35 /* CreateActivityViewController.xib in Resources */,
 				A4F844352060EA240061D369 /* ActivityTableViewCell.xib in Resources */,
 				A49B7C0E205FD04D00C9BF35 /* ItineraryDetailViewController.xib in Resources */,
@@ -498,6 +513,7 @@
 				A4EE34E3207238960023B22D /* WWCalendarTimeSelector.swift in Sources */,
 				A49B7C0C205FC48D00C9BF35 /* ItineraryManager.swift in Sources */,
 				A49B7BFF205FC19600C9BF35 /* Itinerary.swift in Sources */,
+				A4210BC0207D174F00F7EE50 /* MapSummaryViewController.swift in Sources */,
 				A4EE34E1207238960023B22D /* NSDateComponents+Timepiece.swift in Sources */,
 				A4EE34C7207119850023B22D /* ActivityDetailViewController.swift in Sources */,
 				A49B7C02205FC1A400C9BF35 /* Activity.swift in Sources */,

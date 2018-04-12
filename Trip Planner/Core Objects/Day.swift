@@ -51,6 +51,20 @@ public class Day
         }
     }
     
+    public func RefactorDates()
+    {
+        for activity in activities
+        {
+            activity.startDate = self.date.change(year: self.date.year, month: self.date.month, day: self.date.day, hour: activity.startDate.hour, minute: activity.startDate.minute, second: activity.startDate.second)
+            activity.endDate = self.date.change(year: self.date.year, month: self.date.month, day: self.date.day, hour: activity.endDate.hour, minute: activity.endDate.minute, second: activity.endDate.second)            
+        }
+    }
+    
+    public func GetActivities() -> [Activity]
+    {
+        return self.activities
+    }
+    
     public func GetDate() -> Date
     {
         return date

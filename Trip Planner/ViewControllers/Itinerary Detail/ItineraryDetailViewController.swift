@@ -18,8 +18,10 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var budgetTitleLabel: UILabel!
     @IBOutlet weak var budgetDayLabel: UILabel!
     @IBOutlet weak var budgetTotalLabel: UILabel!
+    @IBOutlet weak var mapSummaryButton: UIButton!
     
     @IBOutlet weak var revealSummaryButton: UIButton!
     @IBAction func RevealSummaryPressed(_ sender: Any) {
@@ -46,6 +48,18 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     @IBAction func ViewMapSummaryPressed(_ sender: Any) {
+        
+        let pageNumber = PageNumber()
+        
+        if let day = ItineraryManager.GetCurrent()?.GetDay(index: pageNumber)
+        {
+            MapSummaryViewController.singleton.PresentDay(day)
+            self.navigationController?.pushViewController(MapSummaryViewController.singleton, animated: true)
+        }
+        else
+        {
+            NSLog("No day at index: \(pageNumber)")
+        }
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -65,6 +79,9 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         self.revealSummaryButton.transform = CGAffineTransform(rotationAngle: (.pi))        
     }
     
+    @IBAction func MapSummaryButtonPressed(_ sender: Any) {
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("not implemented")
     }
@@ -179,33 +196,35 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     func UpdateSummaryForCurrentPage()
     {
-        let pageWidth = collectionView.frame.size.width
-        let pageNumber = Int(ceil(collectionView.contentOffset.x / pageWidth))
+        let pageNumber = PageNumber()
         
         if let itinerary = ItineraryManager.GetCurrent()
         {
-            var budgetForDay :Float = 0
-            if let dayBudget = itinerary.GetDay(index: pageNumber)?.GetBudget()
-            {
-                budgetForDay = dayBudget
-            }
- 
             let budgetForItinerary = itinerary.GetBudget()
             
-//            var dayPerc = budgetForDay/budgetForItinerary * 100
-//            if budgetForItinerary == 0
-//            {
-//                dayPerc = 0
-//            }
-            
-            budgetDayLabel.text = itinerary.currency[1] + String(format: "%.2f", budgetForDay) + "  (" + itinerary.currency[2] + ")"
-            budgetTotalLabel.text = itinerary.currency[1] + String(format: "%.2f", budgetForItinerary) + "  (" + itinerary.currency[2] + ")"
+            if let dayBudget = itinerary.GetDay(index: pageNumber)?.GetBudget()
+            {
+                budgetTitleLabel.text = "Day \(pageNumber+1) Budget"
+                mapSummaryButton.setTitle("Day \(pageNumber+1) Map Summary", for: .normal)
+                
+                budgetDayLabel.text = itinerary.currency[1] + String(format: "%.2f", dayBudget) + "  (" + itinerary.currency[2] + ")"
+                budgetTotalLabel.text = itinerary.currency[1] + String(format: "%.2f", budgetForItinerary) + "  (" + itinerary.currency[2] + ")"
+            }
         }
         
     }
     
+    private func PageNumber() -> Int
+    {
+        let pageWidth = collectionView.frame.size.width
+        return Int(ceil(collectionView.contentOffset.x / pageWidth))
+
+    }
+    
     //delegate functions
-    func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {        
+    func AddActivityRequest(_ sender: DayCollectionViewCell, dayIndex : Int) {
+        
+        CreateActivityViewController.singleton.ResetScene()
         CreateActivityViewController.singleton.UpdateDatePickerLimits(dayIndex : dayIndex)
         CreateActivityViewController.singleton.delegate = self
         CreateActivityViewController.singleton.modalPresentationStyle = .overCurrentContext
@@ -214,6 +233,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
     
     func AddActivityAtIndexPathRequest(_ sender : DayCollectionViewCell, indexPath : IndexPath)
     {
+        CreateActivityViewController.singleton.ResetScene()
         CreateActivityViewController.singleton.UpdateDatePickerLimits(dayIndex : indexPath.section)
                 
         if let activity = ItineraryManager.GetCurrent()?.GetActivity(indexPath: indexPath)

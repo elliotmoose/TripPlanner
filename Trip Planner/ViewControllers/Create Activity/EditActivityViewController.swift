@@ -138,7 +138,7 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     }
     override func viewDidDisappear(_ animated: Bool) {
         deregisterFromKeyboardNotifications()
-        ResetScene()
+        //ResetScene()
     }
 
     func ResetScene()

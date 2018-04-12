@@ -48,6 +48,7 @@ public class Itinerary
         
         
         RefactorDates()
+        PersistenceManager.Save()
     }
 
 
@@ -66,6 +67,7 @@ public class Itinerary
     {
         self.startDate = date
         RefactorDates()
+        PersistenceManager.Save()
     }        
     
     public func AddDay()
@@ -74,7 +76,6 @@ public class Itinerary
         let day = Day(date: date)
         days.append(day)
         RefactorDates()
-
         PersistenceManager.Save()
     }
     
@@ -179,7 +180,10 @@ public class Itinerary
         {
             let day = days[index]
             day.SetDate(date: startDate.addingTimeInterval(TimeInterval(60*60*24*index)))
+            day.RefactorDates()
         }
+        
+        //PersistenceManager.Save()
     }
     
     public func HasIndexPath(_ indexPath : IndexPath) -> Bool
@@ -216,6 +220,7 @@ public class Itinerary
         {
             self.currency = ["United States","USD","$","United States: $ (USD)"]
         }
+        
         if let startDateInterval = dict["startDate"] as? TimeInterval
         {
             self.startDate = Date(timeIntervalSince1970: startDateInterval)
@@ -240,7 +245,7 @@ public class Itinerary
         
         dict["name"] = name
         dict["currency"] = currency
-        dict["start_date"] = startDate.timeIntervalSince1970
+        dict["startDate"] = startDate.timeIntervalSince1970
 
         let daysDict = NSMutableDictionary()
 

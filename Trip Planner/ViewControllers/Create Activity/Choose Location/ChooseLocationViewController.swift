@@ -132,7 +132,12 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
         }
         else
         {
-            PopupManager.singleton.Popup(title: "Oops!", body: "You did not choose a location", presentationViewCont: self)
+            //PopupManager.singleton.Popup(title: "Oops!", body: "You did not choose a location", presentationViewCont: self)
+            if let delegate = self.delegate
+            {
+                delegate.DidChooseLocation(location: nil)
+            }
+            self.dismiss(animated: true, completion: nil)
         }
         
     }

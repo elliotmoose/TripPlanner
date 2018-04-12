@@ -137,7 +137,7 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     }
     override func viewDidDisappear(_ animated: Bool) {
         deregisterFromKeyboardNotifications()
-        ResetScene()
+        //ResetScene()
     }
     
     func ResetScene()
