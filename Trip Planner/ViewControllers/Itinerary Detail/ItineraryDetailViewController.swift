@@ -207,8 +207,8 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
                 budgetTitleLabel.text = "Day \(pageNumber+1) Budget"
                 mapSummaryButton.setTitle("Day \(pageNumber+1) Map Summary", for: .normal)
                 
-                budgetDayLabel.text = itinerary.currency[1] + String(format: "%.2f", dayBudget) + "  (" + itinerary.currency[2] + ")"
-                budgetTotalLabel.text = itinerary.currency[1] + String(format: "%.2f", budgetForItinerary) + "  (" + itinerary.currency[2] + ")"
+                budgetDayLabel.text = itinerary.currency[1] + dayBudget.GetCurrencyPresentable() + "  (" + itinerary.currency[2] + ")"
+                budgetTotalLabel.text = itinerary.currency[1] + budgetForItinerary.GetCurrencyPresentable() + "  (" + itinerary.currency[2] + ")"
             }
         }
         
@@ -253,6 +253,7 @@ class ItineraryDetailViewController: UIViewController,UICollectionViewDelegate,U
         
         if ItineraryManager.HasCurrent() && ItineraryManager.GetCurrent()!.HasIndexPath(indexPath)
         {
+            EditActivityViewController.singleton.ResetScene()
             EditActivityViewController.singleton.SelectActivityAtIndexPath(indexPath)
             EditActivityViewController.singleton.delegate = self
             EditActivityViewController.singleton.modalPresentationStyle = .overCurrentContext

@@ -15,6 +15,7 @@
 		A4210BC1207D174F00F7EE50 /* MapSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4210BBF207D174F00F7EE50 /* MapSummaryViewController.xib */; };
 		A46B25FA2075FC6A00E2749D /* EditNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */; };
 		A46B25FB2075FC6A00E2749D /* EditNotesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */; };
+		A4720C312080A183009D15CC /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4720C302080A183009D15CC /* CurrencyTextField.swift */; };
 		A49B7BEC205FBFF300C9BF35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */; };
 		A49B7BEE205FBFF300C9BF35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49B7BED205FBFF300C9BF35 /* ViewController.swift */; };
 		A49B7BF1205FBFF300C9BF35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49B7BEF205FBFF300C9BF35 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		A4210BBF207D174F00F7EE50 /* MapSummaryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSummaryViewController.xib; sourceTree = "<group>"; };
 		A46B25F82075FC6A00E2749D /* EditNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotesViewController.swift; sourceTree = "<group>"; };
 		A46B25F92075FC6A00E2749D /* EditNotesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditNotesViewController.xib; sourceTree = "<group>"; };
+		A4720C302080A183009D15CC /* CurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		A49B7BE8205FBFF300C9BF35 /* Trip Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49B7BEB205FBFF300C9BF35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A49B7BED205FBFF300C9BF35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				A4EE34CD207232430023B22D /* CurrencyList.plist */,
 				A4EE34CE207234040023B22D /* CurrencyUIPicker.swift */,
 				A4210BBB207BABA200F7EE50 /* TimeDurationPicker.swift */,
+				A4720C302080A183009D15CC /* CurrencyTextField.swift */,
 				A4EE34E5207245F20023B22D /* CantPasteTextField.swift */,
 				A4EE34D1207237F40023B22D /* WWCalendarTimeSelector */,
 			);
@@ -523,6 +526,7 @@
 				A4A807A72068FCF000A3D8F9 /* Network.swift in Sources */,
 				A4A807AA2069459800A3D8F9 /* EditActivityViewController.swift in Sources */,
 				A4075EDD2062A8F1008A7E6D /* MainManager.swift in Sources */,
+				A4720C312080A183009D15CC /* CurrencyTextField.swift in Sources */,
 				A4A8079A206340F000A3D8F9 /* PopupManager.swift in Sources */,
 				A49B7C04205FC3D500C9BF35 /* Day.swift in Sources */,
 				A4EE34DE207238960023B22D /* Int+Timepiece.swift in Sources */,

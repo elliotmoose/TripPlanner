@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateActivityViewController" customModule="Trip_Planner" customModuleProvider="target">
             <connections>
-                <outlet property="budgetTextField" destination="RKI-P9-j36" id="LOf-qy-ewU"/>
+                <outlet property="budgetTextField" destination="RKI-P9-j36" id="FHm-v9-roe"/>
                 <outlet property="chooseLocationButton" destination="7Ra-pB-8Jt" id="FZN-ns-NQK"/>
                 <outlet property="clockImageView" destination="vc5-AA-BM2" id="Opw-Su-w2n"/>
                 <outlet property="contactImageView" destination="B4w-Jf-A8F" id="qzD-ki-Kty"/>

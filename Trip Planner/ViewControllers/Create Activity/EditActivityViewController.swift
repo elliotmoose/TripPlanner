@@ -155,12 +155,15 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         
         travelTimeTextField.text = ""
         nameTextField.text = ""
-        budgetTextField.text = ""
         contactTextField.text = ""
         websiteTextField.text = ""
         startDateTextField.text = ""
         endDateTextField.text = ""
         
+        if let current = ItineraryManager.GetCurrent()
+        {
+            budgetTextField.text = current.currency[1] + "0.00"
+        }
         
         emojiIndex = 0
         
@@ -205,9 +208,10 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     
     public func SetActivity(activity : Activity)
     {
+        guard let current = ItineraryManager.GetCurrent() else {NSLog("No current");return}
         travelTimeTextField.text = activity.travelTime.GetPresentable()
         nameTextField.text = activity.name
-        budgetTextField.text = activity.budget
+        budgetTextField.text = current.currency[1] + activity.budget.GetCurrencyPresentable() + " " + current.currency[2]
         contactTextField.text = activity.contact
         websiteTextField.text = activity.link
         emojiTextField.text = activity.icon
@@ -343,8 +347,9 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
         activity.endDate = selectedEndDate!
         activity.location = selectedLocation
         activity.link = websiteTextField.text!
-        activity.budget = budgetTextField.text!
+        activity.budget = budgetTextField.text!.CurrencyToValue()
         activity.icon = emojiTextField.text!
+        activity.contact = contactTextField.text!
         
         if let notes = selectedActivityNotes
         {
@@ -449,18 +454,39 @@ class EditActivityViewController: UIViewController,ChooseLocationDelegate,UIText
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField != emojiTextField
+        if textField == budgetTextField
         {
-            return true
+            let text = textField.text!
+            var result : Double = 0
+            
+            if string.length > 0
+            {
+                result = text.CurrencyToValue()*1000 + string.CurrencyToValue()*100
+            }
+            else
+            {
+                result = text.CurrencyToValue()*1000/100
+            }
+            
+            let nf = NumberFormatter()
+            
+            nf.numberStyle = .currency
+            nf.currencySymbol = ItineraryManager.GetCurrent()?.currency[1]
+            textField.text = nf.string(from: NSNumber(value: result/100))
+            
+            return false
         }
-        else
+        else if textField == emojiTextField
         {
             guard let text = textField.text else { return true }
             let newLength = text.count + string.count - range.length
             return newLength <= 1
         }
+        else
+        {
+            return true
+        }
     }
-    
     
     
     //notifications for pushing up keyboard

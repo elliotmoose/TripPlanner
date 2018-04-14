@@ -257,7 +257,9 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
                 let contact = activity.contact
                 if contact != ""
                 {
+                    UIPasteboard.general.string = contact
                     
+                    PopupManager.singleton.Popup(title: "Contact", body: "Copied contact to clipboard!", presentationViewCont: self)
                 }
             }
             
@@ -272,7 +274,17 @@ class ActivityDetailViewController: UIViewController,UICollectionViewDelegate,UI
             {
                 if let location = activity.location
                 {
+                    var url = URL(string: "comgooglemaps://?q=\(location.addressFormatted.AddPercentEncodingForURL()!)&center=\(location.lat),\(location.long)&zoom=15")!
                     
+                    if UIApplication.shared.canOpenURL(url)
+                    {
+                        UIApplication.shared.openURL(url)
+                    }
+                    else
+                    {
+                        url = URL(string: "https://maps.google.com/maps?q=\(location.addressFormatted.AddPercentEncodingForURL()!)&center=\(location.lat),\(location.long)&zoom=15")!
+                        UIApplication.shared.openURL(url)
+                    }
                 }
             }
             

@@ -154,11 +154,15 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         titleLabel.text = "ADD ACTIVITY"
         travelTimeTextField.text = ""
         nameTextField.text = ""
-        budgetTextField.text = ""
         contactTextField.text = ""
         websiteTextField.text = ""
         startDateTextField.text = ""
         endDateTextField.text = ""
+        
+        if let current = ItineraryManager.GetCurrent()
+        {
+            budgetTextField.text = current.currency[1] + "0.00"
+        }
         
         emojiIndex = 0
         UpdateEmoji()
@@ -290,9 +294,10 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
         activity.startDate = selectedStartDate!
         activity.endDate = selectedEndDate!
         activity.link = websiteTextField.text!
-        activity.budget = budgetTextField.text!
+        activity.budget = budgetTextField.text!.CurrencyToValue()
         activity.location = selectedLocation
         activity.icon = emojiTextField.text!
+        activity.contact = contactTextField.text!
         ItineraryManager.GetCurrent()?.AddActivity(activity)
         
         self.delegate?.DidCreateActivity()
@@ -386,15 +391,37 @@ class CreateActivityViewController: UIViewController,ChooseLocationDelegate,UITe
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField != emojiTextField
+        if textField == budgetTextField
         {
-            return true
+            let text = textField.text!
+            var result : Double = 0
+            
+            if string.length > 0
+            {
+                result = text.CurrencyToValue()*1000 + string.CurrencyToValue()*100
+            }
+            else
+            {
+                result = text.CurrencyToValue()*1000/100
+            }
+            
+            let nf = NumberFormatter()
+
+            nf.numberStyle = .currency
+            nf.currencySymbol = ItineraryManager.GetCurrent()?.currency[1]
+            textField.text = nf.string(from: NSNumber(value: result/100))
+            
+            return false
         }
-        else
+        else if textField == emojiTextField
         {
             guard let text = textField.text else { return true }
             let newLength = text.count + string.count - range.length
             return newLength <= 1
+        }
+        else
+        {
+            return true
         }
     }
     

@@ -14,7 +14,7 @@ public class Activity
     public var icon = ""
     public var notes = ""
     public var type = ActivityType.others
-    public var budget = ""
+    public var budget : Double = 0
     public var link = ""
     public var contact = ""
     public var location : Location?
@@ -48,7 +48,7 @@ public class Activity
             self.notes = notes
         }
         
-        if let budget = dict["budget"] as? String
+        if let budget = dict["budget"] as? Double
         {
             self.budget = budget
         }
@@ -83,27 +83,6 @@ public class Activity
             let newLocation = Location(dict: locationDict)
             self.location = newLocation
         }
-    }
-    
-    public func GetBudget() -> Float
-    {
-        if budget.substring(to: 0) != "$"
-        {
-            if let output = Float(budget)
-            {
-                return output
-            }
-        }
-        else
-        {
-            if let output = Float(budget.substring(from: 1))
-            {
-                return output
-            }
-        }
-        
-        
-        return 0
     }
     
     public func SetNote(_ note : String)

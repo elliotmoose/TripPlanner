@@ -86,7 +86,7 @@ public class Day
         
         for activity in activities
         {
-            sum = sum + activity.GetBudget()
+            sum = sum + Float(activity.budget)
         }
         
         return sum

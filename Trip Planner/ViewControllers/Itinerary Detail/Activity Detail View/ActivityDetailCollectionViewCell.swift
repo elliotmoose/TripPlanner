@@ -16,13 +16,17 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var locationTextView: UITextView!
-    @IBOutlet weak var websiteLabel: UILabel!
-    @IBOutlet weak var contactLabel: UILabel!
+    @IBOutlet weak var locationButton: UIButton!
+    
+    @IBOutlet weak var websiteButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
-    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    
+    
+    
+    //@IBOutlet weak var textViewHeight: NSLayoutConstraint!
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -54,22 +58,65 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
     
     public func DisplayActivity(_ activity : Activity)
     {
+        guard let itinerary = ItineraryManager.GetCurrent() else
+        {
+            NSLog("No current itinerary")
+            return
+        }
+        
+        //underline string attribute
+        let underlineAttribute = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue, NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)] as [NSAttributedStringKey : Any]
+
+        
+        
         nameLabel.text = activity.name
+        
+        
+        timeLabel.text = activity.startDate.Get24hString() + " - " + activity.endDate.Get24hString()
+        budgetLabel.text = itinerary.currency[1] + activity.budget.GetCurrencyPresentable() + " (" + itinerary.currency[2] + ")"
+        travelTimeLabel.text = activity.travelTime.GetPresentable()
+        
+        
+        locationButton.titleLabel?.numberOfLines = 2
         
         if let location = activity.location
         {
-            locationTextView.text = "\(location.addressFormatted)"
+            locationButton.setAttributedTitle(NSMutableAttributedString(string: location.addressFormatted, attributes: underlineAttribute), for: .normal)
+            locationButton.titleLabel?.textColor = self.tintColor
+            locationButton.isEnabled = true
         }
         else
         {
-            locationTextView.text = "No address"
+            locationButton.setAttributedTitle(NSMutableAttributedString(string: "No Address", attributes: underlineAttribute), for: .normal)
+            locationButton.titleLabel?.textColor = UIColor.gray
+            locationButton.isEnabled = false
         }
         
-        //locationTextView.sizeToFit()
-        //textViewHeight.constant = locationTextView.frame.height
-        //locationTextView.isScrollEnabled = false
+        if activity.link == ""
+        {
+            websiteButton.setAttributedTitle(NSMutableAttributedString(string: "No website", attributes: underlineAttribute), for: .normal)
+            websiteButton.titleLabel?.textColor = UIColor.gray
+            websiteButton.isEnabled = false
+        }
+        else
+        {
+            websiteButton.setAttributedTitle(NSMutableAttributedString(string: activity.link, attributes: underlineAttribute), for: .normal)
+            websiteButton.titleLabel?.textColor = self.tintColor
+            websiteButton.isEnabled = true
+        }
         
-        timeLabel.text = activity.startDate.Get24hString() + " - " + activity.endDate.Get24hString()
+        if activity.contact == ""
+        {
+            contactButton.setAttributedTitle(NSMutableAttributedString(string: "No Contact", attributes: underlineAttribute), for: .normal)
+            contactButton.titleLabel?.textColor = UIColor.gray
+            contactButton.isEnabled = false
+        }
+        else
+        {
+            contactButton.setAttributedTitle(NSMutableAttributedString(string: activity.contact, attributes: underlineAttribute), for: .normal)
+            contactButton.titleLabel?.textColor = self.tintColor
+            contactButton.isEnabled = true
+        }
         
         if activity.notes == ""
         {
@@ -78,33 +125,6 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
         else
         {
             notesTextView.text = activity.notes
-        }
-        
-        if activity.link == ""
-        {
-            websiteLabel.text = "No website"
-        }
-        else
-        {
-            websiteLabel.text = activity.link
-        }
-        
-        if activity.budget == ""
-        {
-            budgetLabel.text = "0.00"
-        }
-        else
-        {
-            budgetLabel.text = activity.budget
-        }
-        
-        if activity.contact == ""
-        {
-            contactLabel.text = "No contact"
-        }
-        else
-        {
-            contactLabel.text = activity.contact
         }
         
         if activity.icon == ""
@@ -116,7 +136,7 @@ public class ActivityDetailCollectionViewCell: UICollectionViewCell {
             iconLabel.text = activity.icon.substring(to: 1)
         }
         
-        travelTimeLabel.text = activity.travelTime.GetPresentable()
+
         
     }
 
@@ -152,4 +172,3 @@ public protocol ActivityDetailCollectionViewCellDelegate : class
     func DidCallContact(_ sender : ActivityDetailCollectionViewCell)
     func DidOpenLocation(_ sender : ActivityDetailCollectionViewCell)
 }
-

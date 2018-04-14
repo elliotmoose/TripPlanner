@@ -105,6 +105,11 @@ public class ActivityTableViewCell: UITableViewCell {
  
     public func DisplayActivity(_ activity : Activity)
     {
+        guard let itinerary = ItineraryManager.GetCurrent() else
+        {
+            NSLog("No current itinerary")
+            return
+        }
         self.activity = activity;
         
         nameLabel.text = activity.name
@@ -129,14 +134,7 @@ public class ActivityTableViewCell: UITableViewCell {
             linkButton.setTitle("tap to visit", for: .normal)
         }
         
-        if activity.budget == ""
-        {
-            budgetLabel.text = "0.00"
-        }
-        else
-        {
-            budgetLabel.text = activity.budget
-        }
+        budgetLabel.text = itinerary.currency[1] + activity.budget.GetCurrencyPresentable() + " (" + itinerary.currency[2] + ")"
         
         if activity.contact == ""
         {

@@ -39,7 +39,16 @@ extension String{
         
         
         return encoded
-        
+    }
+    
+    public func CurrencyToValue() -> Double //assuming with 2 d.p (e.g. $0.00)
+    {
+        var output = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        if output == ""
+        {
+            output = "0"
+        }
+        return Double(output)!/100
     }
     
     var length: Int {
@@ -155,5 +164,37 @@ extension TimeInterval
         let minsString = "\(Int(mins))"
         
         return "\(hoursString)h \(minsString)m"
+    }
+}
+
+extension Float
+{
+    func GetCurrencyPresentable() -> String
+    {
+        let nf = NumberFormatter()
+        nf.usesGroupingSeparator = true
+        nf.groupingSeparator = ","
+        nf.groupingSize = 3
+        nf.maximumFractionDigits = 2
+        nf.minimumFractionDigits = 2
+        nf.minimumIntegerDigits = 1
+        return nf.string(for: self)!
+    }
+}
+
+extension Double
+{
+    func GetCurrencyPresentable() -> String
+    {
+        let nf = NumberFormatter()
+        nf.usesGroupingSeparator = true
+        nf.groupingSeparator = ","
+        nf.groupingSize = 3
+        nf.maximumFractionDigits = 2
+        nf.minimumFractionDigits = 2
+        nf.minimumIntegerDigits = 1
+        
+        
+        return nf.string(for: self)!
     }
 }
