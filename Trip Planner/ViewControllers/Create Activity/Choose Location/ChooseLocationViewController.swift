@@ -29,7 +29,9 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     //variables
     public weak var delegate : ChooseLocationDelegate?
     private var searchResults = [GMSAutocompletePrediction]()
+    private var previousLocation : Location?
     private var selectedLocation : Location?
+    private var selectedTravelTime : Double = 0
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "ChooseLocationViewController", bundle: Bundle.main)
@@ -185,14 +187,13 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        tableView.alpha = 0
 
         let gmsSearchResult = searchResults[indexPath.row]
-        tableView.alpha = 0
         self.searchTextField.text = gmsSearchResult.attributedPrimaryText.string
         
         if let placeID = gmsSearchResult.placeID
         {
-            
             //look up selected location information
             GMSPlacesClient.shared().lookUpPlaceID(placeID, callback: {
                 (result,error) -> Void in
@@ -218,18 +219,93 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
                     
                     self.selectedLocation = newLocation
                     
+                    //travel time
+                    self.GetTravelTime()
+                    
+                    //
                     //ui
+                    //
                     self.searchResults.removeAll()
                     tableView.reloadData()
                     self.FocusLocation(lat, long)
-                    
                     self.chooseLocationButton.setTitle(self.selectedLocation!.name, for: .normal)
                 }
                 
             })
         }
+    }
         
-  
+    private func GetTravelTime()
+    {
+        guard let prev = previousLocation else {return}
+        guard let next = selectedLocation else {return}
+        
+        //look up travel time
+        let origin = prev.name
+        let destination = next.name
+        let url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=\(origin)&destinations=\(destination)&key=\(MainManager.singleton.GetGMSKey())"
+        Network.singleton.DataFromUrl(url, handler: {
+            (success,output)-> Void in
+            do
+            {
+                if let dict = try JSONSerialization.jsonObject(with: output!, options: .allowFragments) as? NSDictionary
+                {
+                    if let error = dict["error_message"] as? String
+                    {
+                        NSLog(error)
+                    }
+                    
+                    if let rowsArr = dict["rows"] as? NSArray
+                    {
+                        
+                        guard rowsArr.count > 0 else {return}
+                        if let row = rowsArr[0] as? NSDictionary
+                        {
+                            if let elementsArr = row["elements"] as? NSArray
+                            {
+                                if let element = elementsArr[0] as? NSDictionary
+                                {
+                                    //                                        //UPDATE DATA
+                                    //                                        if let distance = element["distance"] as? NSDictionary
+                                    //                                        {
+                                    //                                            if let text = distance["text"] as? String
+                                    //                                            {
+                                    //                                            }
+                                    //
+                                    //                                            if let value = distance["value"] as? Float
+                                    //                                            {
+                                    //
+                                    //                                            }
+                                    //                                        }
+                                    
+                                    if let duration = element["duration"] as? NSDictionary
+                                    {
+                                        //                                            if let text = duration["text"] as? String
+                                        //                                            {
+                                        //
+                                        //                                            }
+                                        
+                                        if let value = duration["value"] as? Double
+                                        {
+                                            self.selectedTravelTime = value
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                let outString = String(data: output!, encoding: .utf8)!
+                print(outString)
+                
+            }
+            catch let error as NSError
+            {
+                NSLog("\(error)")
+            }
+        })
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -242,7 +318,9 @@ class ChooseLocationViewController: UIViewController,UITableViewDelegate,UITable
         searchResults.removeAll()
         tableView.alpha = 0
         tableView.reloadData()
+        previousLocation = nil
         selectedLocation = nil
+        selectedTravelTime = 0
         chooseLocationButton.setTitle("Choose Location", for: .normal)
     }
     

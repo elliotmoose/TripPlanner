@@ -22,4 +22,9 @@ public class MainManager
         
         PersistenceManager.Load()
     }
+    
+    public func GetGMSKey() -> String
+    {
+        return gmsKey
+    }
 }
